@@ -16,7 +16,17 @@
     <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+
+    //dygraphs css
+    <link rel="stylesheet" href="/node_modules/dygraphs/dist/dygraph.css">
+
+    <title>Dashboard </title>
+
+    //js files
+    <script src="jquery.js"></script>
+    <script src="index.js"></script>
+    <script src="/node_modules/dygraphs/dist/dygraph.js"></script>
+
 </head>
 
 <body>
@@ -42,10 +52,13 @@
 					  <div class="modal-content">
 					    <span class="close">&times;</span>
 					    <p>Query:</p>
-					    <input type="text" name="query" value=" ">
+					    <input type="text" name="query"  id="qu">
+                          <input type="text" name="x" placeholder="x value" id="x">
+                          <input type="text" name="y" placeholder="y value" id="y">
+
 					    <p>Choose your tool:</p>
 					    <div class="btns">
-						    <button type="submit" value="Submit">Bar graph</button>
+						    <button type="submit" value="Submit" id="bar">Bar graph</button>
 						    <button type="submit" value="Submit">Pie chart</button>
 						    <button type="submit" value="Submit">Line chart</button>
 						    <button type="submit" value="Submit">Table</button>
@@ -576,6 +589,19 @@
 
                                           <!-- recent orders  -->
                             <!-- ============================================================== -->
+
+                         <!--for graph display -->
+                    <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12" id="graphid" style="height: 300px;width: 300px">
+                    graph
+                    </div>
+
+
+
+
+
+
+
+
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Recent Orders</h5>
