@@ -4208,7 +4208,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.2.1): index.js
+   * Bootstrap (v4.2.1): dashboard.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

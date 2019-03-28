@@ -15,12 +15,18 @@ app.use('/', express.static(__dirname + "/"));
 app.use(bp.urlencoded({extended: true}))
 app.use(bp.json())
 
+
 app.get('/',(req,res)=>{
     res.sendFile('index.html');
 
 })
 
-app.post('/',(req,res)=>{
+app.get('/dashboard',(req,res)=>{
+    res.sendFile('dashboard.html');
+
+})
+
+app.post('/dashboard',(req,res)=>{
     var quer=req.body.q;
     var x=req.body.x;
     var y=req.body.y;
