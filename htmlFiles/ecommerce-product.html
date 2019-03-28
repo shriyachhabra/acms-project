@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+ 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,12 +10,6 @@
     <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/libs/css/style.css">
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/vendor/vector-map/jqvmap.css">
-    <link href="assets/vendor/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/daterangepicker/daterangepicker.css" />
     <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
@@ -29,7 +23,7 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="index.html">Concept</a>
+                <a class="navbar-brand" href="dashboard.html">Concept</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -141,7 +135,7 @@
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-        <div class="nav-left-sidebar sidebar-dark">
+       <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -162,7 +156,7 @@
                                             <div id="submenu-1-2" class="collapse submenu" style="">
                                                 <ul class="nav flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link" href="index.html">E Commerce Dashboard</a>
+                                                        <a class="nav-link" href="dashboard.html">E Commerce Dashboard</a>
                                                     </li>
                                                     <li class="nav-item">
                                                         <a class="nav-link" href="ecommerce-product.html">Product List</a>
@@ -270,7 +264,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/datepicker.html">Date Picker</a>
                                         </li>
-                                        <li class="nav-item">
+                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/bootstrap-select.html">Bootstrap Select</a>
                                         </li>
                                     </ul>
@@ -338,6 +332,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/color-picker.html">Color Picker</a>
                                         </li>
+                                        
                                     </ul>
                                 </div>
                             </li>
@@ -436,21 +431,21 @@
         <!-- wrapper  -->
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
-            <div class="dashboard-finance">
-                <div class="container-fluid dashboard-content">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
                     <!-- ============================================================== -->
                     <!-- pageheader  -->
                     <!-- ============================================================== -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h3 class="mb-2">Finance Dashboard </h3>
-                                <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
+                                <h2 class="pageheader-title">Concept - Bootstrap 4 Admin Dashboard Template </h2>
+                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Finance Dashboard Template</li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">E-coommerce</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Concept - Bootstrap 4 Admin Dashboard Template</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -461,369 +456,423 @@
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
                     <div class="row">
-                        <div class="offset-xl-10 col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
-                            <form>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                        <div class="col-xl-9 col-lg-8 col-md-8 col-sm-12 col-12">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-1.png" alt="" class="img-fluid"></div>
+                                            <div class="ribbons"></div>
+                                            <div class="ribbons-text">New</div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-2.png" alt="" class="img-fluid"></div>
+                                            <div class="ribbons bg-danger"></div>
+                                            <div class="ribbons-text">Sold</div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-3.png" alt="" class="img-fluid"></div>
+                                            <div class="ribbons bg-brand"></div>
+                                            <div class="ribbons-text">Offer</div>
+                                            <div class=""><a href="#" class="product-wishlist-btn active"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00
+                                                    <del class="product-del">$69.00</del>
+                                                </div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-4.png" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-3.png" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00
+                                                    <del class="product-del">$69.00</del>
+                                                </div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-2.png" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-1.png" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-2.png" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00</div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="product-thumbnail">
+                                        <div class="product-img-head">
+                                            <div class="product-img">
+                                                <img src="assets/images/eco-product-img-4.png" alt="" class="img-fluid"></div>
+                                            <div class=""><a href="#" class="product-wishlist-btn"><i class="fas fa-heart"></i></a></div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-content-head">
+                                                <h3 class="product-title">T-Shirt Product Title</h3>
+                                                <div class="product-rating d-inline-block">
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                    <i class="fa fa-fw fa-star"></i>
+                                                </div>
+                                                <div class="product-price">$49.00
+                                                    <del class="product-del">$69.00</del>
+                                                </div>
+                                            </div>
+                                            <div class="product-btn">
+                                                <a href="#" class="btn btn-primary">Add to Cart</a>
+                                                <a href="#" class="btn btn-outline-light">Details</a>
+                                                <a href="#" class="btn btn-outline-light"><i class="fas fa-exchange-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <nav aria-label="Page navigation example">
+                                        <ul class="pagination">
+                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item active"><a class="page-link " href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-12">
+                            <div class="product-sidebar">
+                                <div class="product-sidebar-widget">
+                                    <h4 class="mb-0">E-Commerce Filter</h4>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <h4 class="product-sidebar-widget-title">Category</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-1">
+                                        <label class="custom-control-label" for="cat-1">Categories #1</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-2">
+                                        <label class="custom-control-label" for="cat-2">Categories #2</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-3">
+                                        <label class="custom-control-label" for="cat-3">Categories #3</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-4">
+                                        <label class="custom-control-label" for="cat-4">Categories #4</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="cat-5">
+                                        <label class="custom-control-label" for="cat-5">Categories #5</label>
+                                    </div>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <h4 class="product-sidebar-widget-title">Size</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="size-1">
+                                        <label class="custom-control-label" for="size-1">Small</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="size-2">
+                                        <label class="custom-control-label" for="size-2">Medium</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="size-3">
+                                        <label class="custom-control-label" for="size-3">Large</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="size-4">
+                                        <label class="custom-control-label" for="size-4">Extra Large</label>
+                                    </div>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <h4 class="product-sidebar-widget-title">Brand</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="brand-1">
+                                        <label class="custom-control-label" for="brand-1">Brand Name #1</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="brand-2">
+                                        <label class="custom-control-label" for="brand-2">Brand Name #2</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="brand-3">
+                                        <label class="custom-control-label" for="brand-3">Brand Name #3</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="brand-4">
+                                        <label class="custom-control-label" for="brand-4">Brand Name #4</label>
+                                    </div>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <h4 class="product-sidebar-widget-title">Color</h4>
+                                    <div class="custom-control custom-radio custom-color-blue ">
+                                        <input type="radio" id="color-1" name="customRadio" class="custom-control-input">
+                                        <label class="custom-control-label" for="color-1">Blue</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-color-red ">
+                                        <input type="radio" id="color-2" name="customRadio" class="custom-control-input">
+                                        <label class="custom-control-label" for="color-2">Red</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-color-yellow ">
+                                        <input type="radio" id="color-3" name="customRadio" class="custom-control-input">
+                                        <label class="custom-control-label" for="color-3">Yellow</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-color-black ">
+                                        <input type="radio" id="color-4" name="customRadio" class="custom-control-input">
+                                        <label class="custom-control-label" for="color-4">Black</label>
+                                    </div>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <h4 class="product-sidebar-widget-title">Price</h4>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="price-1">
+                                        <label class="custom-control-label" for="price-1">$$</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="price-2">
+                                        <label class="custom-control-label" for="price-2">$$$</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="price-3">
+                                        <label class="custom-control-label" for="price-3">$$$$</label>
+                                    </div>
+                                </div>
+                                <div class="product-sidebar-widget">
+                                    <a href="#" class="btn btn-outline-light">Reset Filter</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Total Income</h5>
-                                <div class="card-body">
-                                    <div class="metric-value d-inline-block">
-                                        <h1 class="mb-1">$5,79,000</h1>
-                                    </div>
-                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">25%</span>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-light p-t-40 p-b-40">
-                                    <div id="sparkline-revenue"></div>
-                                </div>
-                                <div class="card-footer text-center bg-white">
-                                    <a href="#" class="card-link">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Total Expences</h5>
-                                <div class="card-body">
-                                    <div class="metric-value d-inline-block">
-                                        <h1 class="mb-1">$1,79,000</h1>
-                                    </div>
-                                    <div class="metric-label d-inline-block float-right text-secondary font-weight-bold">
-                                        <span class="icon-circle-small icon-box-xs text-danger bg-danger-light"><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1">15%</span>
-                                    </div>
-                                </div>
-                                <div class="card-body text-center bg-light p-t-40 p-b-40">
-                                    <div id="sparkline-revenue2"></div>
-                                </div>
-                                <div class="card-footer text-center bg-white">
-                                    <a href="#" class="card-link">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Cash on Hand</h5>
-                                <div class="card-body">
-                                    <div class="metric-value d-inline-block">
-                                        <h1 class="mb-1">$79,000</h1>
-                                    </div>
-                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1">25%</span>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-light p-t-40 p-b-40">
-                                    <div id="sparkline-revenue3"></div>
-                                </div>
-                                <div class="card-footer text-center bg-white">
-                                    <a href="#" class="card-link">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Net Profit Margin</h5>
-                                <div class="card-body">
-                                    <div class="metric-value d-inline-block">
-                                        <h1 class="mb-1">$92,000</h1>
-                                    </div>
-                                    <div class="metric-label d-inline-block float-right text-success font-weight-bold">
-                                        <span class="icon-circle-small icon-box-xs text-success bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span> <span class="ml-1">25%</span>
-                                    </div>
-                                </div>
-                                <div class="card-body bg-light p-b-40 p-t-40">
-                                    <div id="sparkline-revenue4"></div>
-                                </div>
-                                <div class="card-footer text-center bg-white">
-                                    <a href="#" class="card-link">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end revenue year  -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <!-- ============================================================== -->
-                        <!-- ap and ar balance  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">AP and AR Balance
-                                </h5>
-                                <div class="card-body">
-                                    <canvas id="chartjs_balance_bar"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end ap and ar balance  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- gross profit  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">% of Income Budget</h5>
-                                <div class="card-body">
-                                    <div id="morris_gross" style="height: 272px;"></div>
-                                </div>
-                                <div class="card-footer bg-white">
-                                    <p>Budget <span class="float-right text-dark">12,000.00</span></p>
-                                    <p>Balance<span class="float-right text-dark">-2300.00 <span class="ml-2 text-secondary"><i class="fas fa-caret-up mr-1"></i>25%</span></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end gross profit  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- profit margin  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">% of Expenses Budget</h5>
-                                <div class="card-body">
-                                    <div id="morris_profit" style="height: 272px;"></div>
-                                </div>
-                                <div class="card-footer bg-white">
-                                    <p>Budget <span class="float-right text-dark">3500.00</span></p>
-                                    <p>Balance <span class="float-right text-dark">230.00 <span class="ml-2 text-secondary"><i class="fas fa-caret-up mr-1"></i>25%</span></span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end profit margin -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- earnings before interest tax  -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">EBIT (Earnings Before Interest & Tax)</h5>
-                                <div class="card-body">
-                                    <div id="ebit_morris"></div>
-                                    <div class="text-center">
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">EBIT (Earnings Before Interest & Tax)</span>
-                                        </span>
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end earnings before interest tax  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- cost of goods  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Cost of goods / Services <span class="float-right">1 Jan 2018 to 31 Dec 2018</span></h5>
-                                <div class="card-body">
-                                    <div id="goodservice"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end cost of goods  -->
-                        <!-- ============================================================== -->
-                    </div>
-                    <div class="row">
-                        <!-- ============================================================== -->
-                        <!-- overdue invoices  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Disputed vs Overdue Invoices</h5>
-                                <div class="card-body">
-                                    <div class="ct-chart-invoice ct-golden-section"></div>
-                                    <div class="text-center m-t-40">
-                                        <span class="legend-item mr-3">
-                                                    <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full "></i></span><span class="legend-text">Disputed Invoices</span>
-                                        </span>
-                                        <span class="legend-item mr-3">
-                                                    <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full "></i></span><span class="legend-text">Overdue Invoices</span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end overdue invoices  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- disputed invoices  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-5 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Disputed Invoices</h5>
-                                <div class="card-body">
-                                    <div class="ct-chart-line-invoice ct-golden-section"></div>
-                                    <div class="text-center m-t-10">
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">Disputed Invoices</span>
-                                        </span>
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">Avarage</span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end disputed invoices  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- account payable age  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Accounts Payable Age</h5>
-                                <div class="card-body">
-                                    <div id="account" style="height: 300px;"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end account payable age  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- working capital  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Working Capital <span class="float-right">1 Jan 2018 to 31 Dec 2018</span></h5>
-                                <div class="card-body">
-                                    <div id="capital"></div>
-                                    <div class="text-center m-t-10">
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">Working Capital</span>
-                                        </span>
-                                        <p></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end working capital  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- inventory turnover  -->
-                        <!-- ============================================================== -->
-                        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Inventory Turnover</h5>
-                                <div class="card-body">
-                                    <div class="ct-chart-inventory ct-golden-section"></div>
-                                    <div class="text-center m-t-10">
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-primary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">Turnover</span>
-                                        </span>
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">Target</span>
-                                        </span>
-                                        <span class="legend-item mr-3">
-                                                <span class="fa-xs text-info mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
-                                        <span class="legend-text">Acheived</span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- end inventory turnover -->
-                    <!-- ============================================================== -->
                 </div>
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <div class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end footer -->
+                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <div class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>. 
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end footer -->
+            <!-- end wrapper  -->
             <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- end main wrapper  -->
-    <!-- ============================================================== -->
-    <!-- jquery 3.3.1  -->
-    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <!-- bootstap bundle js -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <!-- slimscroll js -->
-    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <!-- chart chartist js -->
-    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
-    <script src="assets/vendor/charts/chartist-bundle/Chartistjs.js"></script>
-    <script src="assets/vendor/charts/chartist-bundle/chartist-plugin-threshold.js"></script>
-    <!-- chart C3 js -->
-    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <!-- chartjs js -->
-    <script src="assets/vendor/charts/charts-bundle/Chart.bundle.js"></script>
-    <script src="assets/vendor/charts/charts-bundle/chartjs.js"></script>
-    <!-- sparkline js -->
-    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
-    <!-- dashboard finance js -->
-    <script src="assets/libs/js/dashboard-finance.js"></script>
-    <!-- main js -->
-    <script src="assets/libs/js/main-js.js"></script>
-    <!-- gauge js -->
-    <script src="assets/vendor/gauge/gauge.min.js"></script>
-    <!-- morris js -->
-    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
-    <script src="assets/vendor/charts/morris-bundle/morrisjs.html"></script>
-    <!-- daterangepicker js -->
-    <script src="../../../../cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script src="../../../../cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script>
-    $(function() {
-        $('input[name="daterange"]').daterangepicker({
-            opens: 'left'
-        }, function(start, end, label) {
-            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-        });
-    });
-    </script>
+        <!-- ============================================================== -->
+        <!-- end main wrapper  -->
+        <!-- ============================================================== -->
+        <!-- Optional JavaScript -->
+        <!-- jquery 3.3.1 -->
+        <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+        <!-- bootstap bundle js -->
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+        <!-- slimscroll js -->
+        <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+        <!-- main js -->
+        <script src="assets/libs/js/main-js.js"></script>
 </body>
+ 
 </html>

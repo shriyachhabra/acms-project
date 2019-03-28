@@ -10,7 +10,7 @@ let outg="" //output for graph
     bar.click(function () {
         console.log("hi")
         console.log("g")
-        $.post('/',
+        $.post('/dashboard',
             {q:queryf.val(), x:xf.val(),y:yf.val()},
             function (result) {
                  outg+=xf.val()+","+yf.val()+"\n"
