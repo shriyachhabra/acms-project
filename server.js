@@ -1,6 +1,8 @@
 const express = require('express');
 const bp = require('body-parser');
 //const query=require('./queryES');
+const path=require('path');
+const fs = require('fs');
 const app=express();
 const elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
@@ -8,7 +10,8 @@ var client = new elasticsearch.Client({
 });
 
 
-
+const content = fs.readFileSync("data.json");
+console.log(JSON.stringify(content));
 
 app.use('/', express.static(__dirname + "/"));
 
@@ -53,7 +56,15 @@ app.post('/dashboard',(req,res)=>{
 
 })
 
+app.get('/test',function (req,res) {
+    res.contentType('json');
+    res.send(JSON.parse(content));
+});
 
+app.post('/change',function (req,res) {
+    console.log(req.body.result);
+    fs.writeFileSync("data.json",req.body.result);
+});
 
 app.listen(7890, function () {
     console.log("Server started on http://localhost:7890");
