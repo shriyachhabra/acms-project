@@ -25,6 +25,7 @@ $(function () {
 
      let type=ele['type']
      //Koshima di code
+
     }
 
 
