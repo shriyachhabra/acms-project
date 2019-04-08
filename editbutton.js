@@ -2,6 +2,15 @@ $(function () {
     let text=$('#myTextArea');
     let save=$('#save');
 
+    $.get('/editbutton',
+        function (req) {
+            console.log(req)
+            $('#dashboard_name').html(req.header);
+            $('#myTextArea').html(JSON.stringify(req));
+            sessionStorage.setItem("map",JSON.stringify(req));
+        }
+    )
+
     save.click(function () {
         let result=text.val();
         result=JSON.parse(result);
@@ -11,7 +20,9 @@ $(function () {
 
         sessionStorage.setItem("components",JSON.stringify(components));
         $.post('/editbutton',
-                    {comp:components},
+                    {comp:components,
+                        data:result
+                    },
                     function (res) {
                       console.log(res)
                       sessionStorage.setItem("map",JSON.stringify(res));

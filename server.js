@@ -62,8 +62,14 @@ app.get('/dashboard',(req,res)=>{
 
 })
 
+app.get('/editbutton',(req,res)=>{
+    res.contentType('json');
+    res.send(JSON.parse(content));
+})
+
 app.post('/editbutton',(req,res)=>{
     const components=req.body.comp;
+    //fs.writeFileSync("data.json",req.body.data);
     //console.log(components);
     //console.log(JSON.stringify(components[0]));
    // console.log(components[0].id);
