@@ -158,6 +158,6 @@ app.post('/dashboard',(req,res)=>{
 //     fs.writeFileSync("data.json",req.body.result);
 // });
 
-app.listen(7850, function () {
-    console.log("Server started on http://localhost:7850");
+app.listen(7855, function () {
+    console.log("Server started on http://localhost:7855");
 });
