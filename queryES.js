@@ -14,34 +14,47 @@ var b = {
     }
 
 }
-var ans;
+var ans="n";
 
-function search(body){
-    var p=""
-   var re= client.search(
+function search(body) {
+    var p = "";
+    var re =  client.search(
         {
             index: 'tutorial',
-            body:body,
-            type: 'cities_list' })
+            body: body,
+            type: 'cities_list'
+        })
         .then(results => {
-           // console.log(results.hits.hits)
+            // console.log(results.hits.hits)
             console.log(`found ${results.hits.total} items in ${results.took}ms`);
             // set the results to the result array we have
 
-           p= results.hits.hits;;
-            //console.log("hi"+JSON.stringify(p[0]["_source"]));
+            p = results.hits.hits;
+            //console.log("hi  "+JSON.stringify(p[0]["_source"]));
             //console.log(p.length)
-           ans =p;
+            ans = p;
+
+
+
         })
         .catch(err => {
             console.log(err)
 
         });
-setTimeout(function () {
-    return p[0]
-},1000)
 
+    return re;
 }
+// search(function (hits) {
+//     console.log(hits+"Shriya");
+// })
+
+ function resES(a){
+  // console.log(a)
+     return a;
+}
+
+
+
 module.exports={
-    search
+    search,resES
 }

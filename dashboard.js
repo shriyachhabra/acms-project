@@ -1,34 +1,31 @@
 $(function () {
-    let queryf=$('#qu')
-    let bar=$('#bar')
-    let xf=$('#x')
-    let yf=$('#y')
-    let graphid=$('#graphid')
-    let outg="" //output for graph
 
 
-    bar.click(function () {
-        console.log("hi")
-        console.log("g")
-        $.post('/dashboard',
-            {q:queryf.val(), x:xf.val(),y:yf.val()},
-            function (result) {
-                 outg+=xf.val()+",/."+yf.val()+"\n"
-                console.log("rec "+result.length)
-                for( let i=0;i<result.length;i++){
-                   let x =result[i]["_source"][xf.val()];
-                   let y =result[i]["_source"][yf.val()];
-                   outg+=x+","+y+"\n"
-                }
+    //NOTE: map contains the result of the query according to the component id
+ var map=sessionStorage.getItem("map")
+    map=JSON.parse(map)
+ var components=sessionStorage.getItem("components")
+    components=JSON.parse(components)
+    console.log(components)
+    //console.log(map)
+ for(let i in components){
+     let outputCSV="";
+     let ele=components[i]
+     //console.log(ele)
+     let x=ele['x-val']
+     let y=ele['y-val']
+     outputCSV+=x+","+y+"\n";
+     let arr=map[ele['id']]
+     //console.log(arr)
+    for(let j in arr ){
 
-             console.log(outg)
-                const g = new Dygraph(document.getElementById("graphid")
-                    , outg, {
-                        fillGraph: true
-                    });
-            }
-            )
-    })
+        outputCSV+=arr[j][x]+","+arr[j][y]+"\n"
+    }
+    console.log(outputCSV)
+
+     let type=ele['type']
+     //Koshima di code
+    }
 
 
 })

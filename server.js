@@ -1,13 +1,45 @@
 const express = require('express');
 const bp = require('body-parser');
-//const query=require('./queryES');
+// const clientES=require('./queryES');
+// const clientMONGO=require('./mongo')
 const path=require('path');
 const fs = require('fs');
 const app=express();
+
+
+
 const elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
     hosts: ['http://127.0.0.1:9200']
 });
+
+
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+
+
+
+
+var db = mongoose.connection;
+var cname = 'test';
+var query = { ticker: "IBM" };
+var ans="d";
+
+
+
+
+
+var sourceId,queryReceived;
+var map={};
+var es="1",md="2",sql="3";
+var queryArr=[];
+var m=[];
 
 
 const content = fs.readFileSync("data.json");
@@ -25,46 +57,106 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/dashboard',(req,res)=>{
+    res.send(map)
     res.sendFile('dashboard.html');
 
 })
 
-app.post('/dashboard',(req,res)=>{
-    var quer=req.body.q;
-    var x=req.body.x;
-    var y=req.body.y;
-    console.log(quer+" hi "+x+" "+y)
-   var re= client.search(
-        {
-            index: 'tutorial',
-            body:quer,
-            type: 'cities_list' })
-        .then(results => {
-            // console.log(results.hits.hits)
-            console.log(`found ${results.hits.total} items in ${results.took}ms`);
-            // set the results to the result array we have
+app.post('/editbutton',(req,res)=>{
+    const components=req.body.comp;
+    //console.log(components);
+    //console.log(JSON.stringify(components[0]));
+   // console.log(components[0].id);
+    //console.log(components.length);
 
-            p= results.hits.hits;;
-            console.log(""+JSON.stringify(p[0]["_source"]));
-            console.log(p.length)
-            res.send(p)
-        })
-        .catch(err => {
-            console.log(err)
 
-        });
+
+    for(let i=0;i<components.length;i++){
+
+        sourceId=components[i].datasource;
+        queryReceived=components[i].query;
+
+        if(sourceId==="1") {
+
+            client.search(
+                {
+                    index: 'tutorial',
+                    body: queryReceived,
+                    type: 'cities_list'
+                })
+                .then(results => {
+                    // console.log(results.hits.hits)
+                    console.log(`found ${results.hits.total} items in ${results.took}ms`);
+                    // set the results to the result array we have
+
+                    var p = results.hits.hits;
+                    //console.log("hi  "+JSON.stringify(p[0]["_source"]));
+                    //console.log(p)
+                   // queryArr.push(p)
+                    var arr=[]
+                    for(var ele=0;ele<p.length;ele++){
+                        var obj=p[ele]["_source"]
+                        arr.push(obj)
+                    }
+                    //console.log(arr)
+                    map[components[i]['id']]=arr
+                   // console.log(map)
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+        }else if(sourceId==="2"){
+
+               //  console.log(typeof queryReceived);
+                // console.log(typeof query)
+
+            MongoClient.connect(url,{useNewUrlParser: true},function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("sample");
+                dbo.collection("test").find(JSON.parse(queryReceived)).toArray(function(err, result) {
+                    if (err) throw err;
+                    //console.log(queryReceived)
+                   // console.log(result);
+                    map[components[i]['id']]=result
+                   // console.log(map)
+                    db.close();
+                });
+            });
+
+
+        }
+
+
+
+    }
+
+setTimeout(function () {
+    console.log(map)
+    res.send(map)
+},2000)
 
 })
 
-app.get('/test',function (req,res) {
-    res.contentType('json');
-    res.send(JSON.parse(content));
-});
 
-app.post('/change',function (req,res) {
-    console.log(req.body.result);
-    fs.writeFileSync("data.json",req.body.result);
-});
+
+
+app.post('/dashboard',(req,res)=>{
+
+  console.log("inside dash")
+    //console.log(req.body.map)
+    //res.sendFile("dashboard.html")
+
+})
+
+// app.get('/test',function (req,res) {
+//     res.contentType('json');
+//     res.send(JSON.parse(content));
+// });
+//
+// app.post('/change',function (req,res) {
+//     console.log(req.body.result);
+//     fs.writeFileSync("data.json",req.body.result);
+// });
 
 app.listen(7890, function () {
     console.log("Server started on http://localhost:7890");

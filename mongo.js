@@ -1,31 +1,42 @@
 const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/sample');
+var query = { ticker: 'IBM' };
+mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
 
 var db = mongoose.connection;
+var cname = 'test';
+
+var ans="d";
+var p=0
+// function search(query) {
+
 db.once('open', function () {
-    console.log('Connection has been made');
+        console.log('Connection has been made');
+
+      db.collection(cname).find(query).toArray(function (err, res) {
+             ans=res;
+          console.log(ans)
+        });
 
 
-     var cursor = db.collection('test').find();
+    }).on('error', function (error) {
+        console.log('Connection error', error);
+    });
+console.log(p)
 
-     cursor.each(function (err, doc) {
+// }
 
-         console.log(JSON.stringify(doc));
 
-     });
-     var cname = 'test';
-     var query = { ticker: "IBM" };
-     var ab = db.collection(cname).find(query);
-     ab.each(function (err, doc) {
 
-         console.log(JSON.stringify(doc));
 
-     });
+//for printing all values
+// var cursor = db.collection('test').find();
+//
+// cursor.each(function (err, doc) {
+//
+//     console.log(JSON.stringify(doc));
+//
+// });
 
-}).on('error', function (error) {
-    console.log('Connection error', error);
-});
 
 // var docs = [{ _id: 1, value: 1, ticker: 'IBM' },
 //     { _id: 2, value: 1, ticker: 'AAPL' },
@@ -44,3 +55,17 @@ db.once('open', function () {
 //
 // }); // end of insert
 
+
+// setTimeout(function () {
+//     console.log(ans)
+// },200)
+
+function resMONGO(){
+
+    return ans;
+}
+
+
+// module.exports={
+//      search,resMONGO
+//  }
