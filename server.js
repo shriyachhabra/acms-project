@@ -43,7 +43,7 @@ var m=[];
 
 
 const content = fs.readFileSync("data.json");
-console.log(JSON.stringify(content));
+const new_content = fs.readFileSync("new.json");
 
 app.use('/', express.static(__dirname + "/"));
 
@@ -67,9 +67,19 @@ app.get('/editbutton',(req,res)=>{
     res.send(JSON.parse(content));
 })
 
+app.get('/new_content',(req,res)=>{
+    res.contentType('json');
+    res.send(JSON.parse(new_content));
+})
+
+app.post('/new_content',(req,res)=>{
+    console.log(req.body.data);
+})
+
 app.post('/editbutton',(req,res)=>{
     const components=req.body.comp;
-    //fs.writeFileSync("data.json",req.body.data);
+    fs.writeFileSync("data.json",req.body.data);
+    console.log(req.body.data);
     //console.log(components);
     //console.log(JSON.stringify(components[0]));
    // console.log(components[0].id);

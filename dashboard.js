@@ -45,22 +45,24 @@ $(function () {
      $('<div id='+i+' width="100%" height="30"></div>').appendTo('#graphid');
      let type=ele['type']
      //Koshima di code
-     //if(type==='graph'){
+     if(type==='graph'){
          if(document.getElementById(i)){
              console.log('exists');
              let g = new Dygraph(document.getElementById(i),outputCSV,ele['style']);
          }else{
              console.log("not exists");
          }
-     //}
-     /*else if(type ==='bar'){
+     }
+     else if(type ==='bar'){
          if(document.getElementById(i)){
              console.log('exists');
-             let g = new Dygraph(document.getElementById(i), outputCSV,ele['style']);
+             let g = new Dygraph(document.getElementById(i), outputCSV,{
+                 plotter:barChartPlotter
+             });
          }else{
              console.log("not exists");
          }
-     }*/
+     }
 
     }
 
