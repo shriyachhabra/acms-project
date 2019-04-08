@@ -1,3 +1,23 @@
+function barChartPlotter(e) {
+    var ctx = e.drawingContext;
+    var points = e.points;
+    var y_bottom = e.dygraph.toDomYCoord(0);
+
+    // This should really be based on the minimum gap
+    var bar_width = 2/3 * (points[1].canvasx - points[0].canvasx);
+    ctx.fillStyle = e.color;
+
+    // Do the actual plotting.
+    for (var i = 0; i < points.length; i++) {
+        var p = points[i];
+        var center_x = p.canvasx;  // center of the bar
+
+        ctx.fillRect(center_x - bar_width / 2, p.canvasy,
+            bar_width, y_bottom - p.canvasy);
+        ctx.strokeRect(center_x - bar_width / 2, p.canvasy,
+            bar_width, y_bottom - p.canvasy);
+    }
+}
 $(function () {
 
 
@@ -22,9 +42,27 @@ $(function () {
         outputCSV+=arr[j][x]+","+arr[j][y]+"\n"
     }
     console.log(outputCSV)
-
+     $('<div id='+i+' width="100%" height="30"></div>').appendTo('#graphid');
      let type=ele['type']
      //Koshima di code
+     if(type==='graph'){
+         if(document.getElementById(i)){
+             console.log('exists');
+             let g = new Dygraph(document.getElementById(i),outputCSV,ele['style']);
+         }else{
+             console.log("not exists hy'+i+'");
+         }
+     }
+     else if(type ==='bar'){
+         if(document.getElementById(i)){
+             console.log('exists');
+             let g = new Dygraph(document.getElementById(i), outputCSV, {
+                 plotter: barChartPlotter
+             });
+         }else{
+             console.log("not exists hy'+i+'");
+         }
+     }
 
     }
 

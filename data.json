@@ -1,6 +1,7 @@
 {
   "header":"ACMS DASHBOARD",
-  "components":[
+  "components":
+  [
     {"id":1,
       "type":"graph",
       "style":{"title":"Graph 1",
@@ -26,7 +27,9 @@
       "y-val":"lng",
       "position":2,
       "query":"",
-      "datasource":"2"}]}
+      "datasource":"2"}
+  ]
+}
 
 
 
