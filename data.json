@@ -1,9 +1,17 @@
 {
-  "header":"ACMS DASHBOARD",
-  "components":[
-    {"id":1,
-      "type":"graph","style":{"title":"Graph 1","labels":["X","Y1","Y2"],"axis":{"x":120,"y":30},"axisLabelFontSize":{"x":14,"y":14},"axisLineColor":{"x":"rgb(0, 100, 255)","y":"rgb(0, 100, 255)"},"axisLineWidth":{"x":0.3,"y":0.3},"customBars":false,"delimiter":",","errorBars":false,"fillgraph":false,"height":320,"width":480},"x-val":"lat","y-val":"lng","position":1,"query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}","datasource":"1"},
-    {"id":2,
-      "type":"bar",
-    "x-val":"lat","y-val":"lng","position":2,"query":"{ \"ticker\": \"IBM\" }","datasource":"2"}
-  ]}
+    "header":"ACMS DASHBOARD",
+    "components":[
+        {"id":1,
+            "type":"graph",
+            "x-val":"lat",
+            "y-val":"lng",
+            "position":1,
+            "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
+            "datasource":"1"},
+        {"id":2,
+            "type":"bar",
+            "x-val":"value",
+            "y-val":"value",
+            "position":2,
+            "query":"{ \"ticker\": \"IBM\" }",
+            "datasource":"2"}]}
