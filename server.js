@@ -14,7 +14,6 @@ var client = new elasticsearch.Client({
 });
 
 
-
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});

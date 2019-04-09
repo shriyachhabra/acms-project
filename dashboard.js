@@ -56,9 +56,8 @@ $(function () {
      else if(type ==='bar'){
          if(document.getElementById(i)){
              console.log('exists');
-             let g = new Dygraph(document.getElementById(i), outputCSV,{
-                 plotter:barChartPlotter
-             });
+             ele['style']["plotter"]=barChartPlotter;
+             let g = new Dygraph(document.getElementById(i), outputCSV,ele['style']);
          }else{
              console.log("not exists");
          }
