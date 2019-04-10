@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="en">
+<html>
  
 <head>
     <!-- Required meta tags -->
@@ -11,6 +10,7 @@
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/libs/css/style.css">
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+
     <style>
     html,
     body {
@@ -26,6 +26,8 @@
         padding-bottom: 40px;
     }
     </style>
+    <script src="../jquery.js"></script>
+    <script src="../do.js"></script>
 </head>
 <!-- ============================================================== -->
 <!-- signup form  -->
@@ -43,19 +45,19 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Username" autocomplete="off">
+                    <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Username" autocomplete="off" id="username">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">
+                    <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail" autocomplete="off" id="email">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="pass1" type="password" required="" placeholder="Password">
+                    <input class="form-control form-control-lg" type="password" required="" placeholder="Password" id="password">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" required="" placeholder="Confirm">
+                    <input class="form-control form-control-lg" required="" placeholder="Confirm" id="confirm_password">
                 </div>
                 <div class="form-group pt-2">
-                    <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+                    <button class="btn btn-block btn-primary" type="submit" id="register">Register My Account</button>
                 </div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">
@@ -78,5 +80,5 @@
     </form>
 </body>
 
- 
+
 </html>
