@@ -1,9 +1,54 @@
 {
-  "id":"",
-  "type":"",
-  "x-val":"",
-  "y-val":"",
-  "position":"",
-  "query":"",
-  "datasource":""
+  "header":{
+    "title":"",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "page_header":{
+    "title":"",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "edit_button":{
+    "title":"",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "new_dashboard_button":{
+    "title":"",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "components": [
+    {
+      "id":"",
+      "type":"",
+      "x-val":"",
+      "y-val":"",
+      "position":"",
+      "query":"",
+      "datasource":""
+    },
+    {
+      "id":"",
+      "type":"",
+      "x-val":"",
+      "y-val":"",
+      "position":"",
+      "query":"",
+      "datasource":""
+    }
+  ]
 }

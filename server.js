@@ -2,6 +2,8 @@ const express = require('express');
 const bp = require('body-parser');
 // const clientES=require('./queryES');
 // const clientMONGO=require('./mongo')
+const sql_db = require('./database');
+const session = require('express-session');
 const path=require('path');
 const fs = require('fs');
 const app=express();
@@ -41,7 +43,7 @@ var queryArr=[];
 var m=[];
 
 
-const content = fs.readFileSync("data.json");
+//const content = fs.readFileSync("data.json");
 const new_content = fs.readFileSync("new.json");
 
 app.use('/', express.static(__dirname + "/"));
@@ -61,19 +63,63 @@ app.get('/dashboard',(req,res)=>{
 
 })
 
+
+//retrieve query from dashboard
 app.get('/editbutton',(req,res)=>{
-    res.contentType('json');
-    res.send(JSON.parse(content));
+
+    sql_db.getQuery(req.body).then(function (data) {
+        console.log('success');
+        res.send({success: true,data:data})
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    })
 })
+
+
 
 app.get('/new_content',(req,res)=>{
     res.contentType('json');
     res.send(JSON.parse(new_content));
 })
 
+
+//Add a new user
+app.post('/do', (req, res) => {
+    sql_db.addDo(req.body).then(function () {
+    	console.log('success');
+    	res.send({success: true})
+    }).catch(function (err) {
+    	console.log('Error'+err);
+        throw err;
+    })
+});
+//Match user
+app.post('/login', (req, res) => {
+    sql_db.getLogin(req.body).then(function (data) {
+        console.log('success');
+        res.send({success:true,data:data});
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    })
+});
+
+
+//store query in dashboard
 app.post('/new_content',(req,res)=>{
-    console.log(req.body.data);
-})
+    console.log(req.body.Query);
+    sql_db.addQuery(req.body).then(function () {
+        console.log('success');
+        res.send({success: true})
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    })
+});
+
+
+
 
 app.post('/editbutton',(req,res)=>{
     const components=req.body.comp;
@@ -150,10 +196,7 @@ setTimeout(function () {
     res.send(map)
 },2000)
 
-})
-
-
-
+});
 
 app.post('/dashboard',(req,res)=>{
 
@@ -161,7 +204,7 @@ app.post('/dashboard',(req,res)=>{
     //console.log(req.body.map)
     //res.sendFile("dashboard.html")
 
-})
+});
 
 // app.get('/test',function (req,res) {
 //     res.contentType('json');

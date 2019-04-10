@@ -25,6 +25,7 @@
     //js files
     <script src="jquery.js"></script>
     <script src="dashboard.js"></script>
+    <script src="editbutton.js"></script>
     <script src="/node_modules/dygraphs/dist/dygraph.js"></script>
    <!----> <<!--script src="graph_data.js"></script>-->
 
@@ -187,10 +188,10 @@
                                 <div id="submenu-4" class="collapse submenu" style="">
                      
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/editbutton.html">Edit </a>
+                                            <a class="nav-link" href="pages/editbutton.html" id="edit_button">Edit </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/newdashboard.html">New Dashboard</a>
+                                            <a class="nav-link" href="pages/newdashboard.html" id="new_dashboard_button">New Dashboard</a>
                                         </li>
                                     
                                 <!--/div-->
@@ -597,13 +598,13 @@ window.onclick = function(event) {
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h2 class="pageheader-title">Access Points Dashboard </h2>
+                                <h2 class="pageheader-title" id="pageheader_title">Access Points Dashboard </h2>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Access Points Dashboard </li>
+                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link" id="which_dashboard">Dashboard</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page" id="which_title">Access Points Dashboard </li>
                                         </ol>
                                     </nav>
                                 </div>

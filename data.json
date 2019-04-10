@@ -1,1 +1,33 @@
-{"header":"ACMS DASHBOARD","components":[{"id":1,"type":"graph","style":{"title":"Graph 1","height":300,"width":480},"x-val":"lat","y-val":"lng","position":1,"query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}","datasource":"1"},{"id":2,"type":"bar","x-val":"lat","y-val":"lng","position":2,"style":{"title":"Graph 2","height":300,"width":480},"query":"{ \"ticker\": \"IBM\" }","datasource":"2"}]}
+{"header":{
+  "title":"ACMS DASHBOARD",
+  "style": {
+    "color": "",
+    "height": "",
+    "width": ""
+  }
+},
+  "page_header":{
+    "title":"Access Points Dashboard",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "edit_button":{
+    "title":"Edit",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "new_dashboard_button":{
+    "title":"New Dashoboard",
+    "style": {
+      "color": "",
+      "height": "",
+      "width": ""
+    }
+  },
+  "components":[{"id":1,"type":"graph","style":{"title":"Graph 1","height":300,"width":480},"x-val":"lat","y-val":"lng","position":1,"query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}","datasource":"1"},{"id":2,"type":"bar","x-val":"lat","y-val":"lng","position":2,"style":{"title":"Graph 2","height":300,"width":480},"query":"{ \"ticker\": \"IBM\" }","datasource":"2"}]}
