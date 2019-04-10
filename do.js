@@ -14,6 +14,7 @@ $(function () {
         }
         else
         {
+
             $.post('/do',
                 {
                     User_name: username.val(),

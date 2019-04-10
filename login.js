@@ -22,7 +22,7 @@ $(function () {
                 }
                 else if(email.val()===req.data.email&&input_pass.val()===req.data.password){
                     sessionStorage.setItem("session_email",email.val());
-
+                    sessionStorage.setItem("username",req.data.username);
                             window.open('/dashboard.html');
                             self.close();
                         }

@@ -1,6 +1,6 @@
 {
   "header":{
-    "title":"",
+    "title":"ACMS DASHBOARD",
     "style": {
       "color": "",
       "height": "",
@@ -16,7 +16,7 @@
     }
   },
   "edit_button":{
-    "title":"",
+    "title":"Edit",
     "style": {
       "color": "",
       "height": "",
@@ -24,7 +24,7 @@
     }
   },
   "new_dashboard_button":{
-    "title":"",
+    "title":"New Dashboard",
     "style": {
       "color": "",
       "height": "",

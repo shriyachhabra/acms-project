@@ -85,7 +85,7 @@ app.post('/dashboard_click',(req,res)=>{
     sql_db.getQuery(req.body).then(function (data) {
         console.log('success');
         res.send({success: true,data:data})
-        content=data;
+        content=data.query;
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
@@ -95,7 +95,8 @@ app.post('/dashboard_click',(req,res)=>{
 
 //retrieve query from dashboard
 app.get('/editbutton',(req,res)=>{
-    res.send(content);
+    res.send({data:content});
+    console.log(content);
 })
 
 

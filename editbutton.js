@@ -4,26 +4,35 @@ $(function () {
     let edit = $('#edit');
     let new_heading = $('#dashboard_name');
     let pageheader_title = $('#pageheader_title');
+    let which_title = $('#which_title');
     let edit_button = $('#edit_button');
     let new_dashboard_button=$('#new_dashboard_button');
+    let username = $('#username');
+    let get_user = sessionStorage.getItem("username");
     let id = sessionStorage.getItem("id");
     $.get('/editbutton',
         function (req) {
-            console.log(req);
-              text.html(JSON.stringify(req));
+            var data = JSON.parse(req.data);
+            console.log(data);
+              text.html(JSON.stringify(data));
+
+              username.html(get_user);
+
 
             //header
-            new_heading.html(req.header.title);
-            var styles = req.header.style;
+            new_heading.html(data.header.title);
+            var styles = data.header.style;
             var tags = Object.keys(styles);
             $.each(tags,function (i) {
                 new_heading.css(tags[i],styles[tags[i]]);
                 console.log(tags[i]+":"+styles[tags[i]]);
             });
 
+            which_title.html(data.page_header.title);
+
             //page header title
-            pageheader_title.html(req.page_header.title);
-            styles = req.page_header.style;
+            pageheader_title.html(data.page_header.title);
+            styles = data.page_header.style;
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 pageheader_title.css(tags[i],styles[tags[i]]);
@@ -31,8 +40,8 @@ $(function () {
             });
 
             //edit button
-            edit_button.html(req.edit_button.title);
-            styles = req.edit_button.style;
+            edit_button.html(data.edit_button.title);
+            styles = data.edit_button.style;
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 edit_button.css(tags[i],styles[tags[i]]);
@@ -40,8 +49,8 @@ $(function () {
             });
 
             //new dashboard button
-            new_dashboard_button.html(req.new_dashboard_button.title);
-            styles = req.new_dashboard_button.style;
+            new_dashboard_button.html(data.new_dashboard_button.title);
+            styles = data.new_dashboard_button.style;
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 new_dashboard_button.css(tags[i],styles[tags[i]]);
