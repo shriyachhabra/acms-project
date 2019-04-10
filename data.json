@@ -1,8 +1,8 @@
 {"header":{
   "title":"ACMS DASHBOARD",
   "style": {
-    "color": "",
-    "height": "",
+    "color": "blue",
+    "height": "70",
     "width": ""
   }
 },

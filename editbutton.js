@@ -6,6 +6,7 @@ $(function () {
     let pageheader_title = $('#pageheader_title');
     let edit_button = $('#edit_button');
     let new_dashboard_button=$('#new_dashboard_button');
+    let id = sessionStorage.getItem("id");
     $.get('/editbutton',
         function (req) {
             console.log(req);
@@ -61,7 +62,8 @@ $(function () {
         sessionStorage.setItem("components",JSON.stringify(components));
         $.post('/editbutton',
                     {comp:components,
-                        data:text.val()
+                        data:text.val(),
+                        dno:id
                     },
                     function (res) {
                       console.log(res);

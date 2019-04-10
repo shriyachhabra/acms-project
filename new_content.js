@@ -19,10 +19,14 @@ save.click(function () {
     $.post('/new_content',
         {comp:components,
             Query:new_dashboard.val(),
-            Email:email
+            Email:email,
+            dashboard_Title:result.page_header.title
         },
         function (res) {
-            console.log(res+" "+email);
+            console.log(res+" "+res.data);
+            let item=$('<li class="nav-item"></li>').appendTo('#dashboard_list');
+            item.append($("<a class='nav-link' href='../dashboard.html' id="+res.data+">"+result.page_header.title+"</a>"));
+
         }
     )
 
