@@ -59,14 +59,12 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/dashboard',(req,res)=>{
-    res.send(map)
+    res.send(map);
     res.sendFile('dashboard.html');
 
 })
 
 
-
-//retrieve no of dashboard
 app.post('/fetch_dashboard',(req,res)=>{
     sql_db.getDashboard(req.body).then(function (data) {
         console.log('success dashboard');
@@ -77,8 +75,10 @@ app.post('/fetch_dashboard',(req,res)=>{
         throw err;
     })
 })
+
+
 var content;
-//dashboard click
+
 app.post('/dashboard_click',(req,res)=>{
    // console.log(req.body.id);
     //var content = req.body;
@@ -90,24 +90,31 @@ app.post('/dashboard_click',(req,res)=>{
         console.log('Error'+err);
         throw err;
     })
-})
+    sql_db.addSession(req.body).then(function (data) {
+        console.log('success add session');
+        res.send('success');
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    })
+});
 
 
-//retrieve query from dashboard
+
 app.get('/editbutton',(req,res)=>{
     res.send({data:content});
     console.log(content);
-})
+});
 
 
 
 app.get('/new_content',(req,res)=>{
     res.contentType('json');
     res.send(JSON.parse(new_content));
-})
+});
 
 
-//Add a new user
+
 app.post('/do', (req, res) => {
     sql_db.addDo(req.body).then(function () {
     	console.log('success registration');
@@ -119,7 +126,7 @@ app.post('/do', (req, res) => {
 });
 
 
-//Match user
+
 app.post('/login', (req, res) => {
     sql_db.getLogin(req.body).then(function (data) {
         console.log('success login');
@@ -131,7 +138,7 @@ app.post('/login', (req, res) => {
 });
 
 
-//store query in dashboard
+
 app.post('/new_content',(req,res)=>{
     sql_db.addQuery(req.body).then(function (data) {
         console.log('success query');
@@ -146,6 +153,15 @@ app.post('/new_content',(req,res)=>{
 
 app.post('/editbutton',(req,res)=>{
     const components=req.body.comp;
+    var data;
+    sql_db.updateQuery(req.body).then(function (data) {
+        console.log('success update query');
+        data=data;
+        //console.log(data)
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    });
 
     //fs.writeFileSync("data.json",req.body.data);
     //console.log(req.body.data);
@@ -217,7 +233,7 @@ app.post('/editbutton',(req,res)=>{
 
 setTimeout(function () {
     console.log(map)
-    res.send(map)
+    res.send({success: true,data:data,map:map})
 },2000)
 
 });

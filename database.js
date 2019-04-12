@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 
 
-//database detail
+
 const db = new Sequelize({
     host: 'localhost',
     username: 'root',
@@ -11,7 +11,7 @@ const db = new Sequelize({
 });
 
 
-//create table
+
 const register = db.define('Registration', {
     SNo:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
@@ -19,10 +19,12 @@ const register = db.define('Registration', {
     },
     username:Sequelize.DataTypes.STRING,
     email:{type:Sequelize.DataTypes.STRING,unique:true},
-    password:Sequelize.DataTypes.STRING
+    password:Sequelize.DataTypes.STRING,
+    last_session:Sequelize.DataTypes.INTEGER
 });
 
-//dashboard table
+
+
 const dashboard = db.define('Database',{
     DNo:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
@@ -35,13 +37,13 @@ const dashboard = db.define('Database',{
 register.hasMany(dashboard,{foreignKey:'email',sourceKey:'email'});
 
 
-//check table exists or not
+
 db.sync({success: true}).then(function () {
     console.log("Database is ready");
 });
 
 
-//insert data into table
+
 function addDo(data) {
     return register.create({
         username: data.User_name,
@@ -50,7 +52,7 @@ function addDo(data) {
     })
 }
 
-//retrieve login data
+
 function getLogin(data){
     return register.findOne({
         where:{
@@ -60,7 +62,7 @@ function getLogin(data){
     })
 }
 
-//insert data into dashboard table
+
 function addQuery(data) {
 
      return register.findOne({attributes:['email'],where:{email:data.Email}}).then(function (fetch) {
@@ -79,15 +81,15 @@ function addQuery(data) {
 }
 
 
-//update query
-function updateQuery(body) {
-    dashboard.update({
-        query:body.data
-    },{where:{DNo:body.dno}})
+
+function updateQuery(data) {
+   return dashboard.update({
+        query:data.data
+    },{where:{DNo:data.dno}})
 }
 
 
-//retrieve query
+
 function getQuery(data){
 
     return dashboard.findOne({
@@ -100,7 +102,7 @@ function getQuery(data){
     })
 }
 
-//retrieve dashboard
+
 function getDashboard(data){
     return dashboard.findAll({
         attributes:['DNo','title'],
@@ -110,6 +112,18 @@ function getDashboard(data){
     })
 }
 
+
+
+
+function addSession(data){
+    return register.update({
+        last_session:data.id},
+        {where:{
+            email:data.Email}
+
+    })
+}
+
 module.exports = {
-    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery
+    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession
 };

@@ -1,20 +1,17 @@
 $(function () {
-    //fetch dashboard
+
     let email=sessionStorage.getItem("session_email");
     let userid = sessionStorage.getItem("username");
     let username = $('#username');
 
     username.html(userid);
 
-    //console.log(email);
-    //fetch dashboards
     $.post('/fetch_dashboard',
         {
             Email: email
         },
         function (req, res) {
 
-        console.log(req.data[0].DNo);
 
             if(req.data===null) {
                 console.log("null");

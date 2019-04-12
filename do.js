@@ -30,7 +30,8 @@ $(function () {
                 }
             );
             sessionStorage.setItem("session_email",email.val());
-            window.open('/dashboard.html');
+            sessionStorage.setItem("username",username.val());
+            window.open('/default.html');
             self.close();
         }
     })

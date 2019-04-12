@@ -19,7 +19,6 @@ $(function () {
               username.html(get_user);
 
 
-            //header
             new_heading.html(data.header.title);
             var styles = data.header.style;
             var tags = Object.keys(styles);
@@ -30,7 +29,7 @@ $(function () {
 
             which_title.html(data.page_header.title);
 
-            //page header title
+
             pageheader_title.html(data.page_header.title);
             styles = data.page_header.style;
             tags = Object.keys(styles);
@@ -39,7 +38,7 @@ $(function () {
                 console.log(tags[i]+":"+styles[tags[i]]);
             });
 
-            //edit button
+
             edit_button.html(data.edit_button.title);
             styles = data.edit_button.style;
             tags = Object.keys(styles);
@@ -48,7 +47,7 @@ $(function () {
                 console.log(tags[i]+":"+styles[tags[i]]);
             });
 
-            //new dashboard button
+
             new_dashboard_button.html(data.new_dashboard_button.title);
             styles = data.new_dashboard_button.style;
             tags = Object.keys(styles);
@@ -77,6 +76,7 @@ $(function () {
                     function (res) {
                       console.log(res);
                       sessionStorage.setItem("map",JSON.stringify(res));
+                      alert("query updated");
                     }
                    )
 
