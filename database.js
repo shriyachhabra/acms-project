@@ -24,7 +24,6 @@ const register = db.define('Registration', {
 });
 
 
-
 const dashboard = db.define('Database',{
     DNo:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
@@ -36,6 +35,21 @@ const dashboard = db.define('Database',{
 
 register.hasMany(dashboard,{foreignKey:'email',sourceKey:'email'});
 
+//Data Source Table
+const datasource = db.define('Data_Source', {
+    SNo:{type: Sequelize.DataTypes.INTEGER,
+        autoIncrement:true,
+        primaryKey:true
+    },
+    username:Sequelize.DataTypes.STRING,
+    database:Sequelize.DataTypes.STRING,
+    password:Sequelize.DataTypes.STRING,
+    host:Sequelize.DataTypes.STRING,
+    data_source_name:Sequelize.DataTypes.STRING
+
+});
+
+register.hasMany(datasource,{foreignKey:'email',sourceKey:'email'});
 
 
 db.sync({success: true}).then(function () {
@@ -65,18 +79,15 @@ function getLogin(data){
 
 function addQuery(data) {
 
-     return register.findOne({attributes:['email'],where:{email:data.Email}}).then(function (fetch) {
-        console.log(fetch.email);
          return dashboard.create({
              title:data.dashboard_Title,
             query: data.Query,
-            email: fetch.email
+            email: data.Email
 
         }).then(function (result) {
              //console.log(result.DNo);
              return result.DNo;
          });
-    })
 
 }
 
@@ -124,6 +135,39 @@ function addSession(data){
     })
 }
 
+
+//datasource add
+function addDataSource(data){
+    return datasource.create({
+        username: data.Username,
+        database: data.Database,
+        password: data.Password,
+        host: data.Host,
+        data_source_name:data.Data_source,
+        email: data.Email
+
+    }).then(function (result) {
+        return result;
+    })
+}
+
+
+
+//datasource retrieve
+function getDataSource(data){
+    return datasource.findAll({
+        where:{
+            email: data.Email,
+            database: data.Database,
+            data_source_name: data.Data_source
+        }
+    }).then(function (result) {
+        return result;
+    })
+}
+
+
+
 module.exports = {
-    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession
+    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, addDataSource, getDataSource
 };

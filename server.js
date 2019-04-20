@@ -238,6 +238,111 @@ setTimeout(function () {
 
 });
 
+
+//datasource table storing
+
+app.post('/datasource',(req,res)=>{
+    const components=req.body.comp;
+    var data;
+    sql_db.addDataSource(req.body).then(function (data) {
+        console.log('success update query');
+        data=data;
+        //console.log(data)
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    });
+
+    //fs.writeFileSync("data.json",req.body.data);
+    //console.log(req.body.data);
+    //console.log(components);
+    //console.log(JSON.stringify(components[0]));
+    // console.log(components[0].id);
+    //console.log(components.length);
+
+
+
+    for(let i=0;i<components.length;i++){
+
+        sourceId=components[i].datasource;
+        queryReceived=components[i].query;
+
+        if(sourceId==="1") {
+
+            client.search(
+                {
+                    index: 'tutorial',
+                    body: queryReceived,
+                    type: 'cities_list'
+                })
+                .then(results => {
+                    // console.log(results.hits.hits)
+                    console.log(`found ${results.hits.total} items in ${results.took}ms`);
+                    // set the results to the result array we have
+
+                    var p = results.hits.hits;
+                    //console.log("hi  "+JSON.stringify(p[0]["_source"]));
+                    //console.log(p)
+                    // queryArr.push(p)
+                    var arr=[]
+                    for(var ele=0;ele<p.length;ele++){
+                        var obj=p[ele]["_source"]
+                        arr.push(obj)
+                    }
+                    //console.log(arr)
+                    map[components[i]['id']]=arr
+                    // console.log(map)
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+        }else if(sourceId==="2"){
+
+            //  console.log(typeof queryReceived);
+            // console.log(typeof query)
+
+            MongoClient.connect(url,{useNewUrlParser: true},function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("sample");
+                dbo.collection("test").find(JSON.parse(queryReceived)).toArray(function(err, result) {
+                    if (err) throw err;
+                    //console.log(queryReceived)
+                    // console.log(result);
+                    map[components[i]['id']]=result
+                    // console.log(map)
+                    db.close();
+                });
+            });
+
+
+        }
+
+
+
+    }
+
+    setTimeout(function () {
+        console.log(map)
+        res.send({success: true,data:data,map:map})
+    },2000)
+
+});
+
+//datasource table fetching
+
+app.get('/datasource',(req,res)=> {
+    const components = req.body.comp;
+    var data;
+    sql_db.getDataSource(req.body).then(function (data) {
+        console.log('success update query');
+        res.send({data: content});
+    }).catch(function (err) {
+        console.log('Error' + err);
+        throw err;
+    });
+});
+
+
 /*app.post('/dashboard',(req,res)=>{
 
   console.log("inside dash")
