@@ -20,21 +20,15 @@ $(function () {
                     } else if (email.val() === req.data.email && input_pass.val() === req.data.password) {
                         sessionStorage.setItem("session_email", email.val());
                         sessionStorage.setItem("username", req.data.username);
-                        $.post('/dashboard_click',
-                            {
-                                Email: email.val(),
-                                id: req.data.last_session
-                            }, function (data, err) {
-                                if (data.success) {
-                                    console.log("yay");
-                                    window.open("/dashboard.html","_self");
-                                }
-                            }
-                        );
+                        sessionStorage.setItem("dashboard_id",req.data.last_session);
+                        window.open("/dashboard.html","_self");
 
                     }
                 })
         }
 
     });
+
+
+
 });

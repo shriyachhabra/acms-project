@@ -27,6 +27,7 @@ save.click(function () {
             let item=$('<li class="nav-item"></li>').appendTo('#dashboard_list');
             item.append($("<a class='nav-link' href='../dashboard.html' id="+res.data+">"+result.page_header.title+"</a>"));
             alert("new dashboard created");
+            sessionStorage.setItem('dashboard_id',res.data);
             window.open("/dashboard.html","_self");
         }
     )

@@ -85,7 +85,6 @@ function addQuery(data) {
             email: data.Email
 
         }).then(function (result) {
-             //console.log(result.DNo);
              return result.DNo;
          });
 
@@ -119,6 +118,15 @@ function getDashboard(data){
         attributes:['DNo','title'],
         where:{
             email:data.Email
+        }
+    })
+}
+
+function getLastDashboard(data) {
+    return dashboard.findOne({
+        attributes:['title'],
+        where:{
+            DNo:data.id
         }
     })
 }
@@ -169,5 +177,5 @@ function getDataSource(data){
 
 
 module.exports = {
-    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, addDataSource, getDataSource
+    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, addDataSource, getDataSource, getLastDashboard
 };

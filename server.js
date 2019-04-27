@@ -62,6 +62,19 @@ app.get('/dashboard',(req,res)=>{
     res.send(map);
     res.sendFile('dashboard.html');
 
+
+})
+
+
+app.post('/dashboard',(req,res)=>{
+    sql_db.getLastDashboard(req.body).then(function (data) {
+
+        res.send({succes:true, data:data});
+
+    }).catch(function (err) {
+        console.log('Error'+err);
+        throw err;
+    })
 })
 
 
@@ -82,21 +95,23 @@ var content;
 app.post('/dashboard_click',(req,res)=>{
    // console.log(req.body.id);
     //var content = req.body;
-    sql_db.getQuery(req.body).then(function (data) {
-        console.log('success');
-        res.send({success: true,data:data})
-        content=data.query;
-    }).catch(function (err) {
-        console.log('Error'+err);
-        throw err;
-    })
-    sql_db.addSession(req.body).then(function (data) {
+    sql_db.addSession(req.body).then(function () {
         console.log('success add session');
-        res.send('success');
+        //res.send('success');
+        sql_db.getQuery(req.body).then(function (data) {
+            console.log('success');
+            res.send({success: true,data:data})
+            content=data.query;
+        }).catch(function (err) {
+            console.log('Error'+err);
+            throw err;
+        })
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
     })
+
+
 });
 
 
@@ -140,15 +155,19 @@ app.post('/login', (req, res) => {
 
 
 app.post('/new_content',(req,res)=>{
+
     sql_db.addQuery(req.body).then(function (data) {
         console.log('success query');
         res.send({success: true,data:data})
-        //console.log(data)
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
     })
+
 });
+
+
+
 
 
 app.post('/editbutton',(req,res)=>{

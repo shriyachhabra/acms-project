@@ -1,5 +1,18 @@
 $(function () {
 
+    let id = sessionStorage.getItem('dashboard_id');
+    let pageheader_title = $('#pageheader_title');
+    let which_title = $('#which_title');
+    $.post('/dashboard',{
+        id:id
+    },function (req,res) {
+        if (req.data === null) {
+            console.log('data doesnt exist');
+        } else {
+            pageheader_title.html(req.data.title);
+            which_title.html(req.data.title);
+        }
+    })
 
     function barChartPlotter(e) {
         var ctx = e.drawingContext;
