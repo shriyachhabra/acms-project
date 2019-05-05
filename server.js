@@ -10,7 +10,7 @@ const app=express();
 
 
 
-const elasticsearch = require('elasticsearch');
+/*const elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
     hosts: ['http://127.0.0.1:9200']
 });
@@ -31,12 +31,12 @@ var db = mongoose.connection;
 var cname = 'test';
 var query = { ticker: "IBM" };
 var ans="d";
+*/
 
 
 
 
-
-var sourceId,queryReceived;
+var sourceId,queryReceived,databaseReceived,tableReceived;
 var map={};
 var es="1",md="2",sql="3";
 var queryArr=[];
@@ -67,14 +67,22 @@ app.get('/dashboard',(req,res)=>{
 
 
 app.post('/dashboard',(req,res)=>{
-    sql_db.getLastDashboard(req.body).then(function (data) {
+    //sql_db.getLastDashboard(req.body).then(function () {
+        //console.log(data.title);
+        //res.send({succes:true, data:data});
+        sql_db.getQuery(req.body).then(function (data) {
+            console.log('success');
+            res.send({success: true,data:data})
+            content=data.query;
+        }).catch(function (err) {
+            console.log('Error'+err);
+            throw err;
+        })
 
-        res.send({succes:true, data:data});
-
-    }).catch(function (err) {
+    /*}).catch(function (err) {
         console.log('Error'+err);
         throw err;
-    })
+    })*/
 })
 
 
@@ -118,7 +126,6 @@ app.post('/dashboard_click',(req,res)=>{
 
 app.get('/editbutton',(req,res)=>{
     res.send({data:content});
-    console.log(content);
 });
 
 
@@ -172,6 +179,7 @@ app.post('/new_content',(req,res)=>{
 
 app.post('/editbutton',(req,res)=>{
     const components=req.body.comp;
+    const email = req.body.Email;
     var data;
     sql_db.updateQuery(req.body).then(function (data) {
         console.log('success update query');
@@ -195,66 +203,110 @@ app.post('/editbutton',(req,res)=>{
 
         sourceId=components[i].datasource;
         queryReceived=components[i].query;
+        databaseReceived = components[i].database;
+        tableReceived = components[i].table;
+        var data_body = {
+            Email: email,
+            Data_source: sourceId,
+            Database: databaseReceived,
+            Table: tableReceived
+        };
+        sql_db.getDataSource(data_body).then(function (data) {
 
-        if(sourceId==="1") {
-
-            client.search(
-                {
-                    index: 'tutorial',
-                    body: queryReceived,
-                    type: 'cities_list'
-                })
-                .then(results => {
-                    // console.log(results.hits.hits)
-                    console.log(`found ${results.hits.total} items in ${results.took}ms`);
-                    // set the results to the result array we have
-
-                    var p = results.hits.hits;
-                    //console.log("hi  "+JSON.stringify(p[0]["_source"]));
-                    //console.log(p)
-                   // queryArr.push(p)
-                    var arr=[]
-                    for(var ele=0;ele<p.length;ele++){
-                        var obj=p[ele]["_source"]
-                        arr.push(obj)
-                    }
-                    //console.log(arr)
-                    map[components[i]['id']]=arr
-                   // console.log(map)
-                })
-                .catch(err => {
-                    console.log(err)
+            //console.log(data);
+            if(data==="null"){
+                console.log("null");
+            }
+            else if(data.data_source_name==="1") {
+                const elasticsearch = require('elasticsearch');
+                var client = new elasticsearch.Client({
+                    hosts: data.host
                 });
-        }else if(sourceId==="2"){
+                client.search(
+                    {
+                        index: databaseReceived,
+                        body: queryReceived,
+                        type: tableReceived
+                    })
+                    .then(results => {
+                        // console.log(results.hits.hits)
+                        console.log(`found ${results.hits.total} items in ${results.took}ms`);
+                        // set the results to the result array we have
 
-               //  console.log(typeof queryReceived);
+                        var p = results.hits.hits;
+                        //console.log("hi  "+JSON.stringify(p[0]["_source"]));
+                        //console.log(p)
+                        // queryArr.push(p)
+                        var arr=[]
+                        for(var ele=0;ele<p.length;ele++){
+                            var obj=p[ele]["_source"]
+                            arr.push(obj)
+                        }
+                        //console.log(arr)
+                        map[components[i]['id']]=arr
+                        // console.log(map)
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    });
+            }else if(data.data_source_name==="2"){
+
+                //  console.log(typeof queryReceived);
                 // console.log(typeof query)
 
-            MongoClient.connect(url,{useNewUrlParser: true},function(err, db) {
-                if (err) throw err;
-                var dbo = db.db("sample");
-                dbo.collection("test").find(JSON.parse(queryReceived)).toArray(function(err, result) {
+               /* const mongoose = require('mongoose');
+
+                mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
+
+                var MongoClient = require('mongodb').MongoClient;
+                var url = "mongodb://localhost:27017/";
+
+
+                console.log('mongodb://'+data.host+'/'+databaseReceived);
+
+
+                var db = mongoose.connection;*/
+
+                const mongoose = require('mongoose');
+
+                mongoose.connect('mongodb://'+data.host+'/'+databaseReceived,{useNewUrlParser: true});
+
+                var MongoClient = require('mongodb').MongoClient;
+                var url = 'mongodb://'+data.host+'/';
+                var db = mongoose.connection;
+
+
+                //console.log(queryReceived);
+
+                MongoClient.connect(url,{useNewUrlParser: true},function(err, db) {
                     if (err) throw err;
-                    //console.log(queryReceived)
-                   // console.log(result);
-                    map[components[i]['id']]=result
-                   // console.log(map)
-                    db.close();
+                    var dbo = db.db(databaseReceived);
+                    dbo.collection(tableReceived).find(JSON.parse(queryReceived)).toArray(function(err, result) {
+                        if (err) throw err;
+                        //console.log(queryReceived)
+                        // console.log(result);
+                        map[components[i]['id']]=result
+                        //console.log(map)
+                        db.close();
+                    });
                 });
-            });
 
 
-        }
+            }
 
 
+
+    }).catch(function (err){
+            console.log('Error'+err);
+            throw err;
+        });
 
     }
 
-setTimeout(function () {
-    console.log(map)
-    res.send({success: true,data:data,map:map})
-},2000)
-
+    setTimeout(function () {
+        console.log(map)
+        res.send({success: true,data:data,map:map})
+    },2000)
 });
 
 
@@ -264,9 +316,7 @@ app.post('/datasource',(req,res)=>{
     const components=req.body.comp;
     var data;
     sql_db.addDataSource(req.body).then(function (data) {
-        console.log('success update query');
-        data=data;
-        //console.log(data)
+        console.log('successfull inserted');
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
@@ -281,7 +331,7 @@ app.post('/datasource',(req,res)=>{
 
 
 
-    for(let i=0;i<components.length;i++){
+   /* for(let i=0;i<components.length;i++){
 
         sourceId=components[i].datasource;
         queryReceived=components[i].query;
@@ -343,13 +393,13 @@ app.post('/datasource',(req,res)=>{
     setTimeout(function () {
         console.log(map)
         res.send({success: true,data:data,map:map})
-    },2000)
+    },2000)*/
 
 });
 
 //datasource table fetching
 
-app.get('/datasource',(req,res)=> {
+/*app.get('/datasource',(req,res)=> {
     const components = req.body.comp;
     var data;
     sql_db.getDataSource(req.body).then(function (data) {
@@ -359,7 +409,7 @@ app.get('/datasource',(req,res)=> {
         console.log('Error' + err);
         throw err;
     });
-});
+});*/
 
 
 /*app.post('/dashboard',(req,res)=>{

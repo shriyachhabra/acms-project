@@ -45,6 +45,7 @@ const datasource = db.define('Data_Source', {
     database:Sequelize.DataTypes.STRING,
     password:Sequelize.DataTypes.STRING,
     host:Sequelize.DataTypes.STRING,
+    table:Sequelize.DataTypes.STRING,
     data_source_name:Sequelize.DataTypes.STRING
 
 });
@@ -94,7 +95,8 @@ function addQuery(data) {
 
 function updateQuery(data) {
    return dashboard.update({
-        query:data.data
+        query:data.data,
+        title:data.Dash_name
     },{where:{DNo:data.dno}})
 }
 
@@ -103,7 +105,7 @@ function updateQuery(data) {
 function getQuery(data){
 
     return dashboard.findOne({
-        attributes:['query'],
+        attributes:['query','title'],
         where:{
             DNo: data.id
         }
@@ -144,30 +146,17 @@ function addSession(data){
 }
 
 
-//datasource add
-function addDataSource(data){
-    return datasource.create({
-        username: data.Username,
-        database: data.Database,
-        password: data.Password,
-        host: data.Host,
-        data_source_name:data.Data_source,
-        email: data.Email
-
-    }).then(function (result) {
-        return result;
-    })
-}
 
 
 
 //datasource retrieve
 function getDataSource(data){
-    return datasource.findAll({
+    return datasource.findOne({
         where:{
             email: data.Email,
             database: data.Database,
-            data_source_name: data.Data_source
+            data_source_name: data.Data_source,
+            table:data.Table
         }
     }).then(function (result) {
         return result;
@@ -177,5 +166,5 @@ function getDataSource(data){
 
 
 module.exports = {
-    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, addDataSource, getDataSource, getLastDashboard
+    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, getDataSource, getLastDashboard
 };

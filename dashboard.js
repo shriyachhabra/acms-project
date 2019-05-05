@@ -9,6 +9,7 @@ $(function () {
         if (req.data === null) {
             console.log('data doesnt exist');
         } else {
+            console.log(req.data.title)
             pageheader_title.html(req.data.title);
             which_title.html(req.data.title);
         }
@@ -41,7 +42,7 @@ $(function () {
     map=JSON.parse(map)
  var components=sessionStorage.getItem("components")
     components=JSON.parse(components)
-    console.log(components)
+    //console.log(components)
     //console.log(map)
  for(let i in components){
      let outputCSV="";
@@ -51,7 +52,7 @@ $(function () {
      let y=ele['y-val']
      outputCSV+=x+","+y+"\n";
      let arr=map[ele['id']]
-     //console.log(arr)
+     //console.log(map[ele['id']])
     for(let j in arr ){
 
         outputCSV+=arr[j][x]+","+arr[j][y]+"\n"
@@ -68,7 +69,7 @@ $(function () {
              console.log("not exists");
          }
      }
-     else if(type ==='bar'){
+     if(type ==='bar'){
          if(document.getElementById(i)){
              console.log('exists');
              ele['style']["plotter"]=barChartPlotter;

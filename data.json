@@ -30,4 +30,41 @@
       "width": ""
     }
   },
-  "components":[{"id":1,"type":"graph","style":{"title":"Graph 1","height":300,"width":480},"x-val":"lat","y-val":"lng","position":1,"query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}","datasource":"1"},{"id":2,"type":"bar","x-val":"lat","y-val":"lng","position":2,"style":{"title":"Graph 2","height":300,"width":480},"query":"{ \"ticker\": \"IBM\" }","datasource":"2"}]}
+  "components":[
+                  {
+                    "id":1,
+                    "type":"graph",
+                    "style":{
+                              "title":"Line Graph",
+                              "height":300,
+                              "width":480
+                    },
+                    "x-val":"lat",
+                    "y-val":"lng",
+                    "position":1,
+                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
+                    "datasource":"1",
+                    "database": "tutorial",
+                    "table": "cities_list"
+                  },
+                  {
+                    "id":2,
+                    "type":"bar",
+                    "x-val":"lat",
+                    "y-val":"lng",
+                    "position":2,
+                    "style":{
+                              "legend": "always",
+                              "includeZero": true,
+                              "animatedZooms": true,
+                              "title":"Graph 2",
+                              "height":300,
+                              "width":480
+                    },
+                    "query":"{ \"name\": \"Jobat\" }",
+                    "datasource":"2",
+                    "database": "sample",
+                    "table": "test"
+                  }
+  ]
+}

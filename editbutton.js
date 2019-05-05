@@ -1,4 +1,5 @@
 $(function () {
+    let email = sessionStorage.getItem("session_email");
     let text=$('#myTextArea');
     let save=$('#save');
     let edit = $('#edit');
@@ -9,9 +10,10 @@ $(function () {
     let new_dashboard_button=$('#new_dashboard_button');
     let username = $('#username');
     let get_user = sessionStorage.getItem("username");
-    let id = sessionStorage.getItem("id");
+    let id = sessionStorage.getItem("dashboard_id");
+    //console.log("id="+id);
     $.get('/editbutton',
-        function (req) {
+        function (req,res) {
             var data = JSON.parse(req.data);
             console.log(data);
               text.html(JSON.stringify(data));
@@ -24,7 +26,7 @@ $(function () {
             var tags = Object.keys(styles);
             $.each(tags,function (i) {
                 new_heading.css(tags[i],styles[tags[i]]);
-                console.log(tags[i]+":"+styles[tags[i]]);
+                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
             which_title.html(data.page_header.title);
@@ -35,7 +37,7 @@ $(function () {
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 pageheader_title.css(tags[i],styles[tags[i]]);
-                console.log(tags[i]+":"+styles[tags[i]]);
+                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
 
@@ -44,7 +46,7 @@ $(function () {
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 edit_button.css(tags[i],styles[tags[i]]);
-                console.log(tags[i]+":"+styles[tags[i]]);
+                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
 
@@ -53,7 +55,7 @@ $(function () {
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 new_dashboard_button.css(tags[i],styles[tags[i]]);
-                console.log(tags[i]+":"+styles[tags[i]]);
+                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
             sessionStorage.setItem("map",JSON.stringify(req));
@@ -69,18 +71,21 @@ $(function () {
 
         sessionStorage.setItem("components",JSON.stringify(components));
         $.post('/editbutton',
-                    {comp:components,
+                    {
+                        comp:components,
                         data:text.val(),
-                        dno:id
+                        dno:id,
+                        Email:email
+                        //Dash_name:result.page_header.title
                     },
                     function (res) {
-                      console.log(res);
+                      //console.log(res);
                       sessionStorage.setItem("map",JSON.stringify(res));
-                      alert("query updated");
+                      //console.log("map"+JSON.stringify(res));
+                      //alert("query updated");
+                        window.open("/dashboard.html","_self");
                     }
                    )
-
-
 
        // console.log(result.components[0].type);
     })
