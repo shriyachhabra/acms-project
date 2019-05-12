@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
     <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/libs/css/style.css">
+   
+   
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <script src="validate.min.js"></script>
+
 </head>
 
 <body>
@@ -516,6 +520,7 @@ var text = $("#myTextArea").val();
 <body>
 <textarea id="myTextAreaNew" style="background-color: black;color: green;height:400px;width:900px;font-size:12pt"></textarea>
 <a href="#" class="button" id="save">Save</a>
+<button class="button" id="pretty">Pretty Print</button>
 <a href="#" class="button">Cancel</a>
 
                     </div>
@@ -560,5 +565,16 @@ var text = $("#myTextArea").val();
     <script src="../logout.js"></script>
 
 </body>
- 
+<!-- Formatter Script -->
+ <script>
+ $(document).ready(function(){
+    var prettyPrint = $("#pretty");
+    prettyPrint.click(function() {
+        var ugly = document.getElementById('myTextAreaNew').value;
+        var obj = JSON.parse(ugly);
+        var pretty = JSON.stringify(obj, undefined, 4);
+        document.getElementById('myTextAreaNew').value = pretty;
+    });
+ });
+ </script>
 </html>

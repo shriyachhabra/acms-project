@@ -164,43 +164,7 @@
       "resolved": "https://registry.npmjs.org/etag/-/etag-1.8.1.tgz",
       "version": "1.8.1"
     },
-    "express": {
-      "integrity": "sha512-j12Uuyb4FMrd/qQAm6uCHAkPtO8FDTRJZBDd5D2KOL2eLaz1yUNdUB/NOIyq0iU4q4cFarsUCrnFDPBcnksuOg==",
-      "requires": {
-        "accepts": "~1.3.5",
-        "array-flatten": "1.1.1",
-        "body-parser": "1.18.3",
-        "content-disposition": "0.5.2",
-        "content-type": "~1.0.4",
-        "cookie": "0.3.1",
-        "cookie-signature": "1.0.6",
-        "debug": "2.6.9",
-        "depd": "~1.1.2",
-        "encodeurl": "~1.0.2",
-        "escape-html": "~1.0.3",
-        "etag": "~1.8.1",
-        "finalhandler": "1.1.1",
-        "fresh": "0.5.2",
-        "merge-descriptors": "1.0.1",
-        "methods": "~1.1.2",
-        "on-finished": "~2.3.0",
-        "parseurl": "~1.3.2",
-        "path-to-regexp": "0.1.7",
-        "proxy-addr": "~2.0.4",
-        "qs": "6.5.2",
-        "range-parser": "~1.2.0",
-        "safe-buffer": "5.1.2",
-        "send": "0.16.2",
-        "serve-static": "1.13.2",
-        "setprototypeof": "1.1.0",
-        "statuses": "~1.4.0",
-        "type-is": "~1.6.16",
-        "utils-merge": "1.0.1",
-        "vary": "~1.1.2"
-      },
-      "resolved": "https://registry.npmjs.org/express/-/express-4.16.4.tgz",
-      "version": "4.16.4"
-    },
+    "express": "^4.16.4",
     "express-session": "^1.15.6",
     "finalhandler": {
       "integrity": "sha512-Y1GUDo39ez4aHAw7MysnUD5JzYX+WaIj8I57kO3aEPT1fFRL4sr7mjei97FgnwhAyyzRYmQZaTHb2+9uZ1dPtg==",
@@ -407,6 +371,7 @@
       "resolved": "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz",
       "version": "2.0.0"
     },
+    "mysql2": "^1.6.5",
     "negotiator": {
       "integrity": "sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk=",
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz",
@@ -522,6 +487,7 @@
       "resolved": "https://registry.npmjs.org/send/-/send-0.16.2.tgz",
       "version": "0.16.2"
     },
+    "sequelize": "^5.8.5",
     "serve-static": {
       "integrity": "sha512-p/tdJrO4U387R9oMjb1oj7qSMaMfmOyd4j9hOFoxZe2baQszgHcSWjuya/CiT5kgZZKRudHNOA0pYXOl8rQ5nw==",
       "requires": {

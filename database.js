@@ -6,10 +6,9 @@ const db = new Sequelize({
     host: 'localhost',
     username: 'root',
     database: 'amazon',
-    password: '',
+    password: 'S@nket123',
     dialect: 'mysql'
 });
-
 
 
 const register = db.define('Registration', {
