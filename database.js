@@ -11,7 +11,6 @@ const db = new Sequelize({
 });
 
 
-
 const register = db.define('Registration', {
     SNo:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
@@ -46,7 +45,8 @@ const datasource = db.define('Data_Source', {
     password:Sequelize.DataTypes.STRING,
     host:Sequelize.DataTypes.STRING,
     table:Sequelize.DataTypes.STRING,
-    data_source_name:Sequelize.DataTypes.STRING
+    data_source_name:Sequelize.DataTypes.STRING,
+    query:Sequelize.DataTypes.STRING
 
 });
 
@@ -150,16 +150,30 @@ function addSession(data){
 
 
 //datasource retrieve
-function getDataSource(data){
-    return datasource.findOne({
-        where:{
-            email: data.Email,
-            database: data.Database,
-            data_source_name: data.Data_source,
-            table:data.Table
-        }
-    }).then(function (result) {
-        return result;
+function getDataSource(data) {
+    return datasource.update({
+            query: data.Query
+        },
+        {
+            where: {
+                email: data.Email,
+                database: data.Database,
+                data_source_name: data.Data_source,
+                table: data.Table,
+            }
+
+        }).then(function (result) {
+        return datasource.findOne({
+            where: {
+                email: data.Email,
+                database: data.Database,
+                data_source_name: data.Data_source,
+                table: data.Table
+            }
+        }).then(function (answer) {
+            return answer;
+
+        });
     })
 }
 

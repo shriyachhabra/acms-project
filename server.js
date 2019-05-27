@@ -3,12 +3,10 @@ const bp = require('body-parser');
 // const clientES=require('./queryES');
 // const clientMONGO=require('./mongo')
 const sql_db = require('./database');
-const session = require('express-session');
+//const session = require('express-session');
 const path=require('path');
 const fs = require('fs');
 const app=express();
-
-
 
 /*const elasticsearch = require('elasticsearch');
 var client = new elasticsearch.Client({
@@ -209,98 +207,102 @@ app.post('/editbutton',(req,res)=>{
             Email: email,
             Data_source: sourceId,
             Database: databaseReceived,
-            Table: tableReceived
+            Table: tableReceived,
+            Query: queryReceived
         };
         sql_db.getDataSource(data_body).then(function (data) {
+            for(let j in data) {
 
-            //console.log(data);
-            if(data==="null"){
-                console.log("null");
-            }
-            else if(data.data_source_name==="1") {
-                const elasticsearch = require('elasticsearch');
-                var client = new elasticsearch.Client({
-                    hosts: data.host
-                });
-                client.search(
-                    {
-                        index: databaseReceived,
-                        body: queryReceived,
-                        type: tableReceived
-                    })
-                    .then(results => {
-                        // console.log(results.hits.hits)
-                        console.log(`found ${results.hits.total} items in ${results.took}ms`);
-                        // set the results to the result array we have
-
-                        var p = results.hits.hits;
-                        //console.log("hi  "+JSON.stringify(p[0]["_source"]));
-                        //console.log(p)
-                        // queryArr.push(p)
-                        var arr=[]
-                        for(var ele=0;ele<p.length;ele++){
-                            var obj=p[ele]["_source"]
-                            arr.push(obj)
-                        }
-                        //console.log(arr)
-                        map[components[i]['id']]=arr
-                        // console.log(map)
-                    })
-                    .catch(err => {
-                        console.log(err)
+                //console.log(data);
+                if (data === "null") {
+                    console.log("null");
+                }
+                else if (data[j].data_source_name === "1") {
+                    const elasticsearch = require('elasticsearch');
+                    var client = new elasticsearch.Client({
+                        hosts: data[j].host
                     });
-            }else if(data.data_source_name==="2"){
+                    client.search(
+                        {
+                            index: data[j].database,
+                            body: data[j].query,
+                            type: data[j].table
+                        })
+                        .then(results => {
+                            // console.log(results.hits.hits)
+                            console.log(`found ${results.hits.total} items in ${results.took}ms`);
+                            // set the results to the result array we have
 
-                //  console.log(typeof queryReceived);
-                // console.log(typeof query)
+                            var p = results.hits.hits;
+                            //console.log("hi  "+JSON.stringify(p[0]["_source"]));
+                            //console.log(p)
+                            // queryArr.push(p)
+                            var arr = []
+                            for (var ele = 0; ele < p.length; ele++) {
+                                var obj = p[ele]["_source"]
+                                arr.push(obj)
+                            }
+                            //console.log(arr)
+                            map[components[i]['id']] = arr
+                            console.log(map)
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        });
+                }
+                else if (data[j].data_source_name === "2") {
 
-               /* const mongoose = require('mongoose');
+                    //  console.log(typeof queryReceived);
+                    // console.log(typeof query)
 
-                mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
+                    /*const mongoose = require('mongoose');
 
-                var MongoClient = require('mongodb').MongoClient;
-                var url = "mongodb://localhost:27017/";
+                     mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
 
-
-                console.log('mongodb://'+data.host+'/'+databaseReceived);
-
-
-                var db = mongoose.connection;*/
-
-                const mongoose = require('mongoose');
-
-                mongoose.connect('mongodb://'+data.host+'/'+databaseReceived,{useNewUrlParser: true});
-
-                var MongoClient = require('mongodb').MongoClient;
-                var url = 'mongodb://'+data.host+'/';
-                var db = mongoose.connection;
+                     var MongoClient = require('mongodb').MongoClient;
+                     var url = "mongodb://localhost:27017/";
 
 
-                //console.log(queryReceived);
+                     console.log('mongodb://'+data.host+'/'+databaseReceived);
 
-                MongoClient.connect(url,{useNewUrlParser: true},function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db(databaseReceived);
-                    dbo.collection(tableReceived).find(JSON.parse(queryReceived)).toArray(function(err, result) {
+
+                     var db = mongoose.connection;*/
+
+                    const mongoose = require('mongoose');
+
+                    mongoose.connect('mongodb://' + data[j].host + '/' + data[j].database, {useNewUrlParser: true});
+
+                    var MongoClient = require('mongodb').MongoClient;
+                    var url = 'mongodb://' + data[j].host + '/';
+                    var db = mongoose.connection;
+
+
+                    //console.log(queryReceived);
+
+                    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
                         if (err) throw err;
-                        //console.log(queryReceived)
-                        // console.log(result);
-                        map[components[i]['id']]=result
-                        //console.log(map)
-                        db.close();
+                        var dbo = db.db(data[j].database);
+                        dbo.collection(data[j].table).find(JSON.parse(data[j].query)).toArray(function (err, result) {
+                            if (err) throw err;
+                            //console.log(queryReceived)
+                            //console.log(result);
+                            //console.log(components[i])
+                            var id = components[i].id;
+                            map[id] = result
+                            console.log(map)
+                            db.close();
+                        });
                     });
-                });
 
+
+                }
 
             }
-
-
 
     }).catch(function (err){
             console.log('Error'+err);
             throw err;
         });
-
     }
 
     setTimeout(function () {
