@@ -124,26 +124,13 @@
       "resolved": "https://registry.npmjs.org/destroy/-/destroy-1.0.4.tgz",
       "version": "1.0.4"
     },
-    "dygraphs": {
-      "integrity": "sha1-L7/SyAPq0CMH3z+vjU3T71XLIHU=",
-      "resolved": "https://registry.npmjs.org/dygraphs/-/dygraphs-2.1.0.tgz",
-      "version": "2.1.0"
-    },
+    "dygraphs": "^2.1.0",
     "ee-first": {
       "integrity": "sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=",
       "resolved": "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz",
       "version": "1.1.1"
     },
-    "elasticsearch": {
-      "integrity": "sha512-IL46Sv9krCKtpvlI37/vQVQrWx6QeT1OJhfWW6L3fIXzR1Vv5utO+DHYz8AosUI6vlkxShoq+y6sUIBhTF1OIg==",
-      "requires": {
-        "agentkeepalive": "^3.4.1",
-        "chalk": "^1.0.0",
-        "lodash": "^4.17.10"
-      },
-      "resolved": "https://registry.npmjs.org/elasticsearch/-/elasticsearch-15.4.1.tgz",
-      "version": "15.4.1"
-    },
+    "elasticsearch": "^16.0.0",
     "encodeurl": {
       "integrity": "sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=",
       "resolved": "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz",
@@ -308,32 +295,7 @@
       "resolved": "https://registry.npmjs.org/mongodb-core/-/mongodb-core-3.1.11.tgz",
       "version": "3.1.11"
     },
-    "mongoose": {
-      "dependencies": {
-        "ms": {
-          "integrity": "sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==",
-          "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz",
-          "version": "2.1.1"
-        }
-      },
-      "integrity": "sha512-CyybxMQbCaq6jvbroamS5mPfFbxTOLLpdpkQrk1cj7Az1TX+mBbcCVhz+7XElfTMIOb58ah9O+EXmZJsLPD3Lg==",
-      "requires": {
-        "async": "2.6.1",
-        "bson": "~1.1.0",
-        "kareem": "2.3.0",
-        "mongodb": "3.1.13",
-        "mongodb-core": "3.1.11",
-        "mongoose-legacy-pluralize": "1.0.2",
-        "mpath": "0.5.1",
-        "mquery": "3.2.0",
-        "ms": "2.1.1",
-        "regexp-clone": "0.0.1",
-        "safe-buffer": "5.1.2",
-        "sliced": "1.0.1"
-      },
-      "resolved": "https://registry.npmjs.org/mongoose/-/mongoose-5.4.20.tgz",
-      "version": "5.4.20"
-    },
+    "mongoose": "^5.5.11",
     "mongoose-legacy-pluralize": {
       "integrity": "sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==",
       "resolved": "https://registry.npmjs.org/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz",
