@@ -13,6 +13,9 @@
    
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <script src="validate.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.js"></script>
+
 
 </head>
 
@@ -325,6 +328,18 @@
         document.getElementById('myTextAreaNew').value = pretty;
     } else {
         console.log(condition1, condition2, condition3)
+        noty({
+            text: 'There is some validation error in the JSON entered',
+            layout: 'topRight',
+            theme: 'defaultTheme', // or relax
+            type: 'warning',
+            animation: {
+                open: {height: 'toggle'},
+                close: {height: 'toggle'},
+                easing: 'swing',
+                speed: 500 // opening & closing animation speed
+    }
+});
     }
 
     });
