@@ -21,16 +21,15 @@ $(function () {
                     Email: email.val(),
                     Password: input_pass.val()
                 },
-                function (data, err) {
-                    if (data.success) {
+                function (req,res) {
+                    if (req.data) {
                         console.log("success");
                         sessionStorage.setItem("session_email",email.val());
                         sessionStorage.setItem("username",username.val());
-                        window.open('/view/default_dashboard_view.html');
                         self.close();
                     }
                     else
-                        alert("user exists")
+                        alert("user exists");
                 }
             );
         }
