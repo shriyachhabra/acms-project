@@ -12,7 +12,7 @@ $(function () {
     let get_user = sessionStorage.getItem("username");
     let id = sessionStorage.getItem("dashboard_id");
     //console.log("id="+id);
-    $.get('/editbutton',
+    $.get('/controller/edit_query_controller',
         function (req,res) {
             var data = JSON.parse(req.data);
             console.log(data);
@@ -70,7 +70,7 @@ $(function () {
 
 
         sessionStorage.setItem("components",JSON.stringify(components));
-        $.post('/editbutton',
+        $.post('/controller/edit_query_controller',
                     {
                         comp:components,
                         data:text.val(),
@@ -83,7 +83,7 @@ $(function () {
                       sessionStorage.setItem("map",JSON.stringify(res));
                       //console.log("map"+JSON.stringify(res));
                       //alert("query updated");
-                        window.open("/dashboard.html","_self");
+                        window.open("/view/dashboard_view.html","_self");
                     }
                    )
 

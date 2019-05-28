@@ -2334,7 +2334,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       var data = {};
       var ajaxOptions;
       var csr;
-      var validator = options.validator || (true === options.reverse ? 'reverse' : 'default');
+      var validator = options.validator || (true === options.reverse ? 'reverse' : 'default_dashboard_view.html');
 
       if ('undefined' === typeof Parsley.asyncValidators[validator]) throw new Error('Calling an undefined async validator: `' + validator + '`');
 

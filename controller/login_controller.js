@@ -7,7 +7,7 @@ $(function () {
         if (email.val() === "" || input_pass.val() === "") {
             alert("empty field");
         } else {
-            $.post('/login',
+            $.post('/controller/login_controller',
                 {
                     Email: email.val(),
                     Password: input_pass.val()
@@ -23,7 +23,7 @@ $(function () {
                         sessionStorage.setItem("username", req.data.username);
                         sessionStorage.setItem("dashboard_id",req.data.last_session);
                         console.log(req.data.last_session)
-                        window.open("/dashboard.html","_self");
+                        window.open("/view/dashboard_view.html","_self");
 
                     }
                 })

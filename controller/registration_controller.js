@@ -15,7 +15,7 @@ $(function () {
         else
         {
 
-            $.post('/do',
+            $.post('/controller/registration_controller',
                 {
                     User_name: username.val(),
                     Email: email.val(),
@@ -24,15 +24,15 @@ $(function () {
                 function (data, err) {
                     if (data.success) {
                         console.log("success");
+                        sessionStorage.setItem("session_email",email.val());
+                        sessionStorage.setItem("username",username.val());
+                        window.open('/view/default_dashboard_view.html');
+                        self.close();
                     }
                     else
-                        throw err;
+                        alert("user exists")
                 }
             );
-            sessionStorage.setItem("session_email",email.val());
-            sessionStorage.setItem("username",username.val());
-            window.open('/default.html');
-            self.close();
         }
     })
 });

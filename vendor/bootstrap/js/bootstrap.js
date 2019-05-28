@@ -9,8 +9,8 @@
   (factory((global.bootstrap = {}),global.Popper,global.jQuery));
 }(this, (function (exports,Popper,$) { 'use strict';
 
-  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
-  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
+  Popper = Popper && Popper.hasOwnProperty('default_dashboard_view.html') ? Popper['default_dashboard_view.html'] : Popper;
+  $ = $ && $.hasOwnProperty('default_dashboard_view.html') ? $['default_dashboard_view.html'] : $;
 
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -4208,7 +4208,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.2.1): dashboard.js
+   * Bootstrap (v4.2.1): dashboard_controller.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

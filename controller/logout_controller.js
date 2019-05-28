@@ -8,11 +8,6 @@ $(function () {
         sessionStorage.removeItem("map");
         sessionStorage.removeItem("components");
         window.sessionStorage.clear();
-        //if(sessionStorage.getItem("id")===null){
-        window.open('/index.html',"_self");
-       //}
-        //console.log(sessionStorage);
-    })
-
-
-})
+        window.open('/view/index.html',"_self");
+    });
+});

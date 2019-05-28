@@ -173,7 +173,7 @@ var DateTimePicker = function ($, moment) {
         daysOfWeekDisabled: false,
         calendarWeeks: false,
         viewMode: 'days',
-        toolbarPlacement: 'default',
+        toolbarPlacement: 'default_dashboard_view.html',
         buttons: {
             showToday: false,
             showClear: false,
@@ -1594,7 +1594,7 @@ var TempusDominusBootstrap4 = function ($) {
     var JQUERY_NO_CONFLICT = $.fn[DateTimePicker.NAME],
         verticalModes = ['top', 'bottom', 'auto'],
         horizontalModes = ['left', 'right', 'auto'],
-        toolbarPlacements = ['default', 'top', 'bottom'],
+        toolbarPlacements = ['default_dashboard_view.html', 'top', 'bottom'],
         getSelectorFromElement = function getSelectorFromElement($element) {
         var selector = $element.data('target'),
             $selector = void 0;
@@ -1813,7 +1813,7 @@ var TempusDominusBootstrap4 = function ($) {
                     template.append(toolbar);
                 }
                 template.append($('<div>').addClass('row').append(dateView.addClass('col-md-6')).append(timeView.addClass('col-md-6')));
-                if (this._options.toolbarPlacement === 'bottom' || this._options.toolbarPlacement === 'default') {
+                if (this._options.toolbarPlacement === 'bottom' || this._options.toolbarPlacement === 'default_dashboard_view.html') {
                     template.append(toolbar);
                 }
                 return template;
@@ -1825,7 +1825,7 @@ var TempusDominusBootstrap4 = function ($) {
             if (this._hasDate()) {
                 content.append($('<li>').addClass(this._options.collapse && this._hasTime() ? 'collapse' : '').addClass(this._options.collapse && this._hasTime() && this._options.viewMode === 'times' ? '' : 'show').append(dateView));
             }
-            if (this._options.toolbarPlacement === 'default') {
+            if (this._options.toolbarPlacement === 'default_dashboard_view.html') {
                 content.append(toolbar);
             }
             if (this._hasTime()) {

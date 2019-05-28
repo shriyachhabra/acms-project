@@ -58,7 +58,7 @@
     };
     __webpack_require__.n = function(module) {
         var getter = module && module.__esModule ? function getDefault() {
-            return module["default"];
+            return module["default_dashboard_view.html"];
         } : function getModuleExports() {
             return module;
         };
@@ -86,10 +86,10 @@
             default: obj
         };
     }
-    if (_inputmask4.default === _jquery2.default) {
+    if (_inputmask4.default_dashboard_view === _jquery2.default_dashboard_view) {
         __webpack_require__(8);
     }
-    window.Inputmask = _inputmask2.default;
+    window.Inputmask = _inputmask2.default_dashboard_view;
 }, function(module, exports, __webpack_require__) {
     "use strict";
     var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;

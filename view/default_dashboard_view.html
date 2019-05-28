@@ -6,15 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/libs/css/style.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="assets/vendor/charts/chartist-bundle/chartist.css">
-    <link rel="stylesheet" href="assets/vendor/charts/morris-bundle/morris.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendor/charts/c3charts/c3.css">
-    <link rel="stylesheet" href="assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/libs/css/style.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="../assets/vendor/charts/chartist-bundle/chartist.css">
+    <link rel="stylesheet" href="../assets/vendor/charts/morris-bundle/morris.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/vendor/charts/c3charts/c3.css">
+    <link rel="stylesheet" href="../assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     //dygraphs css
@@ -23,12 +23,12 @@
     <title>Dashboard </title>
 
     //js files
-    <script src="jquery.js"></script>
-    <script src="dashboard.js"></script>
-    <script src="editbutton.js"></script>
-    <script src="new_content.js"></script>
-    <script src="fetch_dashboard.js"></script>
-    <script src="dashboard_click.js"></script>
+    <script src="../jquery.js"></script>
+    <script src="../controller/dashboard_controller.js"></script>
+    <script src="../controller/edit_query_controller.js"></script>
+    <script src="../controller/new_query_controller.js"></script>
+    <script src="../controller/fetch_dashboard_controller.js"></script>
+    <script src="../controller/dashboard_name_click_controller.js"></script>
     <script src="/node_modules/dygraphs/dist/dygraph.js"></script>
 
 
@@ -44,7 +44,7 @@
     <!-- ============================================================== -->
     <div class="dashboard-header">
         <nav class="navbar navbar-expand-lg bg-white fixed-top">
-            <a class="navbar-brand" href="dashboard.html"  id="dashboard_name">ACMS Dashboard</a>
+            <a class="navbar-brand" href="dashboard_view.html" id="dashboard_name">ACMS Dashboard</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -191,10 +191,10 @@
                         <div id="submenu-4" class="collapse submenu" style="">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/editbutton.html" id="edit_button">Edit </a>
+                        <a class="nav-link" href="edit_query_view.html" id="edit_button">Edit </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/newdashboard.html" id="new_dashboard_button">New Dashboard</a>
+                        <a class="nav-link" href="new_query_view.html" id="new_dashboard_button">New Dashboard</a>
                     </li>
 
                     <!--/div-->
@@ -247,8 +247,8 @@ display: block;
 <div class="dropdown">
 <button onclick="myFunction()" class="dropbtn" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">EDIT</button>
 <div id="myDropdown" class="dropdown-content">
-<a class="nav-link" href="pages/editbutton.html">Edit</a>
-<a class="nav-link" href="pages/newdashboard.html">New Dashboard</a>
+<a class="nav-link" href="pages/edit_query_view.html">Edit</a>
+<a class="nav-link" href="pages/new_query_view.html">New Dashboard</a>
 </div>
 </div>
 
@@ -274,7 +274,7 @@ openDropdown.classList.remove('show');
 
 
                     <li class="nav-item dropdown nav-user">
-                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../assets/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
                         <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                             <div class="nav-user-info">
                                 <h5 class="mb-0 text-white nav-user-name" id="username">John Abraham </h5>
@@ -298,7 +298,7 @@ openDropdown.classList.remove('show');
     <div class="nav-left-sidebar sidebar-dark">
         <!--div class="menu-list"-->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <!--<a class="nav-link" href="dashboard.html">Dashboard</a>-->
+            <!--<a class="nav-link" href="dashboard_view.html">Dashboard</a>-->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -446,7 +446,7 @@ openDropdown.classList.remove('show');
                                     <tr>
                                         <td>1</td>
                                         <td>
-                                            <div class="m-r-10"><img src="assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
+                                            <div class="m-r-10"><img src="../assets/images/product-pic.jpg" alt="user" class="rounded" width="45"></div>
                                         </td>
                                         <td>Product #1 </td>
                                         <td>id000001 </td>
@@ -459,7 +459,7 @@ openDropdown.classList.remove('show');
                                     <tr>
                                         <td>2</td>
                                         <td>
-                                            <div class="m-r-10"><img src="assets/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
+                                            <div class="m-r-10"><img src="../assets/images/product-pic-2.jpg" alt="user" class="rounded" width="45"></div>
                                         </td>
                                         <td>Product #2 </td>
                                         <td>id000002 </td>
@@ -472,7 +472,7 @@ openDropdown.classList.remove('show');
                                     <tr>
                                         <td>3</td>
                                         <td>
-                                            <div class="m-r-10"><img src="assets/images/product-pic-3.jpg" alt="user" class="rounded" width="45"></div>
+                                            <div class="m-r-10"><img src="../assets/images/product-pic-3.jpg" alt="user" class="rounded" width="45"></div>
                                         </td>
                                         <td>Product #3 </td>
                                         <td>id000003 </td>
@@ -485,7 +485,7 @@ openDropdown.classList.remove('show');
                                     <tr>
                                         <td>4</td>
                                         <td>
-                                            <div class="m-r-10"><img src="assets/images/product-pic-4.jpg" alt="user" class="rounded" width="45"></div>
+                                            <div class="m-r-10"><img src="../assets/images/product-pic-4.jpg" alt="user" class="rounded" width="45"></div>
                                         </td>
                                         <td>Product #4 </td>
                                         <td>id000004 </td>
@@ -865,26 +865,26 @@ openDropdown.classList.remove('show');
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->
-    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
     <!-- bootstap bundle js -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
     <!-- slimscroll js -->
-    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
     <!-- main js -->
-    <script src="assets/libs/js/main-js.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
     <!-- chart chartist js -->
-    <script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
 
     <!-- sparkline js -->
-    <script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="../assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
     <!-- morris js -->
-    <script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-    <script src="assets/vendor/charts/morris-bundle/morris.js"></script>
+    <script src="../assets/vendor/charts/morris-bundle/raphael.min.js"></script>
+    <script src="../assets/vendor/charts/morris-bundle/morris.js"></script>
     <!-- chart c3 js -->
-    <script src="assets/vendor/charts/c3charts/c3.min.js"></script>
-    <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-    <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-    <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="../assets/vendor/charts/c3charts/c3.min.js"></script>
+    <script src="../assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
+    <script src="../assets/vendor/charts/c3charts/C3chartjs.js"></script>
+    <script src="../assets/libs/js/dashboard-ecommerce.js"></script>
 </body>
 
 </html>

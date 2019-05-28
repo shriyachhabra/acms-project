@@ -9,7 +9,7 @@
   (factory((global.bootstrap = {}),global.jQuery));
 }(this, (function (exports,$) { 'use strict';
 
-  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
+  $ = $ && $.hasOwnProperty('default_dashboard_view.html') ? $['default_dashboard_view.html'] : $;
 
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -6393,7 +6393,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0): dashboard.js
+   * Bootstrap (v4.0.0): dashboard_controller.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

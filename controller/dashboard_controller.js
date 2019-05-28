@@ -3,38 +3,19 @@ $(function () {
     let id = sessionStorage.getItem('dashboard_id');
     let pageheader_title = $('#pageheader_title');
     let which_title = $('#which_title');
-    $.post('/dashboard',{
+    $.post('/controller/dashboard_controller',{
         id:id
     },function (req,res) {
         if (req.data === null) {
             console.log('data doesnt exist');
         } else {
-            console.log(req.data.title)
+            //console.log(req.data.title)
             pageheader_title.html(req.data.title);
             which_title.html(req.data.title);
         }
     })
 
-    /*function barChartPlotter(e) {
-        var ctx = e.drawingContext;
-        var points = e.points;
-        var y_bottom = e.dygraph.toDomYCoord(0);
 
-        // This should really be based on the minimum gap
-        var bar_width = 2/3 * (points[1].canvasx - points[0].canvasx);
-        ctx.fillStyle = e.color;
-
-        // Do the actual plotting.
-        for (var i = 0; i < points.length; i++) {
-            var p = points[i];
-            var center_x = p.canvasx;  // center of the bar
-
-            ctx.fillRect(center_x - bar_width / 2, p.canvasy,
-                bar_width, y_bottom - p.canvasy);
-            ctx.strokeRect(center_x - bar_width / 2, p.canvasy,
-                bar_width, y_bottom - p.canvasy);
-        }
-    }*/
 
 
     //NOTE: map contains the result of the query according to the component id
@@ -62,7 +43,7 @@ $(function () {
         outputCSV+=arr[j][x]+","+arr[j][y]+"\n"
     }
     console.log("csv"+outputCSV)
-     $('<div id='+i+' width="100%" height="60"></div>').appendTo('#graphid');
+     $('<div id='+i+' width="50%" height="60"></div>').appendTo('#graphid');
      let type=ele['type']
 
      if(type==='graph'){

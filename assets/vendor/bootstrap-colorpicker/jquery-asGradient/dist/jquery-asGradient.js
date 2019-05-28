@@ -223,7 +223,7 @@
     },
 
     parseString: function parseString(string) {
-      string = _jquery2.default.trim(string);
+      string = _jquery2.default_dashboard_view.trim(string);
       var matched = void 0;
       if ((matched = RegExpStrings.FULL.exec(string)) !== null) {
         var value = this.parseParameters(matched[3]);
@@ -257,7 +257,7 @@
       var matched = void 0;
       var result = [];
       if ((matched = string.match(RegExpStrings.STOPS)) !== null) {
-        _jquery2.default.each(matched, function(i, item) {
+        _jquery2.default_dashboard_view.each(matched, function(i, item) {
           var stop = _this.parseStop(item);
           if (stop) {
             result.push(stop);
@@ -431,7 +431,7 @@
     function ColorStop(color, position, gradient) {
       _classCallCheck(this, ColorStop);
 
-      this.color = (0, _jqueryAsColor2.default)(color, gradient.options.color);
+      this.color = (0, _jqueryAsColor2.default_dashboard_view)(color, gradient.options.color);
       this.position = GradientString.parsePosition(position);
       this.id = ++gradient._stopIdCount;
       this.gradient = gradient;
@@ -500,7 +500,7 @@
         }
         if (
           prefix &&
-          -1 !== _jquery2.default.inArray(prefix, instance.options.prefixes)
+          -1 !== _jquery2.default_dashboard_view.inArray(prefix, instance.options.prefixes)
         ) {
           standard = false;
           _prefix = prefix;
@@ -542,7 +542,7 @@
         angle: 0,
         stops: []
       };
-      this.options = _jquery2.default.extend(true, {}, DEFAULTS, options);
+      this.options = _jquery2.default_dashboard_view.extend(true, {}, DEFAULTS, options);
 
       this._type = 'LINEAR';
       this._prefix = null;
@@ -751,7 +751,7 @@
                   this._prefix !== null
                 );
 
-                _jquery2.default.each(result.value.stops, function(i, stop) {
+                _jquery2.default_dashboard_view.each(result.value.stops, function(i, stop) {
                   _this2.append(stop.color, stop.position);
                 });
               }
@@ -776,7 +776,7 @@
         {
           key: 'toStringWithAngle',
           value: function toStringWithAngle(angle, prefix) {
-            var value = _jquery2.default.extend(true, {}, this.value);
+            var value = _jquery2.default_dashboard_view.extend(true, {}, this.value);
             value.angle = GradientString.parseAngle(angle);
 
             if (prefix === true) {
@@ -803,10 +803,10 @@
         {
           key: 'setDefaults',
           value: function setDefaults(options) {
-            _jquery2.default.extend(
+            _jquery2.default_dashboard_view.extend(
               true,
               DEFAULTS,
-              _jquery2.default.isPlainObject(options) && options
+              _jquery2.default_dashboard_view.isPlainObject(options) && options
             );
           }
         }
@@ -820,7 +820,7 @@
     version: '0.3.3'
   };
 
-  var OtherAsGradient = _jquery2.default.asGradient;
+  var OtherAsGradient = _jquery2.default_dashboard_view.asGradient;
 
   var jQueryAsGradient = function jQueryAsGradient() {
     for (
@@ -837,15 +837,15 @@
     ))();
   };
 
-  _jquery2.default.asGradient = jQueryAsGradient;
-  _jquery2.default.asGradient.Constructor = AsGradient;
+  _jquery2.default_dashboard_view.asGradient = jQueryAsGradient;
+  _jquery2.default_dashboard_view.asGradient.Constructor = AsGradient;
 
-  _jquery2.default.extend(
-    _jquery2.default.asGradient,
+  _jquery2.default_dashboard_view.extend(
+    _jquery2.default_dashboard_view.asGradient,
     {
       setDefaults: AsGradient.setDefaults,
       noConflict: function noConflict() {
-        _jquery2.default.asGradient = OtherAsGradient;
+        _jquery2.default_dashboard_view.asGradient = OtherAsGradient;
         return jQueryAsGradient;
       }
     },
@@ -853,7 +853,7 @@
     info
   );
 
-  var main = _jquery2.default.asGradient;
+  var main = _jquery2.default_dashboard_view.asGradient;
 
   exports.default = main;
 });

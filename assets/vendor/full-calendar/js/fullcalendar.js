@@ -62,7 +62,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getDefault() { return module['default_dashboard_view.html']; } :
 /******/ 			function getModuleExports() { return module; };
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
@@ -1024,7 +1024,7 @@ var UnzonedRange = /** @class */ (function () {
     // Formatting and start-of-week will be default.
     UnzonedRange.prototype.getStart = function () {
         if (this.startMs != null) {
-            return moment_ext_1.default.utc(this.startMs).stripZone();
+            return moment_ext_1.default_dashboard_view.utc(this.startMs).stripZone();
         }
         return null;
     };
@@ -1033,7 +1033,7 @@ var UnzonedRange = /** @class */ (function () {
     // Formatting and start-of-week will be default.
     UnzonedRange.prototype.getEnd = function () {
         if (this.endMs != null) {
-            return moment_ext_1.default.utc(this.endMs).stripZone();
+            return moment_ext_1.default_dashboard_view.utc(this.endMs).stripZone();
         }
         return null;
     };
@@ -1126,7 +1126,7 @@ var EventSource = /** @class */ (function (_super) {
         if (sourceTransform) {
             rawInput = sourceTransform(rawInput, this.calendar);
         }
-        return EventDefParser_1.default.parse(rawInput, this);
+        return EventDefParser_1.default_dashboard_view.parse(rawInput, this);
     };
     EventSource.prototype.applyManualStandardProps = function (rawProps) {
         if (rawProps.id != null) {
@@ -1142,12 +1142,12 @@ var EventSource = /** @class */ (function (_super) {
         return true;
     };
     EventSource.uuid = 0;
-    EventSource.defineStandardProps = ParsableModelMixin_1.default.defineStandardProps;
-    EventSource.copyVerbatimStandardProps = ParsableModelMixin_1.default.copyVerbatimStandardProps;
+    EventSource.defineStandardProps = ParsableModelMixin_1.default_dashboard_view.defineStandardProps;
+    EventSource.copyVerbatimStandardProps = ParsableModelMixin_1.default_dashboard_view.copyVerbatimStandardProps;
     return EventSource;
-}(Class_1.default));
+}(Class_1.default_dashboard_view));
 exports.default = EventSource;
-ParsableModelMixin_1.default.mixInto(EventSource);
+ParsableModelMixin_1.default_dashboard_view.mixInto(EventSource);
 // Parsing
 // ---------------------------------------------------------------------------------------------------------------------
 EventSource.defineStandardProps({
@@ -1240,7 +1240,7 @@ var ListenerMixin = /** @class */ (function (_super) {
         return '_listener' + this.listenerId;
     };
     return ListenerMixin;
-}(Mixin_1.default));
+}(Mixin_1.default_dashboard_view));
 exports.default = ListenerMixin;
 
 
@@ -1568,7 +1568,7 @@ var EmitterMixin = /** @class */ (function (_super) {
         return hash && hash[type] && hash[type].length > 0;
     };
     return EmitterMixin;
-}(Mixin_1.default));
+}(Mixin_1.default_dashboard_view));
 exports.default = EmitterMixin;
 
 
@@ -1621,7 +1621,7 @@ var SingleEventDef = /** @class */ (function (_super) {
         return [this.buildInstance()];
     };
     SingleEventDef.prototype.buildInstance = function () {
-        return new EventInstance_1.default(this, // definition
+        return new EventInstance_1.default_dashboard_view(this, // definition
         this.dateProfile);
     };
     SingleEventDef.prototype.isAllDay = function () {
@@ -1635,14 +1635,14 @@ var SingleEventDef = /** @class */ (function (_super) {
     SingleEventDef.prototype.rezone = function () {
         var calendar = this.source.calendar;
         var dateProfile = this.dateProfile;
-        this.dateProfile = new EventDateProfile_1.default(calendar.moment(dateProfile.start), dateProfile.end ? calendar.moment(dateProfile.end) : null, calendar);
+        this.dateProfile = new EventDateProfile_1.default_dashboard_view(calendar.moment(dateProfile.start), dateProfile.end ? calendar.moment(dateProfile.end) : null, calendar);
     };
     /*
     NOTE: if super-method fails, should still attempt to apply
     */
     SingleEventDef.prototype.applyManualStandardProps = function (rawProps) {
         var superSuccess = _super.prototype.applyManualStandardProps.call(this, rawProps);
-        var dateProfile = EventDateProfile_1.default.parse(rawProps, this.source); // returns null on failure
+        var dateProfile = EventDateProfile_1.default_dashboard_view.parse(rawProps, this.source); // returns null on failure
         if (dateProfile) {
             this.dateProfile = dateProfile;
             // make sure `date` shows up in the legacy event objects as-is
@@ -1656,7 +1656,7 @@ var SingleEventDef = /** @class */ (function (_super) {
         }
     };
     return SingleEventDef;
-}(EventDef_1.default));
+}(EventDef_1.default_dashboard_view));
 exports.default = SingleEventDef;
 // Parsing
 // ---------------------------------------------------------------------------------------------------------------------
@@ -1764,104 +1764,104 @@ var locale_1 = __webpack_require__(31);
 exports.datepickerLocale = locale_1.datepickerLocale;
 exports.locale = locale_1.locale;
 var moment_ext_1 = __webpack_require__(10);
-exports.moment = moment_ext_1.default;
+exports.moment = moment_ext_1.default_dashboard_view;
 var EmitterMixin_1 = __webpack_require__(11);
-exports.EmitterMixin = EmitterMixin_1.default;
+exports.EmitterMixin = EmitterMixin_1.default_dashboard_view;
 var ListenerMixin_1 = __webpack_require__(7);
-exports.ListenerMixin = ListenerMixin_1.default;
+exports.ListenerMixin = ListenerMixin_1.default_dashboard_view;
 var Model_1 = __webpack_require__(48);
-exports.Model = Model_1.default;
+exports.Model = Model_1.default_dashboard_view;
 var Constraints_1 = __webpack_require__(207);
-exports.Constraints = Constraints_1.default;
+exports.Constraints = Constraints_1.default_dashboard_view;
 var UnzonedRange_1 = __webpack_require__(5);
-exports.UnzonedRange = UnzonedRange_1.default;
+exports.UnzonedRange = UnzonedRange_1.default_dashboard_view;
 var ComponentFootprint_1 = __webpack_require__(12);
-exports.ComponentFootprint = ComponentFootprint_1.default;
+exports.ComponentFootprint = ComponentFootprint_1.default_dashboard_view;
 var BusinessHourGenerator_1 = __webpack_require__(212);
-exports.BusinessHourGenerator = BusinessHourGenerator_1.default;
+exports.BusinessHourGenerator = BusinessHourGenerator_1.default_dashboard_view;
 var EventDef_1 = __webpack_require__(34);
-exports.EventDef = EventDef_1.default;
+exports.EventDef = EventDef_1.default_dashboard_view;
 var EventDefMutation_1 = __webpack_require__(37);
-exports.EventDefMutation = EventDefMutation_1.default;
+exports.EventDefMutation = EventDefMutation_1.default_dashboard_view;
 var EventSourceParser_1 = __webpack_require__(38);
-exports.EventSourceParser = EventSourceParser_1.default;
+exports.EventSourceParser = EventSourceParser_1.default_dashboard_view;
 var EventSource_1 = __webpack_require__(6);
-exports.EventSource = EventSource_1.default;
+exports.EventSource = EventSource_1.default_dashboard_view;
 var ThemeRegistry_1 = __webpack_require__(51);
 exports.defineThemeSystem = ThemeRegistry_1.defineThemeSystem;
 var EventInstanceGroup_1 = __webpack_require__(18);
-exports.EventInstanceGroup = EventInstanceGroup_1.default;
+exports.EventInstanceGroup = EventInstanceGroup_1.default_dashboard_view;
 var ArrayEventSource_1 = __webpack_require__(52);
-exports.ArrayEventSource = ArrayEventSource_1.default;
+exports.ArrayEventSource = ArrayEventSource_1.default_dashboard_view;
 var FuncEventSource_1 = __webpack_require__(215);
-exports.FuncEventSource = FuncEventSource_1.default;
+exports.FuncEventSource = FuncEventSource_1.default_dashboard_view;
 var JsonFeedEventSource_1 = __webpack_require__(216);
-exports.JsonFeedEventSource = JsonFeedEventSource_1.default;
+exports.JsonFeedEventSource = JsonFeedEventSource_1.default_dashboard_view;
 var EventFootprint_1 = __webpack_require__(36);
-exports.EventFootprint = EventFootprint_1.default;
+exports.EventFootprint = EventFootprint_1.default_dashboard_view;
 var Class_1 = __webpack_require__(33);
-exports.Class = Class_1.default;
+exports.Class = Class_1.default_dashboard_view;
 var Mixin_1 = __webpack_require__(14);
-exports.Mixin = Mixin_1.default;
+exports.Mixin = Mixin_1.default_dashboard_view;
 var CoordCache_1 = __webpack_require__(53);
-exports.CoordCache = CoordCache_1.default;
+exports.CoordCache = CoordCache_1.default_dashboard_view;
 var DragListener_1 = __webpack_require__(54);
-exports.DragListener = DragListener_1.default;
+exports.DragListener = DragListener_1.default_dashboard_view;
 var Promise_1 = __webpack_require__(20);
-exports.Promise = Promise_1.default;
+exports.Promise = Promise_1.default_dashboard_view;
 var TaskQueue_1 = __webpack_require__(217);
-exports.TaskQueue = TaskQueue_1.default;
+exports.TaskQueue = TaskQueue_1.default_dashboard_view;
 var RenderQueue_1 = __webpack_require__(218);
-exports.RenderQueue = RenderQueue_1.default;
+exports.RenderQueue = RenderQueue_1.default_dashboard_view;
 var Scroller_1 = __webpack_require__(39);
-exports.Scroller = Scroller_1.default;
+exports.Scroller = Scroller_1.default_dashboard_view;
 var Theme_1 = __webpack_require__(19);
-exports.Theme = Theme_1.default;
+exports.Theme = Theme_1.default_dashboard_view;
 var DateComponent_1 = __webpack_require__(219);
-exports.DateComponent = DateComponent_1.default;
+exports.DateComponent = DateComponent_1.default_dashboard_view;
 var InteractiveDateComponent_1 = __webpack_require__(40);
-exports.InteractiveDateComponent = InteractiveDateComponent_1.default;
+exports.InteractiveDateComponent = InteractiveDateComponent_1.default_dashboard_view;
 var Calendar_1 = __webpack_require__(220);
-exports.Calendar = Calendar_1.default;
+exports.Calendar = Calendar_1.default_dashboard_view;
 var View_1 = __webpack_require__(41);
-exports.View = View_1.default;
+exports.View = View_1.default_dashboard_view;
 var ViewRegistry_1 = __webpack_require__(22);
 exports.defineView = ViewRegistry_1.defineView;
 exports.getViewConfig = ViewRegistry_1.getViewConfig;
 var DayTableMixin_1 = __webpack_require__(55);
-exports.DayTableMixin = DayTableMixin_1.default;
+exports.DayTableMixin = DayTableMixin_1.default_dashboard_view;
 var BusinessHourRenderer_1 = __webpack_require__(56);
-exports.BusinessHourRenderer = BusinessHourRenderer_1.default;
+exports.BusinessHourRenderer = BusinessHourRenderer_1.default_dashboard_view;
 var EventRenderer_1 = __webpack_require__(42);
-exports.EventRenderer = EventRenderer_1.default;
+exports.EventRenderer = EventRenderer_1.default_dashboard_view;
 var FillRenderer_1 = __webpack_require__(57);
-exports.FillRenderer = FillRenderer_1.default;
+exports.FillRenderer = FillRenderer_1.default_dashboard_view;
 var HelperRenderer_1 = __webpack_require__(58);
-exports.HelperRenderer = HelperRenderer_1.default;
+exports.HelperRenderer = HelperRenderer_1.default_dashboard_view;
 var ExternalDropping_1 = __webpack_require__(222);
-exports.ExternalDropping = ExternalDropping_1.default;
+exports.ExternalDropping = ExternalDropping_1.default_dashboard_view;
 var EventResizing_1 = __webpack_require__(223);
-exports.EventResizing = EventResizing_1.default;
+exports.EventResizing = EventResizing_1.default_dashboard_view;
 var EventPointing_1 = __webpack_require__(59);
-exports.EventPointing = EventPointing_1.default;
+exports.EventPointing = EventPointing_1.default_dashboard_view;
 var EventDragging_1 = __webpack_require__(224);
-exports.EventDragging = EventDragging_1.default;
+exports.EventDragging = EventDragging_1.default_dashboard_view;
 var DateSelecting_1 = __webpack_require__(225);
-exports.DateSelecting = DateSelecting_1.default;
+exports.DateSelecting = DateSelecting_1.default_dashboard_view;
 var StandardInteractionsMixin_1 = __webpack_require__(60);
-exports.StandardInteractionsMixin = StandardInteractionsMixin_1.default;
+exports.StandardInteractionsMixin = StandardInteractionsMixin_1.default_dashboard_view;
 var AgendaView_1 = __webpack_require__(226);
-exports.AgendaView = AgendaView_1.default;
+exports.AgendaView = AgendaView_1.default_dashboard_view;
 var TimeGrid_1 = __webpack_require__(227);
-exports.TimeGrid = TimeGrid_1.default;
+exports.TimeGrid = TimeGrid_1.default_dashboard_view;
 var DayGrid_1 = __webpack_require__(61);
-exports.DayGrid = DayGrid_1.default;
+exports.DayGrid = DayGrid_1.default_dashboard_view;
 var BasicView_1 = __webpack_require__(62);
-exports.BasicView = BasicView_1.default;
+exports.BasicView = BasicView_1.default_dashboard_view;
 var MonthView_1 = __webpack_require__(229);
-exports.MonthView = MonthView_1.default;
+exports.MonthView = MonthView_1.default_dashboard_view;
 var ListView_1 = __webpack_require__(230);
-exports.ListView = ListView_1.default;
+exports.ListView = ListView_1.default_dashboard_view;
 
 
 /***/ }),
@@ -1936,7 +1936,7 @@ var EventDateProfile = /** @class */ (function () {
     EventDateProfile.prototype.buildUnzonedRange = function (calendar) {
         var startMs = this.start.clone().stripZone().valueOf();
         var endMs = this.getEnd(calendar).stripZone().valueOf();
-        return new UnzonedRange_1.default(startMs, endMs);
+        return new UnzonedRange_1.default_dashboard_view(startMs, endMs);
     };
     /*
     Needs a Calendar object
@@ -1994,7 +1994,7 @@ var EventInstanceGroup = /** @class */ (function () {
             eventInstance = eventInstances[i];
             slicedRange = eventInstance.dateProfile.unzonedRange.intersect(constraintRange);
             if (slicedRange) {
-                slicedEventRanges.push(new EventRange_1.default(slicedRange, eventInstance.def, eventInstance));
+                slicedEventRanges.push(new EventRange_1.default_dashboard_view(slicedRange, eventInstance.def, eventInstance));
             }
         }
         return slicedEventRanges;
@@ -2002,9 +2002,9 @@ var EventInstanceGroup = /** @class */ (function () {
     EventInstanceGroup.prototype.sliceInverseRenderRanges = function (constraintRange) {
         var unzonedRanges = this.eventInstances.map(util_1.eventInstanceToUnzonedRange);
         var ownerDef = this.getEventDef();
-        unzonedRanges = UnzonedRange_1.default.invertRanges(unzonedRanges, constraintRange);
+        unzonedRanges = UnzonedRange_1.default_dashboard_view.invertRanges(unzonedRanges, constraintRange);
         return unzonedRanges.map(function (unzonedRange) {
-            return new EventRange_1.default(unzonedRange, ownerDef); // don't give an EventInstance
+            return new EventRange_1.default_dashboard_view(unzonedRange, ownerDef); // don't give an EventInstance
         });
     };
     EventInstanceGroup.prototype.isInverse = function () {
@@ -2304,8 +2304,8 @@ var GlobalEmitter = /** @class */ (function () {
     return GlobalEmitter;
 }());
 exports.default = GlobalEmitter;
-ListenerMixin_1.default.mixInto(GlobalEmitter);
-EmitterMixin_1.default.mixInto(GlobalEmitter);
+ListenerMixin_1.default_dashboard_view.mixInto(GlobalEmitter);
+EmitterMixin_1.default_dashboard_view.mixInto(GlobalEmitter);
 
 
 /***/ }),
@@ -2461,7 +2461,7 @@ var HitDragListener = /** @class */ (function (_super) {
         return this.component.queryHit(left, top);
     };
     return HitDragListener;
-}(DragListener_1.default));
+}(DragListener_1.default_dashboard_view));
 exports.default = HitDragListener;
 // Returns `true` if the hits are identically equal. `false` otherwise. Must be from the same component.
 // Two null values will be considered equal, as two "out of the component" states are the same.
@@ -2937,12 +2937,12 @@ var EventDef = /** @class */ (function () {
         $.extend(this.miscProps, rawProps);
     };
     EventDef.uuid = 0;
-    EventDef.defineStandardProps = ParsableModelMixin_1.default.defineStandardProps;
-    EventDef.copyVerbatimStandardProps = ParsableModelMixin_1.default.copyVerbatimStandardProps;
+    EventDef.defineStandardProps = ParsableModelMixin_1.default_dashboard_view.defineStandardProps;
+    EventDef.copyVerbatimStandardProps = ParsableModelMixin_1.default_dashboard_view.copyVerbatimStandardProps;
     return EventDef;
 }());
 exports.default = EventDef;
-ParsableModelMixin_1.default.mixInto(EventDef);
+ParsableModelMixin_1.default_dashboard_view.mixInto(EventDef);
 EventDef.defineStandardProps({
     // not automatically assigned (`false`)
     _id: false,
@@ -2984,11 +2984,11 @@ function eventDefsToEventInstances(eventDefs, unzonedRange) {
 }
 exports.eventDefsToEventInstances = eventDefsToEventInstances;
 function eventInstanceToEventRange(eventInstance) {
-    return new EventRange_1.default(eventInstance.dateProfile.unzonedRange, eventInstance.def, eventInstance);
+    return new EventRange_1.default_dashboard_view(eventInstance.dateProfile.unzonedRange, eventInstance.def, eventInstance);
 }
 exports.eventInstanceToEventRange = eventInstanceToEventRange;
 function eventRangeToEventFootprint(eventRange) {
-    return new EventFootprint_1.default(new ComponentFootprint_1.default(eventRange.unzonedRange, eventRange.eventDef.isAllDay()), eventRange.eventDef, eventRange.eventInstance // might not exist
+    return new EventFootprint_1.default_dashboard_view(new ComponentFootprint_1.default_dashboard_view(eventRange.unzonedRange, eventRange.eventDef.isAllDay()), eventRange.eventDef, eventRange.eventInstance // might not exist
     );
 }
 exports.eventRangeToEventFootprint = eventRangeToEventFootprint;
@@ -3049,7 +3049,7 @@ var EventDefMutation = /** @class */ (function () {
         var dateMutation;
         var defMutation;
         for (propName in rawProps) {
-            if (EventDateProfile_1.default.isStandardProp(propName)) {
+            if (EventDateProfile_1.default_dashboard_view.isStandardProp(propName)) {
                 dateProps[propName] = rawProps[propName];
             }
             else if (eventDef.isStandardProp(propName)) {
@@ -3059,9 +3059,9 @@ var EventDefMutation = /** @class */ (function () {
                 miscProps[propName] = rawProps[propName];
             }
         }
-        dateProfile = EventDateProfile_1.default.parse(dateProps, eventDef.source);
+        dateProfile = EventDateProfile_1.default_dashboard_view.parse(dateProps, eventDef.source);
         if (dateProfile) {
-            dateMutation = EventDefDateMutation_1.default.createFromDiff(eventInstance.dateProfile, dateProfile, largeUnit);
+            dateMutation = EventDefDateMutation_1.default_dashboard_view.createFromDiff(eventInstance.dateProfile, dateProfile, largeUnit);
         }
         if (standardProps.id !== eventDef.id) {
             eventDefId = standardProps.id; // only apply if there's a change
@@ -3069,7 +3069,7 @@ var EventDefMutation = /** @class */ (function () {
         if (!util_1.isArraysEqual(standardProps.className, eventDef.className)) {
             className = standardProps.className; // only apply if there's a change
         }
-        EventDef_1.default.copyVerbatimStandardProps(standardProps, // src
+        EventDef_1.default_dashboard_view.copyVerbatimStandardProps(standardProps, // src
         verbatimStandardProps // dest
         );
         defMutation = new EventDefMutation();
@@ -3095,7 +3095,7 @@ var EventDefMutation = /** @class */ (function () {
         // can't undo
         // TODO: more DRY with EventDef::applyManualStandardProps
         if (this.eventDefId != null) {
-            eventDef.id = EventDef_1.default.normalizeId((eventDef.rawId = this.eventDefId));
+            eventDef.id = EventDef_1.default_dashboard_view.normalizeId((eventDef.rawId = this.eventDefId));
         }
         // can't undo
         // TODO: more DRY with EventDef::applyManualStandardProps
@@ -3104,7 +3104,7 @@ var EventDefMutation = /** @class */ (function () {
         }
         // can't undo
         if (this.verbatimStandardProps) {
-            SingleEventDef_1.default.copyVerbatimStandardProps(this.verbatimStandardProps, // src
+            SingleEventDef_1.default_dashboard_view.copyVerbatimStandardProps(this.verbatimStandardProps, // src
             eventDef // dest
             );
         }
@@ -3245,7 +3245,7 @@ var Scroller = /** @class */ (function (_super) {
         return util_1.getScrollbarWidths(this.scrollEl);
     };
     return Scroller;
-}(Class_1.default));
+}(Class_1.default_dashboard_view));
 exports.default = Scroller;
 
 
@@ -3357,7 +3357,7 @@ var InteractiveDateComponent = /** @class */ (function (_super) {
     InteractiveDateComponent.prototype.shouldIgnoreMouse = function () {
         // HACK
         // This will still work even though bindDateHandlerToEl doesn't use GlobalEmitter.
-        return GlobalEmitter_1.default.get().shouldIgnoreMouse();
+        return GlobalEmitter_1.default_dashboard_view.get().shouldIgnoreMouse();
     };
     InteractiveDateComponent.prototype.shouldIgnoreTouch = function () {
         var view = this._getView();
@@ -3500,7 +3500,7 @@ var InteractiveDateComponent = /** @class */ (function (_super) {
         return true;
     };
     return InteractiveDateComponent;
-}(DateComponent_1.default));
+}(DateComponent_1.default_dashboard_view));
 exports.default = InteractiveDateComponent;
 
 
@@ -3553,7 +3553,7 @@ var View = /** @class */ (function (_super) {
     /* Render Queue
     ------------------------------------------------------------------------------------------------------------------*/
     View.prototype.initRenderQueue = function () {
-        this.renderQueue = new RenderQueue_1.default({
+        this.renderQueue = new RenderQueue_1.default_dashboard_view({
             event: this.opt('eventRenderWait')
         });
         this.renderQueue.on('start', this.onRenderQueueStart.bind(this));
@@ -3758,7 +3758,7 @@ var View = /** @class */ (function (_super) {
     // Binds DOM handlers to elements that reside outside the view container, such as the document
     View.prototype.bindGlobalHandlers = function () {
         _super.prototype.bindGlobalHandlers.call(this);
-        this.listenTo(GlobalEmitter_1.default.get(), {
+        this.listenTo(GlobalEmitter_1.default_dashboard_view.get(), {
             touchstart: this.processUnselect,
             mousedown: this.handleDocumentMousedown
         });
@@ -3766,7 +3766,7 @@ var View = /** @class */ (function (_super) {
     // Unbinds DOM handlers from elements that reside outside the view container
     View.prototype.unbindGlobalHandlers = function () {
         _super.prototype.unbindGlobalHandlers.call(this);
-        this.stopListeningTo(GlobalEmitter_1.default.get());
+        this.stopListeningTo(GlobalEmitter_1.default_dashboard_view.get());
     };
     /* Now Indicator
     ------------------------------------------------------------------------------------------------------------------*/
@@ -4147,7 +4147,7 @@ var View = /** @class */ (function (_super) {
             end = this.skipHiddenDays(end, -1, true);
         }
         if (start === null || end === null || start < end) {
-            return new UnzonedRange_1.default(start, end);
+            return new UnzonedRange_1.default_dashboard_view(start, end);
         }
         return null;
     };
@@ -4174,10 +4174,10 @@ var View = /** @class */ (function (_super) {
         return out;
     };
     return View;
-}(InteractiveDateComponent_1.default));
+}(InteractiveDateComponent_1.default_dashboard_view));
 exports.default = View;
 View.prototype.usesMinMaxTime = false;
-View.prototype.dateProfileGeneratorClass = DateProfileGenerator_1.default;
+View.prototype.dateProfileGeneratorClass = DateProfileGenerator_1.default_dashboard_view;
 View.watch('displayingDates', ['isInDom', 'dateProfile'], function (deps) {
     this.requestDateRender(deps.dateProfile);
 }, function () {
@@ -4653,8 +4653,8 @@ rendering of one date, without any separator.
 */
 function formatRange(date1, date2, formatStr, separator, isRTL) {
     var localeData;
-    date1 = moment_ext_1.default.parseZone(date1);
-    date2 = moment_ext_1.default.parseZone(date2);
+    date1 = moment_ext_1.default_dashboard_view.parseZone(date1);
+    date2 = moment_ext_1.default_dashboard_view.parseZone(date2);
     localeData = date1.localeData();
     // Expand localized format strings, like "LL" -> "MMMM D YYYY".
     // BTW, this is not important for `formatDate` because it is impossible to put custom tokens
@@ -5169,11 +5169,11 @@ var Model = /** @class */ (function (_super) {
         }
     };
     return Model;
-}(Class_1.default));
+}(Class_1.default_dashboard_view));
 exports.default = Model;
 Model.prototype._globalWatchArgs = {}; // mutation protection in Model.watch
-EmitterMixin_1.default.mixInto(Model);
-ListenerMixin_1.default.mixInto(Model);
+EmitterMixin_1.default_dashboard_view.mixInto(Model);
+ListenerMixin_1.default_dashboard_view.mixInto(Model);
 
 
 /***/ }),
@@ -5189,10 +5189,10 @@ exports.default = {
     parse: function (eventInput, source) {
         if (util_1.isTimeString(eventInput.start) || moment.isDuration(eventInput.start) ||
             util_1.isTimeString(eventInput.end) || moment.isDuration(eventInput.end)) {
-            return RecurringEventDef_1.default.parse(eventInput, source);
+            return RecurringEventDef_1.default_dashboard_view.parse(eventInput, source);
         }
         else {
-            return SingleEventDef_1.default.parse(eventInput, source);
+            return SingleEventDef_1.default_dashboard_view.parse(eventInput, source);
         }
     }
 };
@@ -5301,7 +5301,7 @@ var EventDefDateMutation = /** @class */ (function () {
         if (!end && calendar.opt('forceEventDuration')) {
             end = calendar.getDefaultEventEnd(eventDateProfile.isAllDay(), start);
         }
-        return new EventDateProfile_1.default(start, end, calendar);
+        return new EventDateProfile_1.default_dashboard_view(start, end, calendar);
     };
     EventDefDateMutation.prototype.setDateDelta = function (dateDelta) {
         if (dateDelta && dateDelta.valueOf()) {
@@ -5350,10 +5350,10 @@ function defineThemeSystem(themeName, themeClass) {
 exports.defineThemeSystem = defineThemeSystem;
 function getThemeSystemClass(themeSetting) {
     if (!themeSetting) {
-        return StandardTheme_1.default;
+        return StandardTheme_1.default_dashboard_view;
     }
     else if (themeSetting === true) {
-        return JqueryUiTheme_1.default;
+        return JqueryUiTheme_1.default_dashboard_view;
     }
     else {
         return themeClassHash[themeSetting];
@@ -5390,7 +5390,7 @@ var ArrayEventSource = /** @class */ (function (_super) {
             rawProps = { events: rawInput };
         }
         if (rawProps) {
-            return EventSource_1.default.parse.call(this, rawProps, calendar);
+            return EventSource_1.default_dashboard_view.parse.call(this, rawProps, calendar);
         }
         return false;
     };
@@ -5404,13 +5404,13 @@ var ArrayEventSource = /** @class */ (function (_super) {
         if (this.currentTimezone != null &&
             this.currentTimezone !== timezone) {
             for (i = 0; i < eventDefs.length; i++) {
-                if (eventDefs[i] instanceof SingleEventDef_1.default) {
+                if (eventDefs[i] instanceof SingleEventDef_1.default_dashboard_view) {
                     eventDefs[i].rezone();
                 }
             }
         }
         this.currentTimezone = timezone;
-        return Promise_1.default.resolve(eventDefs);
+        return Promise_1.default_dashboard_view.resolve(eventDefs);
     };
     ArrayEventSource.prototype.addEventDef = function (eventDef) {
         this.eventDefs.push(eventDef);
@@ -5435,7 +5435,7 @@ var ArrayEventSource = /** @class */ (function (_super) {
         return superSuccess;
     };
     return ArrayEventSource;
-}(EventSource_1.default));
+}(EventSource_1.default_dashboard_view));
 exports.default = ArrayEventSource;
 ArrayEventSource.defineStandardProps({
     events: false // don't automatically transfer
@@ -5673,7 +5673,7 @@ var DragListener = /** @class */ (function () {
     DragListener.prototype.startInteraction = function (ev, extraOptions) {
         if (extraOptions === void 0) { extraOptions = {}; }
         if (ev.type === 'mousedown') {
-            if (GlobalEmitter_1.default.get().shouldIgnoreMouse()) {
+            if (GlobalEmitter_1.default_dashboard_view.get().shouldIgnoreMouse()) {
                 return;
             }
             else if (!util_1.isPrimaryMouseButton(ev)) {
@@ -5731,7 +5731,7 @@ var DragListener = /** @class */ (function () {
     DragListener.prototype.bindHandlers = function () {
         // some browsers (Safari in iOS 10) don't allow preventDefault on touch events that are bound after touchstart,
         // so listen to the GlobalEmitter singleton, which is always bound, instead of the document directly.
-        var globalEmitter = GlobalEmitter_1.default.get();
+        var globalEmitter = GlobalEmitter_1.default_dashboard_view.get();
         if (this.isGeneric) {
             this.listenTo($(document), {
                 drag: this.handleMove,
@@ -5757,7 +5757,7 @@ var DragListener = /** @class */ (function () {
         });
     };
     DragListener.prototype.unbindHandlers = function () {
-        this.stopListeningTo(GlobalEmitter_1.default.get());
+        this.stopListeningTo(GlobalEmitter_1.default_dashboard_view.get());
         this.stopListeningTo($(document)); // for isGeneric
     };
     // Drag (high-level)
@@ -6002,7 +6002,7 @@ var DragListener = /** @class */ (function () {
     return DragListener;
 }());
 exports.default = DragListener;
-ListenerMixin_1.default.mixInto(DragListener);
+ListenerMixin_1.default_dashboard_view.mixInto(DragListener);
 
 
 /***/ }),
@@ -6356,7 +6356,7 @@ var DayTableMixin = /** @class */ (function (_super) {
         }
     };
     return DayTableMixin;
-}(Mixin_1.default));
+}(Mixin_1.default_dashboard_view));
 exports.default = DayTableMixin;
 
 
@@ -6561,11 +6561,11 @@ var HelperRenderer = /** @class */ (function () {
     HelperRenderer.prototype.fabricateEventFootprint = function (componentFootprint) {
         var calendar = this.view.calendar;
         var eventDateProfile = calendar.footprintToDateProfile(componentFootprint);
-        var dummyEvent = new SingleEventDef_1.default(new EventSource_1.default(calendar));
+        var dummyEvent = new SingleEventDef_1.default_dashboard_view(new EventSource_1.default_dashboard_view(calendar));
         var dummyInstance;
         dummyEvent.dateProfile = eventDateProfile;
         dummyInstance = dummyEvent.buildInstance();
-        return new EventFootprint_1.default(componentFootprint, dummyEvent, dummyInstance);
+        return new EventFootprint_1.default_dashboard_view(componentFootprint, dummyEvent, dummyInstance);
     };
     return HelperRenderer;
 }());
@@ -6606,7 +6606,7 @@ var EventPointing = /** @class */ (function (_super) {
     };
     // Updates internal state and triggers handlers for when an event element is moused over
     EventPointing.prototype.handleMouseover = function (seg, ev) {
-        if (!GlobalEmitter_1.default.get().shouldIgnoreMouse() &&
+        if (!GlobalEmitter_1.default_dashboard_view.get().shouldIgnoreMouse() &&
             !this.mousedOverSeg) {
             this.mousedOverSeg = seg;
             // TODO: move to EventSelecting's responsibility
@@ -6644,7 +6644,7 @@ var EventPointing = /** @class */ (function (_super) {
         }
     };
     return EventPointing;
-}(Interaction_1.default));
+}(Interaction_1.default_dashboard_view));
 exports.default = EventPointing;
 
 
@@ -6667,14 +6667,14 @@ var StandardInteractionsMixin = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return StandardInteractionsMixin;
-}(Mixin_1.default));
+}(Mixin_1.default_dashboard_view));
 exports.default = StandardInteractionsMixin;
-StandardInteractionsMixin.prototype.dateClickingClass = DateClicking_1.default;
-StandardInteractionsMixin.prototype.dateSelectingClass = DateSelecting_1.default;
-StandardInteractionsMixin.prototype.eventPointingClass = EventPointing_1.default;
-StandardInteractionsMixin.prototype.eventDraggingClass = EventDragging_1.default;
-StandardInteractionsMixin.prototype.eventResizingClass = EventResizing_1.default;
-StandardInteractionsMixin.prototype.externalDroppingClass = ExternalDropping_1.default;
+StandardInteractionsMixin.prototype.dateClickingClass = DateClicking_1.default_dashboard_view;
+StandardInteractionsMixin.prototype.dateSelectingClass = DateSelecting_1.default_dashboard_view;
+StandardInteractionsMixin.prototype.eventPointingClass = EventPointing_1.default_dashboard_view;
+StandardInteractionsMixin.prototype.eventDraggingClass = EventDragging_1.default_dashboard_view;
+StandardInteractionsMixin.prototype.eventResizingClass = EventResizing_1.default_dashboard_view;
+StandardInteractionsMixin.prototype.externalDroppingClass = ExternalDropping_1.default_dashboard_view;
 
 
 /***/ }),
@@ -6756,11 +6756,11 @@ var DayGrid = /** @class */ (function (_super) {
         this.el.html(html);
         this.rowEls = this.el.find('.fc-row');
         this.cellEls = this.el.find('.fc-day, .fc-disabled-day');
-        this.rowCoordCache = new CoordCache_1.default({
+        this.rowCoordCache = new CoordCache_1.default_dashboard_view({
             els: this.rowEls,
             isVertical: true
         });
-        this.colCoordCache = new CoordCache_1.default({
+        this.colCoordCache = new CoordCache_1.default_dashboard_view({
             els: this.cellEls.slice(0, this.colCnt),
             isHorizontal: true
         });
@@ -6899,7 +6899,7 @@ var DayGrid = /** @class */ (function (_super) {
     };
     DayGrid.prototype.getHitFootprint = function (hit) {
         var range = this.getCellRange(hit.row, hit.col);
-        return new ComponentFootprint_1.default(new UnzonedRange_1.default(range.start, range.end), true // all-day?
+        return new ComponentFootprint_1.default_dashboard_view(new UnzonedRange_1.default_dashboard_view(range.start, range.end), true // all-day?
         );
     };
     DayGrid.prototype.getHitEl = function (hit) {
@@ -7196,7 +7196,7 @@ var DayGrid = /** @class */ (function (_super) {
         else {
             options.left = moreWrap.offset().left - 1; // -1 to be over cell border
         }
-        this.segPopover = new Popover_1.default(options);
+        this.segPopover = new Popover_1.default_dashboard_view(options);
         this.segPopover.show();
         // the popover doesn't live within the grid's container element, and thus won't get the event
         // delegated-handlers for free. attach event-related handlers to the popover.
@@ -7237,7 +7237,7 @@ var DayGrid = /** @class */ (function (_super) {
     DayGrid.prototype.resliceDaySegs = function (segs, dayDate) {
         var dayStart = dayDate.clone();
         var dayEnd = dayStart.clone().add(1, 'days');
-        var dayRange = new UnzonedRange_1.default(dayStart, dayEnd);
+        var dayRange = new UnzonedRange_1.default_dashboard_view(dayStart, dayEnd);
         var newSegs = [];
         var i;
         var seg;
@@ -7247,7 +7247,7 @@ var DayGrid = /** @class */ (function (_super) {
             slicedRange = seg.footprint.componentFootprint.unzonedRange.intersect(dayRange);
             if (slicedRange) {
                 newSegs.push($.extend({}, seg, {
-                    footprint: new EventFootprint_1.default(new ComponentFootprint_1.default(slicedRange, seg.footprint.componentFootprint.isAllDay), seg.footprint.eventDef, seg.footprint.eventInstance),
+                    footprint: new EventFootprint_1.default_dashboard_view(new ComponentFootprint_1.default_dashboard_view(slicedRange, seg.footprint.componentFootprint.isAllDay), seg.footprint.eventDef, seg.footprint.eventInstance),
                     isStart: seg.isStart && slicedRange.isStart,
                     isEnd: seg.isEnd && slicedRange.isEnd
                 }));
@@ -7285,14 +7285,14 @@ var DayGrid = /** @class */ (function (_super) {
         return segs;
     };
     return DayGrid;
-}(InteractiveDateComponent_1.default));
+}(InteractiveDateComponent_1.default_dashboard_view));
 exports.default = DayGrid;
-DayGrid.prototype.eventRendererClass = DayGridEventRenderer_1.default;
-DayGrid.prototype.businessHourRendererClass = BusinessHourRenderer_1.default;
-DayGrid.prototype.helperRendererClass = DayGridHelperRenderer_1.default;
-DayGrid.prototype.fillRendererClass = DayGridFillRenderer_1.default;
-StandardInteractionsMixin_1.default.mixInto(DayGrid);
-DayTableMixin_1.default.mixInto(DayGrid);
+DayGrid.prototype.eventRendererClass = DayGridEventRenderer_1.default_dashboard_view;
+DayGrid.prototype.businessHourRendererClass = BusinessHourRenderer_1.default_dashboard_view;
+DayGrid.prototype.helperRendererClass = DayGridHelperRenderer_1.default_dashboard_view;
+DayGrid.prototype.fillRendererClass = DayGridFillRenderer_1.default_dashboard_view;
+StandardInteractionsMixin_1.default_dashboard_view.mixInto(DayGrid);
+DayTableMixin_1.default_dashboard_view.mixInto(DayGrid);
 
 
 /***/ }),
@@ -7328,7 +7328,7 @@ var BasicView = /** @class */ (function (_super) {
             }
         }
         _this.addChild(_this.dayGrid);
-        _this.scroller = new Scroller_1.default({
+        _this.scroller = new Scroller_1.default_dashboard_view({
             overflowX: 'hidden',
             overflowY: 'auto'
         });
@@ -7472,10 +7472,10 @@ var BasicView = /** @class */ (function (_super) {
         }
     };
     return BasicView;
-}(View_1.default));
+}(View_1.default_dashboard_view));
 exports.default = BasicView;
-BasicView.prototype.dateProfileGeneratorClass = BasicViewDateProfileGenerator_1.default;
-BasicView.prototype.dayGridClass = DayGrid_1.default;
+BasicView.prototype.dateProfileGeneratorClass = BasicViewDateProfileGenerator_1.default_dashboard_view;
+BasicView.prototype.dayGridClass = DayGrid_1.default_dashboard_view;
 // customize the rendering behavior of BasicView's dayGrid
 function makeDayGridSubclass(SuperClass) {
     return /** @class */ (function (_super) {
@@ -7531,7 +7531,7 @@ function makeDayGridSubclass(SuperClass) {
             return '';
         };
         SubClass.prototype.getIsNumbersVisible = function () {
-            return DayGrid_1.default.prototype.getIsNumbersVisible.apply(this, arguments) || this.colWeekNumbersVisible;
+            return DayGrid_1.default_dashboard_view.prototype.getIsNumbersVisible.apply(this, arguments) || this.colWeekNumbersVisible;
         };
         return SubClass;
     }(SuperClass));
@@ -7848,7 +7848,7 @@ var Constraints = /** @class */ (function () {
     */
     Constraints.prototype.parseEventDefToInstances = function (eventInput) {
         var eventManager = this.eventManager;
-        var eventDef = EventDefParser_1.default.parse(eventInput, new EventSource_1.default(this._calendar));
+        var eventDef = EventDefParser_1.default_dashboard_view.parse(eventInput, new EventSource_1.default_dashboard_view(this._calendar));
         if (!eventDef) {
             return false;
         }
@@ -7886,7 +7886,7 @@ var Constraints = /** @class */ (function () {
             }
         }
         return [
-            new ComponentFootprint_1.default(new UnzonedRange_1.default(start, end), (start && !start.hasTime()) || (end && !end.hasTime()) // isAllDay
+            new ComponentFootprint_1.default_dashboard_view(new UnzonedRange_1.default_dashboard_view(start, end), (start && !start.hasTime()) || (end && !end.hasTime()) // isAllDay
             )
         ];
     };
@@ -8023,7 +8023,7 @@ var ParsableModelMixin = /** @class */ (function (_super) {
         return propName in this.standardPropMap;
     };
     return ParsableModelMixin;
-}(Mixin_1.default));
+}(Mixin_1.default_dashboard_view));
 exports.default = ParsableModelMixin;
 ParsableModelMixin.prototype.standardPropMap = {}; // will be cloned by defineStandardProps
 
@@ -8092,8 +8092,8 @@ var RecurringEventDef = /** @class */ (function (_super) {
                 if (this.endTime) {
                     instanceEnd = zonedDayStart.clone().time(this.endTime);
                 }
-                instances.push(new EventInstance_1.default(this, // definition
-                new EventDateProfile_1.default(instanceStart, instanceEnd, calendar)));
+                instances.push(new EventInstance_1.default_dashboard_view(this, // definition
+                new EventDateProfile_1.default_dashboard_view(instanceStart, instanceEnd, calendar)));
             }
             unzonedDate.add(1, 'days');
         }
@@ -8121,14 +8121,14 @@ var RecurringEventDef = /** @class */ (function (_super) {
         return def;
     };
     return RecurringEventDef;
-}(EventDef_1.default));
+}(EventDef_1.default_dashboard_view));
 exports.default = RecurringEventDef;
 /*
 HACK to work with TypeScript mixins
 NOTE: if super-method fails, should still attempt to apply
 */
 RecurringEventDef.prototype.applyProps = function (rawProps) {
-    var superSuccess = EventDef_1.default.prototype.applyProps.call(this, rawProps);
+    var superSuccess = EventDef_1.default_dashboard_view.prototype.applyProps.call(this, rawProps);
     if (rawProps.start) {
         this.startTime = moment.duration(rawProps.start);
     }
@@ -8193,7 +8193,7 @@ var BusinessHourGenerator = /** @class */ (function () {
         var eventDefs = this.buildEventDefs(isAllDay);
         var eventInstanceGroup;
         if (eventDefs.length) {
-            eventInstanceGroup = new EventInstanceGroup_1.default(util_1.eventDefsToEventInstances(eventDefs, unzonedRange));
+            eventInstanceGroup = new EventInstanceGroup_1.default_dashboard_view(util_1.eventDefsToEventInstances(eventDefs, unzonedRange));
             // so that inverse-background rendering can happen even when no eventRanges in view
             eventInstanceGroup.explicitEventDef = eventDefs[0];
             return eventInstanceGroup;
@@ -8228,7 +8228,7 @@ var BusinessHourGenerator = /** @class */ (function () {
             fullRawDef.start = null;
             fullRawDef.end = null;
         }
-        return RecurringEventDef_1.default.parse(fullRawDef, new EventSource_1.default(this.calendar) // dummy source
+        return RecurringEventDef_1.default_dashboard_view.parse(fullRawDef, new EventSource_1.default_dashboard_view(this.calendar) // dummy source
         );
     };
     return BusinessHourGenerator;
@@ -8249,7 +8249,7 @@ var StandardTheme = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return StandardTheme;
-}(Theme_1.default));
+}(Theme_1.default_dashboard_view));
 exports.default = StandardTheme;
 StandardTheme.prototype.classes = {
     widget: 'fc-unthemed',
@@ -8298,7 +8298,7 @@ var JqueryUiTheme = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return JqueryUiTheme;
-}(Theme_1.default));
+}(Theme_1.default_dashboard_view));
 exports.default = JqueryUiTheme;
 JqueryUiTheme.prototype.classes = {
     widget: 'ui-widget',
@@ -8359,14 +8359,14 @@ var FuncEventSource = /** @class */ (function (_super) {
             rawProps = { events: rawInput };
         }
         if (rawProps) {
-            return EventSource_1.default.parse.call(this, rawProps, calendar);
+            return EventSource_1.default_dashboard_view.parse.call(this, rawProps, calendar);
         }
         return false;
     };
     FuncEventSource.prototype.fetch = function (start, end, timezone) {
         var _this = this;
         this.calendar.pushLoading();
-        return Promise_1.default.construct(function (onResolve) {
+        return Promise_1.default_dashboard_view.construct(function (onResolve) {
             _this.func.call(_this.calendar, start.clone(), end.clone(), timezone, function (rawEventDefs) {
                 _this.calendar.popLoading();
                 onResolve(_this.parseEventDefs(rawEventDefs));
@@ -8382,7 +8382,7 @@ var FuncEventSource = /** @class */ (function (_super) {
         return superSuccess;
     };
     return FuncEventSource;
-}(EventSource_1.default));
+}(EventSource_1.default_dashboard_view));
 exports.default = FuncEventSource;
 FuncEventSource.defineStandardProps({
     events: false // don't automatically transfer
@@ -8414,7 +8414,7 @@ var JsonFeedEventSource = /** @class */ (function (_super) {
             rawProps = { url: rawInput };
         }
         if (rawProps) {
-            return EventSource_1.default.parse.call(this, rawProps, calendar);
+            return EventSource_1.default_dashboard_view.parse.call(this, rawProps, calendar);
         }
         return false;
     };
@@ -8428,7 +8428,7 @@ var JsonFeedEventSource = /** @class */ (function (_super) {
         // don't intercept success/error
         // tho will be a breaking API change
         this.calendar.pushLoading();
-        return Promise_1.default.construct(function (onResolve, onReject) {
+        return Promise_1.default_dashboard_view.construct(function (onResolve, onReject) {
             $.ajax($.extend({}, // destination
             JsonFeedEventSource.AJAX_DEFAULTS, ajaxSettings, {
                 url: _this.url,
@@ -8503,7 +8503,7 @@ var JsonFeedEventSource = /** @class */ (function (_super) {
         cache: false
     };
     return JsonFeedEventSource;
-}(EventSource_1.default));
+}(EventSource_1.default_dashboard_view));
 exports.default = JsonFeedEventSource;
 JsonFeedEventSource.defineStandardProps({
     // automatically transfer (true)...
@@ -8581,7 +8581,7 @@ var TaskQueue = /** @class */ (function () {
     return TaskQueue;
 }());
 exports.default = TaskQueue;
-EmitterMixin_1.default.mixInto(TaskQueue);
+EmitterMixin_1.default_dashboard_view.mixInto(TaskQueue);
 
 
 /***/ }),
@@ -8697,7 +8697,7 @@ var RenderQueue = /** @class */ (function (_super) {
         return shouldAppend;
     };
     return RenderQueue;
-}(TaskQueue_1.default));
+}(TaskQueue_1.default_dashboard_view));
 exports.default = RenderQueue;
 
 
@@ -9161,7 +9161,7 @@ var DateComponent = /** @class */ (function (_super) {
         else {
             date = gotoOptions; // a single moment input
         }
-        date = moment_ext_1.default(date); // if a string, parse it
+        date = moment_ext_1.default_dashboard_view(date); // if a string, parse it
         finalOptions = {
             date: date.format('YYYY-MM-DD'),
             type: type || 'day'
@@ -9258,7 +9258,7 @@ var DateComponent = /** @class */ (function (_super) {
     };
     DateComponent.guid = 0; // TODO: better system for this?
     return DateComponent;
-}(Component_1.default));
+}(Component_1.default_dashboard_view));
 exports.default = DateComponent;
 // legacy
 function convertEventsPayloadToLegacyArray(eventsPayload) {
@@ -9313,15 +9313,15 @@ var Calendar = /** @class */ (function () {
         this.freezeContentHeightDepth = 0;
         // declare the current calendar instance relies on GlobalEmitter. needed for garbage collection.
         // unneeded() is called in destroy.
-        GlobalEmitter_1.default.needed();
+        GlobalEmitter_1.default_dashboard_view.needed();
         this.el = el;
         this.viewsByType = {};
-        this.optionsManager = new OptionsManager_1.default(this, overrides);
-        this.viewSpecManager = new ViewSpecManager_1.default(this.optionsManager, this);
+        this.optionsManager = new OptionsManager_1.default_dashboard_view(this, overrides);
+        this.viewSpecManager = new ViewSpecManager_1.default_dashboard_view(this.optionsManager, this);
         this.initMomentInternals(); // needs to happen after options hash initialized
         this.initCurrentDate();
         this.initEventManager();
-        this.constraints = new Constraints_1.default(this.eventManager, this);
+        this.constraints = new Constraints_1.default_dashboard_view(this.eventManager, this);
         this.constructed();
     }
     Calendar.prototype.constructed = function () {
@@ -9533,7 +9533,7 @@ var Calendar = /** @class */ (function () {
             }
         });
         this.optionsManager.watch('settingBusinessHourGenerator', ['?businessHours'], function (deps) {
-            _this.businessHourGenerator = new BusinessHourGenerator_1.default(deps.businessHours, _this);
+            _this.businessHourGenerator = new BusinessHourGenerator_1.default_dashboard_view(deps.businessHours, _this);
             if (_this.view) {
                 _this.view.set('businessHourGenerator', _this.businessHourGenerator);
             }
@@ -9571,7 +9571,7 @@ var Calendar = /** @class */ (function () {
             $(window).unbind('resize', this.windowResizeProxy);
             this.windowResizeProxy = null;
         }
-        GlobalEmitter_1.default.unneeded();
+        GlobalEmitter_1.default_dashboard_view.unneeded();
     };
     Calendar.prototype.elementVisible = function () {
         return this.el.is(':visible');
@@ -9752,9 +9752,9 @@ var Calendar = /** @class */ (function () {
     // Toolbar
     // -----------------------------------------------------------------------------------------------------------------
     Calendar.prototype.initToolbars = function () {
-        this.header = new Toolbar_1.default(this, this.computeHeaderOptions());
-        this.footer = new Toolbar_1.default(this, this.computeFooterOptions());
-        this.toolbarsManager = new Iterator_1.default([this.header, this.footer]);
+        this.header = new Toolbar_1.default_dashboard_view(this, this.computeHeaderOptions());
+        this.footer = new Toolbar_1.default_dashboard_view(this, this.computeFooterOptions());
+        this.toolbarsManager = new Iterator_1.default_dashboard_view([this.header, this.footer]);
     };
     Calendar.prototype.computeHeaderOptions = function () {
         return {
@@ -9835,7 +9835,7 @@ var Calendar = /** @class */ (function () {
         else {
             end = start.clone().add(this.defaultAllDayEventDuration);
         }
-        return new ComponentFootprint_1.default(new UnzonedRange_1.default(start, end), !start.hasTime());
+        return new ComponentFootprint_1.default_dashboard_view(new UnzonedRange_1.default_dashboard_view(start, end), !start.hasTime());
     };
     // Date Utils
     // -----------------------------------------------------------------------------------------------------------------
@@ -9901,23 +9901,23 @@ var Calendar = /** @class */ (function () {
         }
         var mom;
         if (this.opt('timezone') === 'local') {
-            mom = moment_ext_1.default.apply(null, args);
+            mom = moment_ext_1.default_dashboard_view.apply(null, args);
             // Force the moment to be local, because momentExt doesn't guarantee it.
             if (mom.hasTime()) {
                 mom.local();
             }
         }
         else if (this.opt('timezone') === 'UTC') {
-            mom = moment_ext_1.default.utc.apply(null, args); // process as UTC
+            mom = moment_ext_1.default_dashboard_view.utc.apply(null, args); // process as UTC
         }
         else {
-            mom = moment_ext_1.default.parseZone.apply(null, args); // let the input decide the zone
+            mom = moment_ext_1.default_dashboard_view.parseZone.apply(null, args); // let the input decide the zone
         }
         this.localizeMoment(mom); // TODO
         return mom;
     };
     Calendar.prototype.msToMoment = function (ms, forceAllDay) {
-        var mom = moment_ext_1.default.utc(ms); // TODO: optimize by using Date.UTC
+        var mom = moment_ext_1.default_dashboard_view.utc(ms); // TODO: optimize by using Date.UTC
         if (forceAllDay) {
             mom.stripTime();
         }
@@ -9928,7 +9928,7 @@ var Calendar = /** @class */ (function () {
         return mom;
     };
     Calendar.prototype.msToUtcMoment = function (ms, forceAllDay) {
-        var mom = moment_ext_1.default.utc(ms); // TODO: optimize by using Date.UTC
+        var mom = moment_ext_1.default_dashboard_view.utc(ms); // TODO: optimize by using Date.UTC
         if (forceAllDay) {
             mom.stripTime();
         }
@@ -9966,10 +9966,10 @@ var Calendar = /** @class */ (function () {
     */
     Calendar.prototype.footprintToDateProfile = function (componentFootprint, ignoreEnd) {
         if (ignoreEnd === void 0) { ignoreEnd = false; }
-        var start = moment_ext_1.default.utc(componentFootprint.unzonedRange.startMs);
+        var start = moment_ext_1.default_dashboard_view.utc(componentFootprint.unzonedRange.startMs);
         var end;
         if (!ignoreEnd) {
-            end = moment_ext_1.default.utc(componentFootprint.unzonedRange.endMs);
+            end = moment_ext_1.default_dashboard_view.utc(componentFootprint.unzonedRange.endMs);
         }
         if (componentFootprint.isAllDay) {
             start.stripTime();
@@ -9983,7 +9983,7 @@ var Calendar = /** @class */ (function () {
                 end = this.applyTimezone(end);
             }
         }
-        return new EventDateProfile_1.default(start, end, this);
+        return new EventDateProfile_1.default_dashboard_view(start, end, this);
     };
     // Returns a moment for the current date, as defined by the client's computer or from the `now` option.
     // Will return an moment with an ambiguous timezone.
@@ -10015,13 +10015,13 @@ var Calendar = /** @class */ (function () {
         if (start && end && end.isBefore(start)) {
             return null;
         }
-        return new UnzonedRange_1.default(start, end);
+        return new UnzonedRange_1.default_dashboard_view(start, end);
     };
     // Event-Date Utilities
     // -----------------------------------------------------------------------------------------------------------------
     Calendar.prototype.initEventManager = function () {
         var _this = this;
-        var eventManager = new EventManager_1.default(this);
+        var eventManager = new EventManager_1.default_dashboard_view(this);
         var rawSources = this.opt('eventSources') || [];
         var singleRawSource = this.opt('events');
         this.eventManager = eventManager;
@@ -10033,7 +10033,7 @@ var Calendar = /** @class */ (function () {
         });
         eventManager.freeze();
         rawSources.forEach(function (rawSource) {
-            var source = EventSourceParser_1.default.parse(rawSource, _this);
+            var source = EventSourceParser_1.default_dashboard_view.parse(rawSource, _this);
             if (source) {
                 eventManager.addSource(source);
             }
@@ -10085,7 +10085,7 @@ var Calendar = /** @class */ (function () {
     Calendar.prototype.renderEvent = function (eventInput, isSticky) {
         if (isSticky === void 0) { isSticky = false; }
         var eventManager = this.eventManager;
-        var eventDef = EventDefParser_1.default.parse(eventInput, eventInput.source || eventManager.stickySource);
+        var eventDef = EventDefParser_1.default_dashboard_view.parse(eventInput, eventInput.source || eventManager.stickySource);
         if (eventDef) {
             eventManager.addEventDef(eventDef, isSticky);
         }
@@ -10136,9 +10136,9 @@ var Calendar = /** @class */ (function () {
         var eventDef = this.eventManager.getEventDefByUid(eventProps._id);
         var eventInstance;
         var eventDefMutation;
-        if (eventDef instanceof SingleEventDef_1.default) {
+        if (eventDef instanceof SingleEventDef_1.default_dashboard_view) {
             eventInstance = eventDef.buildInstance();
-            eventDefMutation = EventDefMutation_1.default.createFromRawProps(eventInstance, eventProps, // raw props
+            eventDefMutation = EventDefMutation_1.default_dashboard_view.createFromRawProps(eventInstance, eventProps, // raw props
             null // largeUnit -- who uses it?
             );
             this.eventManager.mutateEventsWithId(eventDef.id, eventDefMutation); // will release
@@ -10150,10 +10150,10 @@ var Calendar = /** @class */ (function () {
         return this.eventManager.otherSources.slice(); // clone
     };
     Calendar.prototype.getEventSourceById = function (id) {
-        return this.eventManager.getSourceById(EventSource_1.default.normalizeId(id));
+        return this.eventManager.getSourceById(EventSource_1.default_dashboard_view.normalizeId(id));
     };
     Calendar.prototype.addEventSource = function (sourceInput) {
-        var source = EventSourceParser_1.default.parse(sourceInput, this);
+        var source = EventSourceParser_1.default_dashboard_view.parse(sourceInput, this);
         if (source) {
             this.eventManager.addSource(source);
         }
@@ -10201,8 +10201,8 @@ var Calendar = /** @class */ (function () {
     return Calendar;
 }());
 exports.default = Calendar;
-EmitterMixin_1.default.mixInto(Calendar);
-ListenerMixin_1.default.mixInto(Calendar);
+EmitterMixin_1.default_dashboard_view.mixInto(Calendar);
+ListenerMixin_1.default_dashboard_view.mixInto(Calendar);
 function filterLegacyEventInstances(legacyEventInstances, legacyQuery) {
     if (legacyQuery == null) {
         return legacyEventInstances;
@@ -10330,7 +10330,7 @@ var DateProfileGenerator = /** @class */ (function () {
     // not responsible for trimming hidden days.
     DateProfileGenerator.prototype.buildValidRange = function () {
         return this._view.getUnzonedRangeOption('validRange', this._view.calendar.getNow()) ||
-            new UnzonedRange_1.default(); // completely open-ended
+            new UnzonedRange_1.default_dashboard_view(); // completely open-ended
     };
     // Builds a structure with info about the "current" range, the range that is
     // highlighted as being the current month for example.
@@ -10378,7 +10378,7 @@ var DateProfileGenerator = /** @class */ (function () {
                 end.time(maxTime - (24 * 60 * 60 * 1000));
             }
         }
-        return new UnzonedRange_1.default(start, end);
+        return new UnzonedRange_1.default_dashboard_view(start, end);
     };
     // Builds the "current" range when it is specified as an explicit duration.
     // `unit` is the already-computed computeGreatestUnit value of duration.
@@ -10417,7 +10417,7 @@ var DateProfileGenerator = /** @class */ (function () {
         function computeRes() {
             start = date.clone().startOf(alignment);
             end = start.clone().add(duration);
-            res = new UnzonedRange_1.default(start, end);
+            res = new UnzonedRange_1.default_dashboard_view(start, end);
         }
         computeRes();
         // if range is completely enveloped by hidden days, go past the hidden days
@@ -10446,7 +10446,7 @@ var DateProfileGenerator = /** @class */ (function () {
                 runningCount++;
             }
         } while (runningCount < dayCount);
-        return new UnzonedRange_1.default(start, end);
+        return new UnzonedRange_1.default_dashboard_view(start, end);
     };
     // Builds a normalized range object for the "visible" range,
     // which is a way to define the currentUnzonedRange and activeUnzonedRange at the same time.
@@ -10558,7 +10558,7 @@ var ExternalDropping = /** @class */ (function (_super) {
         var meta = getDraggedElMeta(el); // extra data about event drop, including possible event to create
         var singleEventDef; // a null value signals an unsuccessful drag
         // listener that tracks mouse movement over date-associated pixel regions
-        var dragListener = this.dragListener = new HitDragListener_1.default(component, {
+        var dragListener = this.dragListener = new HitDragListener_1.default_dashboard_view(component, {
             interactionStart: function () {
                 _this.isDragging = true;
             },
@@ -10569,7 +10569,7 @@ var ExternalDropping = /** @class */ (function (_super) {
                 if (hitFootprint) {
                     singleEventDef = _this.computeExternalDrop(hitFootprint, meta);
                     if (singleEventDef) {
-                        mutatedEventInstanceGroup = new EventInstanceGroup_1.default(singleEventDef.buildInstances());
+                        mutatedEventInstanceGroup = new EventInstanceGroup_1.default_dashboard_view(singleEventDef.buildInstances());
                         isAllowed = meta.eventProps ? // isEvent?
                             component.isEventInstanceGroupAllowed(mutatedEventInstanceGroup) :
                             component.isExternalInstanceGroupAllowed(mutatedEventInstanceGroup);
@@ -10616,7 +10616,7 @@ var ExternalDropping = /** @class */ (function (_super) {
     // Assumes both footprints are non-open-ended.
     ExternalDropping.prototype.computeExternalDrop = function (componentFootprint, meta) {
         var calendar = this.view.calendar;
-        var start = moment_ext_1.default.utc(componentFootprint.unzonedRange.startMs).stripZone();
+        var start = moment_ext_1.default_dashboard_view.utc(componentFootprint.unzonedRange.startMs).stripZone();
         var end;
         var eventDef;
         if (componentFootprint.isAllDay) {
@@ -10635,16 +10635,16 @@ var ExternalDropping = /** @class */ (function (_super) {
         if (end) {
             end = calendar.applyTimezone(end);
         }
-        eventDef = SingleEventDef_1.default.parse($.extend({}, meta.eventProps, {
+        eventDef = SingleEventDef_1.default_dashboard_view.parse($.extend({}, meta.eventProps, {
             start: start,
             end: end
-        }), new EventSource_1.default(calendar));
+        }), new EventSource_1.default_dashboard_view(calendar));
         return eventDef;
     };
     return ExternalDropping;
-}(Interaction_1.default));
+}(Interaction_1.default_dashboard_view));
 exports.default = ExternalDropping;
-ListenerMixin_1.default.mixInto(ExternalDropping);
+ListenerMixin_1.default_dashboard_view.mixInto(ExternalDropping);
 /* External-Dragging-Element Data
 ----------------------------------------------------------------------------------------------------------------------*/
 // Require all HTML5 data-* attributes used by FullCalendar to have this prefix.
@@ -10768,7 +10768,7 @@ var EventResizing = /** @class */ (function (_super) {
         var isDragging;
         var resizeMutation; // zoned event date properties. falsy if invalid resize
         // Tracks mouse movement over the *grid's* coordinate map
-        var dragListener = this.dragListener = new HitDragListener_1.default(component, {
+        var dragListener = this.dragListener = new HitDragListener_1.default_dashboard_view(component, {
             scroll: this.opt('dragScroll'),
             subjectEl: el,
             interactionStart: function () {
@@ -10867,9 +10867,9 @@ var EventResizing = /** @class */ (function (_super) {
         var dateMutation;
         var eventDefMutation;
         if (origRange.getStart().add(startDelta) < origRange.getEnd()) {
-            dateMutation = new EventDefDateMutation_1.default();
+            dateMutation = new EventDefDateMutation_1.default_dashboard_view();
             dateMutation.setStartDelta(startDelta);
-            eventDefMutation = new EventDefMutation_1.default();
+            eventDefMutation = new EventDefMutation_1.default_dashboard_view();
             eventDefMutation.setDateMutation(dateMutation);
             return eventDefMutation;
         }
@@ -10882,16 +10882,16 @@ var EventResizing = /** @class */ (function (_super) {
         var dateMutation;
         var eventDefMutation;
         if (origRange.getEnd().add(endDelta) > origRange.getStart()) {
-            dateMutation = new EventDefDateMutation_1.default();
+            dateMutation = new EventDefDateMutation_1.default_dashboard_view();
             dateMutation.setEndDelta(endDelta);
-            eventDefMutation = new EventDefMutation_1.default();
+            eventDefMutation = new EventDefMutation_1.default_dashboard_view();
             eventDefMutation.setDateMutation(dateMutation);
             return eventDefMutation;
         }
         return false;
     };
     return EventResizing;
-}(Interaction_1.default));
+}(Interaction_1.default_dashboard_view));
 exports.default = EventResizing;
 
 
@@ -10971,7 +10971,7 @@ var EventDragging = /** @class */ (function (_super) {
         if (this.dragListener) {
             return this.dragListener;
         }
-        var dragListener = this.dragListener = new DragListener_1.default({
+        var dragListener = this.dragListener = new DragListener_1.default_dashboard_view({
             dragStart: function (ev) {
                 if (dragListener.isTouch &&
                     !view.isEventDefSelected(eventDef) &&
@@ -11006,14 +11006,14 @@ var EventDragging = /** @class */ (function (_super) {
         }
         // Tracks mouse movement over the *view's* coordinate map. Allows dragging and dropping between subcomponents
         // of the view.
-        var dragListener = this.dragListener = new HitDragListener_1.default(view, {
+        var dragListener = this.dragListener = new HitDragListener_1.default_dashboard_view(view, {
             scroll: this.opt('dragScroll'),
             subjectEl: el,
             subjectCenter: true,
             interactionStart: function (ev) {
                 seg.component = component; // for renderDrag
                 isDragging = false;
-                mouseFollower = new MouseFollower_1.default(seg.el, {
+                mouseFollower = new MouseFollower_1.default_dashboard_view(seg.el, {
                     additionalClass: 'fc-dragging',
                     parentEl: view.el,
                     opacity: dragListener.isTouch ? null : _this.opt('dragOpacity'),
@@ -11134,7 +11134,7 @@ var EventDragging = /** @class */ (function (_super) {
     };
     // DOES NOT consider overlap/constraint
     EventDragging.prototype.computeEventDropMutation = function (startFootprint, endFootprint, eventDef) {
-        var eventDefMutation = new EventDefMutation_1.default();
+        var eventDefMutation = new EventDefMutation_1.default_dashboard_view();
         eventDefMutation.setDateMutation(this.computeEventDateMutation(startFootprint, endFootprint));
         return eventDefMutation;
     };
@@ -11157,7 +11157,7 @@ var EventDragging = /** @class */ (function (_super) {
             }
         }
         dateDelta = this.component.diffDates(date1, date0);
-        dateMutation = new EventDefDateMutation_1.default();
+        dateMutation = new EventDefDateMutation_1.default_dashboard_view();
         dateMutation.clearEnd = clearEnd;
         dateMutation.forceTimed = forceTimed;
         dateMutation.forceAllDay = forceAllDay;
@@ -11165,7 +11165,7 @@ var EventDragging = /** @class */ (function (_super) {
         return dateMutation;
     };
     return EventDragging;
-}(Interaction_1.default));
+}(Interaction_1.default_dashboard_view));
 exports.default = EventDragging;
 
 
@@ -11229,7 +11229,7 @@ var DateSelecting = /** @class */ (function (_super) {
         var _this = this;
         var component = this.component;
         var selectionFootprint; // null if invalid selection
-        var dragListener = new HitDragListener_1.default(component, {
+        var dragListener = new HitDragListener_1.default_dashboard_view(component, {
             scroll: this.opt('dragScroll'),
             interactionStart: function () {
                 selectionFootprint = null;
@@ -11295,14 +11295,14 @@ var DateSelecting = /** @class */ (function (_super) {
             footprint1.unzonedRange.endMs
         ];
         ms.sort(util_1.compareNumbers);
-        return new ComponentFootprint_1.default(new UnzonedRange_1.default(ms[0], ms[3]), footprint0.isAllDay);
+        return new ComponentFootprint_1.default_dashboard_view(new UnzonedRange_1.default_dashboard_view(ms[0], ms[3]), footprint0.isAllDay);
     };
     DateSelecting.prototype.isSelectionFootprintAllowed = function (componentFootprint) {
         return this.component.dateProfile.validUnzonedRange.containsRange(componentFootprint.unzonedRange) &&
             this.view.calendar.constraints.isSelectionFootprintAllowed(componentFootprint);
     };
     return DateSelecting;
-}(Interaction_1.default));
+}(Interaction_1.default_dashboard_view));
 exports.default = DateSelecting;
 
 
@@ -11337,7 +11337,7 @@ var AgendaView = /** @class */ (function (_super) {
             _this.dayGrid = _this.instantiateDayGrid(); // the all-day subcomponent of this view
             _this.addChild(_this.dayGrid);
         }
-        _this.scroller = new Scroller_1.default({
+        _this.scroller = new Scroller_1.default_dashboard_view({
             overflowX: 'hidden',
             overflowY: 'auto'
         });
@@ -11564,10 +11564,10 @@ var AgendaView = /** @class */ (function (_super) {
         }
     };
     return AgendaView;
-}(View_1.default));
+}(View_1.default_dashboard_view));
 exports.default = AgendaView;
-AgendaView.prototype.timeGridClass = TimeGrid_1.default;
-AgendaView.prototype.dayGridClass = DayGrid_1.default;
+AgendaView.prototype.timeGridClass = TimeGrid_1.default_dashboard_view;
+AgendaView.prototype.dayGridClass = DayGrid_1.default_dashboard_view;
 // Will customize the rendering behavior of the AgendaView's timeGrid
 agendaTimeGridMethods = {
     // Generates the HTML that will go before the day-of week header cells
@@ -11775,7 +11775,7 @@ var TimeGrid = /** @class */ (function (_super) {
             this.renderSlatRowHtml() +
             '</table>');
         this.slatEls = this.slatContainerEl.find('tr');
-        this.slatCoordCache = new CoordCache_1.default({
+        this.slatCoordCache = new CoordCache_1.default_dashboard_view({
             els: this.slatEls,
             isVertical: true
         });
@@ -11822,7 +11822,7 @@ var TimeGrid = /** @class */ (function (_super) {
         var dateProfile = this.dateProfile;
         var theme = this.view.calendar.theme;
         this.dayRanges = this.dayDates.map(function (dayDate) {
-            return new UnzonedRange_1.default(dayDate.clone().add(dateProfile.minTime), dayDate.clone().add(dateProfile.maxTime));
+            return new UnzonedRange_1.default_dashboard_view(dayDate.clone().add(dateProfile.minTime), dayDate.clone().add(dateProfile.maxTime));
         });
         if (this.headContainerEl) {
             this.headContainerEl.html(this.renderHeadHtml());
@@ -11831,7 +11831,7 @@ var TimeGrid = /** @class */ (function (_super) {
             this.renderBgTrHtml(0) + // row=0
             '</table>');
         this.colEls = this.el.find('.fc-day, .fc-disabled-day');
-        this.colCoordCache = new CoordCache_1.default({
+        this.colCoordCache = new CoordCache_1.default_dashboard_view({
             els: this.colEls,
             isHorizontal: true
         });
@@ -11922,7 +11922,7 @@ var TimeGrid = /** @class */ (function (_super) {
         }
         // seg system might be overkill, but it handles scenario where line needs to be rendered
         //  more than once because of columns with the same date (resources columns for example)
-        var segs = this.componentFootprintToSegs(new ComponentFootprint_1.default(new UnzonedRange_1.default(date, date.valueOf() + 1), // protect against null range
+        var segs = this.componentFootprintToSegs(new ComponentFootprint_1.default_dashboard_view(new UnzonedRange_1.default_dashboard_view(date, date.valueOf() + 1), // protect against null range
         false // all-day
         ));
         var top = this.computeDateTop(date, date);
@@ -12067,7 +12067,7 @@ var TimeGrid = /** @class */ (function (_super) {
         var end;
         start.time(time);
         end = start.clone().add(this.snapDuration);
-        return new ComponentFootprint_1.default(new UnzonedRange_1.default(start, end), false // all-day?
+        return new ComponentFootprint_1.default_dashboard_view(new UnzonedRange_1.default_dashboard_view(start, end), false // all-day?
         );
     };
     // Given a row number of the grid, representing a "snap", returns a time (Duration) from its start-of-day
@@ -12128,14 +12128,14 @@ var TimeGrid = /** @class */ (function (_super) {
         this.unrenderHighlight();
     };
     return TimeGrid;
-}(InteractiveDateComponent_1.default));
+}(InteractiveDateComponent_1.default_dashboard_view));
 exports.default = TimeGrid;
-TimeGrid.prototype.eventRendererClass = TimeGridEventRenderer_1.default;
-TimeGrid.prototype.businessHourRendererClass = BusinessHourRenderer_1.default;
-TimeGrid.prototype.helperRendererClass = TimeGridHelperRenderer_1.default;
-TimeGrid.prototype.fillRendererClass = TimeGridFillRenderer_1.default;
-StandardInteractionsMixin_1.default.mixInto(TimeGrid);
-DayTableMixin_1.default.mixInto(TimeGrid);
+TimeGrid.prototype.eventRendererClass = TimeGridEventRenderer_1.default_dashboard_view;
+TimeGrid.prototype.businessHourRendererClass = BusinessHourRenderer_1.default_dashboard_view;
+TimeGrid.prototype.helperRendererClass = TimeGridHelperRenderer_1.default_dashboard_view;
+TimeGrid.prototype.fillRendererClass = TimeGridFillRenderer_1.default_dashboard_view;
+StandardInteractionsMixin_1.default_dashboard_view.mixInto(TimeGrid);
+DayTableMixin_1.default_dashboard_view.mixInto(TimeGrid);
 
 
 /***/ }),
@@ -12164,10 +12164,10 @@ var BasicViewDateProfileGenerator = /** @class */ (function (_super) {
                 end.add(1, 'week').startOf('week'); // exclusively move backwards
             }
         }
-        return new UnzonedRange_1.default(start, end);
+        return new UnzonedRange_1.default_dashboard_view(start, end);
     };
     return BasicViewDateProfileGenerator;
-}(DateProfileGenerator_1.default));
+}(DateProfileGenerator_1.default_dashboard_view));
 exports.default = BasicViewDateProfileGenerator;
 
 
@@ -12200,9 +12200,9 @@ var MonthView = /** @class */ (function (_super) {
         return date.month() !== moment.utc(dateProfile.currentUnzonedRange.startMs).month(); // TODO: optimize
     };
     return MonthView;
-}(BasicView_1.default));
+}(BasicView_1.default_dashboard_view));
 exports.default = MonthView;
-MonthView.prototype.dateProfileGeneratorClass = MonthViewDateProfileGenerator_1.default;
+MonthView.prototype.dateProfileGeneratorClass = MonthViewDateProfileGenerator_1.default_dashboard_view;
 
 
 /***/ }),
@@ -12226,7 +12226,7 @@ var ListView = /** @class */ (function (_super) {
     function ListView(calendar, viewSpec) {
         var _this = _super.call(this, calendar, viewSpec) || this;
         _this.segSelector = '.fc-list-item'; // which elements accept event actions
-        _this.scroller = new Scroller_1.default({
+        _this.scroller = new Scroller_1.default_dashboard_view({
             overflowX: 'hidden',
             overflowY: 'auto'
         });
@@ -12261,7 +12261,7 @@ var ListView = /** @class */ (function (_super) {
         var dayRanges = [];
         while (dayStart < viewEnd) {
             dayDates.push(dayStart.clone());
-            dayRanges.push(new UnzonedRange_1.default(dayStart, dayStart.clone().add(1, 'day')));
+            dayRanges.push(new UnzonedRange_1.default_dashboard_view(dayStart, dayStart.clone().add(1, 'day')));
             dayStart.add(1, 'day');
         }
         this.dayDates = dayDates;
@@ -12360,10 +12360,10 @@ var ListView = /** @class */ (function (_super) {
             '</tr>';
     };
     return ListView;
-}(View_1.default));
+}(View_1.default_dashboard_view));
 exports.default = ListView;
-ListView.prototype.eventRendererClass = ListEventRenderer_1.default;
-ListView.prototype.eventPointingClass = ListEventPointing_1.default;
+ListView.prototype.eventRendererClass = ListEventRenderer_1.default_dashboard_view;
+ListView.prototype.eventPointingClass = ListEventPointing_1.default_dashboard_view;
 
 
 /***/ }),
@@ -12426,7 +12426,7 @@ $.fn.fullCalendar = function (options) {
             }
         }
         else if (!calendar) {
-            calendar = new Calendar_1.default(element, options);
+            calendar = new Calendar_1.default_dashboard_view(element, options);
             element.data('fullCalendar', calendar);
             calendar.render();
         }
@@ -12481,7 +12481,7 @@ var Component = /** @class */ (function (_super) {
         // subclasses should implement
     };
     return Component;
-}(Model_1.default));
+}(Model_1.default_dashboard_view));
 exports.default = Component;
 
 
@@ -12831,7 +12831,7 @@ var OptionsManager = /** @class */ (function (_super) {
         this.compute(); // this.options needs to be recomputed after the dynamic override
     };
     return OptionsManager;
-}(Model_1.default));
+}(Model_1.default_dashboard_view));
 exports.default = OptionsManager;
 
 
@@ -13007,7 +13007,7 @@ var ListenerMixin_1 = __webpack_require__(7);
 var EventManager = /** @class */ (function () {
     function EventManager(calendar) {
         this.calendar = calendar;
-        this.stickySource = new ArrayEventSource_1.default(calendar);
+        this.stickySource = new ArrayEventSource_1.default_dashboard_view(calendar);
         this.otherSources = [];
     }
     EventManager.prototype.requestEvents = function (start, end, timezone, force) {
@@ -13016,7 +13016,7 @@ var EventManager = /** @class */ (function () {
             !this.currentPeriod.isWithinRange(start, end) ||
             timezone !== this.currentPeriod.timezone) {
             this.setPeriod(// will change this.currentPeriod
-            new EventPeriod_1.default(start, end, timezone));
+            new EventPeriod_1.default_dashboard_view(start, end, timezone));
         }
         return this.currentPeriod.whenReleased();
     };
@@ -13097,12 +13097,12 @@ var EventManager = /** @class */ (function () {
             }
         }
         // an ID match
-        source = this.getSourceById(EventSource_1.default.normalizeId(matchInput));
+        source = this.getSourceById(EventSource_1.default_dashboard_view.normalizeId(matchInput));
         if (source) {
             return [source];
         }
         // parse as an event source
-        matchInput = EventSourceParser_1.default.parse(matchInput, this.calendar);
+        matchInput = EventSourceParser_1.default_dashboard_view.parse(matchInput, this.calendar);
         if (matchInput) {
             return $.grep(sources, function (source) {
                 return isSourcesEquivalent(matchInput, source);
@@ -13208,13 +13208,13 @@ var EventManager = /** @class */ (function () {
         var allInstances = [];
         for (i = 0; i < eventDefs.length; i++) {
             defCopy = eventDefs[i].clone();
-            if (defCopy instanceof SingleEventDef_1.default) {
+            if (defCopy instanceof SingleEventDef_1.default_dashboard_view) {
                 eventDefMutation.mutateSingle(defCopy);
                 allInstances.push.apply(allInstances, // append
                 defCopy.buildInstances());
             }
         }
-        return new EventInstanceGroup_1.default(allInstances);
+        return new EventInstanceGroup_1.default_dashboard_view(allInstances);
     };
     // Freezing
     // -----------------------------------------------------------------------------------------------------------------
@@ -13244,8 +13244,8 @@ var EventManager = /** @class */ (function () {
     return EventManager;
 }());
 exports.default = EventManager;
-EmitterMixin_1.default.mixInto(EventManager);
-ListenerMixin_1.default.mixInto(EventManager);
+EmitterMixin_1.default_dashboard_view.mixInto(EventManager);
+ListenerMixin_1.default_dashboard_view.mixInto(EventManager);
 function isSourcesEquivalent(source0, source1) {
     return source0.getPrimitive() === source1.getPrimitive();
 }
@@ -13271,7 +13271,7 @@ var EventPeriod = /** @class */ (function () {
         this.start = start;
         this.end = end;
         this.timezone = timezone;
-        this.unzonedRange = new UnzonedRange_1.default(start.clone().stripZone(), end.clone().stripZone());
+        this.unzonedRange = new UnzonedRange_1.default_dashboard_view(start.clone().stripZone(), end.clone().stripZone());
         this.requestsByUid = {};
         this.eventDefsByUid = {};
         this.eventDefsById = {};
@@ -13435,7 +13435,7 @@ var EventPeriod = /** @class */ (function () {
     EventPeriod.prototype.addEventInstance = function (eventInstance, eventDefId) {
         var eventInstanceGroupsById = this.eventInstanceGroupsById;
         var eventInstanceGroup = eventInstanceGroupsById[eventDefId] ||
-            (eventInstanceGroupsById[eventDefId] = new EventInstanceGroup_1.default());
+            (eventInstanceGroupsById[eventDefId] = new EventInstanceGroup_1.default_dashboard_view());
         eventInstanceGroup.eventInstances.push(eventInstance);
         this.tryRelease();
     };
@@ -13474,10 +13474,10 @@ var EventPeriod = /** @class */ (function () {
     EventPeriod.prototype.whenReleased = function () {
         var _this = this;
         if (this.releaseCnt) {
-            return Promise_1.default.resolve(this.eventInstanceGroupsById);
+            return Promise_1.default_dashboard_view.resolve(this.eventInstanceGroupsById);
         }
         else {
-            return Promise_1.default.construct(function (onResolve) {
+            return Promise_1.default_dashboard_view.construct(function (onResolve) {
                 _this.one('release', onResolve);
             });
         }
@@ -13495,7 +13495,7 @@ var EventPeriod = /** @class */ (function () {
     return EventPeriod;
 }());
 exports.default = EventPeriod;
-EmitterMixin_1.default.mixInto(EventPeriod);
+EmitterMixin_1.default_dashboard_view.mixInto(EventPeriod);
 
 
 /***/ }),
@@ -13644,7 +13644,7 @@ var MouseFollower = /** @class */ (function () {
     return MouseFollower;
 }());
 exports.default = MouseFollower;
-ListenerMixin_1.default.mixInto(MouseFollower);
+ListenerMixin_1.default_dashboard_view.mixInto(MouseFollower);
 
 
 /***/ }),
@@ -13690,7 +13690,7 @@ var DateClicking = /** @class */ (function (_super) {
         var _this = this;
         var component = this.component;
         var dayClickHit; // null if invalid dayClick
-        var dragListener = new HitDragListener_1.default(component, {
+        var dragListener = new HitDragListener_1.default_dashboard_view(component, {
             scroll: this.opt('dragScroll'),
             interactionStart: function () {
                 dayClickHit = dragListener.origHit;
@@ -13721,7 +13721,7 @@ var DateClicking = /** @class */ (function (_super) {
         return dragListener;
     };
     return DateClicking;
-}(Interaction_1.default));
+}(Interaction_1.default_dashboard_view));
 exports.default = DateClicking;
 
 
@@ -13962,7 +13962,7 @@ var TimeGridEventRenderer = /** @class */ (function (_super) {
         return props;
     };
     return TimeGridEventRenderer;
-}(EventRenderer_1.default));
+}(EventRenderer_1.default_dashboard_view));
 exports.default = TimeGridEventRenderer;
 // Builds an array of segments "levels". The first level will be the leftmost tier of segments if the calendar is
 // left-to-right, or the rightmost if the calendar is right-to-left. Assumes the segments are already ordered by date.
@@ -14076,7 +14076,7 @@ var TimeGridHelperRenderer = /** @class */ (function (_super) {
         return $(helperNodes); // must return the elements rendered
     };
     return TimeGridHelperRenderer;
-}(HelperRenderer_1.default));
+}(HelperRenderer_1.default_dashboard_view));
 exports.default = TimeGridHelperRenderer;
 
 
@@ -14112,7 +14112,7 @@ var TimeGridFillRenderer = /** @class */ (function (_super) {
         });
     };
     return TimeGridFillRenderer;
-}(FillRenderer_1.default));
+}(FillRenderer_1.default_dashboard_view));
 exports.default = TimeGridFillRenderer;
 
 
@@ -14260,7 +14260,7 @@ var Popover = /** @class */ (function () {
     return Popover;
 }());
 exports.default = Popover;
-ListenerMixin_1.default.mixInto(Popover);
+ListenerMixin_1.default_dashboard_view.mixInto(Popover);
 
 
 /***/ }),
@@ -14495,7 +14495,7 @@ var DayGridEventRenderer = /** @class */ (function (_super) {
             '</a>';
     };
     return DayGridEventRenderer;
-}(EventRenderer_1.default));
+}(EventRenderer_1.default_dashboard_view));
 exports.default = DayGridEventRenderer;
 // Computes whether two segments' columns collide. They are assumed to be in the same row.
 function isDaySegCollision(seg, otherSegs) {
@@ -14561,7 +14561,7 @@ var DayGridHelperRenderer = /** @class */ (function (_super) {
         return $(helperNodes); // must return the elements rendered
     };
     return DayGridHelperRenderer;
-}(HelperRenderer_1.default));
+}(HelperRenderer_1.default_dashboard_view));
 exports.default = DayGridHelperRenderer;
 
 
@@ -14622,7 +14622,7 @@ var DayGridFillRenderer = /** @class */ (function (_super) {
         return skeletonEl;
     };
     return DayGridFillRenderer;
-}(FillRenderer_1.default));
+}(FillRenderer_1.default_dashboard_view));
 exports.default = DayGridFillRenderer;
 
 
@@ -14652,10 +14652,10 @@ var MonthViewDateProfileGenerator = /** @class */ (function (_super) {
             );
             end.add(6 - rowCnt, 'weeks');
         }
-        return new UnzonedRange_1.default(start, end);
+        return new UnzonedRange_1.default_dashboard_view(start, end);
     };
     return MonthViewDateProfileGenerator;
-}(BasicViewDateProfileGenerator_1.default));
+}(BasicViewDateProfileGenerator_1.default_dashboard_view));
 exports.default = MonthViewDateProfileGenerator;
 
 
@@ -14735,7 +14735,7 @@ var ListEventRenderer = /** @class */ (function (_super) {
         return this.opt('mediumTimeFormat');
     };
     return ListEventRenderer;
-}(EventRenderer_1.default));
+}(EventRenderer_1.default_dashboard_view));
 exports.default = ListEventRenderer;
 
 
@@ -14766,7 +14766,7 @@ var ListEventPointing = /** @class */ (function (_super) {
         }
     };
     return ListEventPointing;
-}(EventPointing_1.default));
+}(EventPointing_1.default_dashboard_view));
 exports.default = ListEventPointing;
 
 
@@ -14779,9 +14779,9 @@ var EventSourceParser_1 = __webpack_require__(38);
 var ArrayEventSource_1 = __webpack_require__(52);
 var FuncEventSource_1 = __webpack_require__(215);
 var JsonFeedEventSource_1 = __webpack_require__(216);
-EventSourceParser_1.default.registerClass(ArrayEventSource_1.default);
-EventSourceParser_1.default.registerClass(FuncEventSource_1.default);
-EventSourceParser_1.default.registerClass(JsonFeedEventSource_1.default);
+EventSourceParser_1.default_dashboard_view.registerClass(ArrayEventSource_1.default_dashboard_view);
+EventSourceParser_1.default_dashboard_view.registerClass(FuncEventSource_1.default_dashboard_view);
+EventSourceParser_1.default_dashboard_view.registerClass(JsonFeedEventSource_1.default_dashboard_view);
 
 
 /***/ }),
@@ -14794,10 +14794,10 @@ var StandardTheme_1 = __webpack_require__(213);
 var JqueryUiTheme_1 = __webpack_require__(214);
 var Bootstrap3Theme_1 = __webpack_require__(258);
 var Bootstrap4Theme_1 = __webpack_require__(259);
-ThemeRegistry_1.defineThemeSystem('standard', StandardTheme_1.default);
-ThemeRegistry_1.defineThemeSystem('jquery-ui', JqueryUiTheme_1.default);
-ThemeRegistry_1.defineThemeSystem('bootstrap3', Bootstrap3Theme_1.default);
-ThemeRegistry_1.defineThemeSystem('bootstrap4', Bootstrap4Theme_1.default);
+ThemeRegistry_1.defineThemeSystem('standard', StandardTheme_1.default_dashboard_view);
+ThemeRegistry_1.defineThemeSystem('jquery-ui', JqueryUiTheme_1.default_dashboard_view);
+ThemeRegistry_1.defineThemeSystem('bootstrap3', Bootstrap3Theme_1.default_dashboard_view);
+ThemeRegistry_1.defineThemeSystem('bootstrap4', Bootstrap4Theme_1.default_dashboard_view);
 
 
 /***/ }),
@@ -14813,7 +14813,7 @@ var Bootstrap3Theme = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return Bootstrap3Theme;
-}(Theme_1.default));
+}(Theme_1.default_dashboard_view));
 exports.default = Bootstrap3Theme;
 Bootstrap3Theme.prototype.classes = {
     widget: 'fc-bootstrap3',
@@ -14862,7 +14862,7 @@ var Bootstrap4Theme = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     return Bootstrap4Theme;
-}(Theme_1.default));
+}(Theme_1.default_dashboard_view));
 exports.default = Bootstrap4Theme;
 Bootstrap4Theme.prototype.classes = {
     widget: 'fc-bootstrap4',
@@ -14907,7 +14907,7 @@ var ViewRegistry_1 = __webpack_require__(22);
 var BasicView_1 = __webpack_require__(62);
 var MonthView_1 = __webpack_require__(229);
 ViewRegistry_1.defineView('basic', {
-    'class': BasicView_1.default
+    'class': BasicView_1.default_dashboard_view
 });
 ViewRegistry_1.defineView('basicDay', {
     type: 'basic',
@@ -14918,7 +14918,7 @@ ViewRegistry_1.defineView('basicWeek', {
     duration: { weeks: 1 }
 });
 ViewRegistry_1.defineView('month', {
-    'class': MonthView_1.default,
+    'class': MonthView_1.default_dashboard_view,
     duration: { months: 1 },
     defaults: {
         fixedWeekCount: true
@@ -14934,7 +14934,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ViewRegistry_1 = __webpack_require__(22);
 var AgendaView_1 = __webpack_require__(226);
 ViewRegistry_1.defineView('agenda', {
-    'class': AgendaView_1.default,
+    'class': AgendaView_1.default_dashboard_view,
     defaults: {
         allDaySlot: true,
         slotDuration: '00:30:00',
@@ -14959,7 +14959,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ViewRegistry_1 = __webpack_require__(22);
 var ListView_1 = __webpack_require__(230);
 ViewRegistry_1.defineView('list', {
-    'class': ListView_1.default,
+    'class': ListView_1.default_dashboard_view,
     buttonTextKey: 'list',
     defaults: {
         buttonText: 'list',

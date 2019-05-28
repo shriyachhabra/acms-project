@@ -59,12 +59,26 @@ db.sync({success: true}).then(function () {
 
 
 
-function addDo(data) {
-    return register.create({
-        username: data.User_name,
-        email: data.Email,
-        password: data.Password
+function addUser(data) {
+    let success;
+    return register.sync().then(function () {
+        register.count({where:{email:data.Email}}).then(function(count){
+            if(count!=0){
+                success = "false";
+            }
+            else{
+                register.create({
+                    username: data.User_name,
+                    email: data.Email,
+                    password: data.Password
+                }).then(function () {
+                    success = "true";
+                });
+            }
+        });
+        return success;
     })
+
 }
 
 
@@ -105,7 +119,7 @@ function updateQuery(data) {
 function getQuery(data){
 
     return dashboard.findOne({
-        attributes:['query','title'],
+        attributes:['query','title','email'],
         where:{
             DNo: data.id
         }
@@ -124,14 +138,14 @@ function getDashboard(data){
     })
 }
 
-function getLastDashboard(data) {
+/*function getLastDashboard(data) {
     return dashboard.findOne({
         attributes:['title'],
         where:{
             DNo:data.id
         }
     })
-}
+}*/
 
 
 
@@ -163,7 +177,7 @@ function getDataSource(data) {
             }
 
         }).then(function (result) {
-        return datasource.findOne({
+            return datasource.findOne({
             where: {
                 email: data.Email,
                 database: data.Database,
@@ -180,5 +194,5 @@ function getDataSource(data) {
 
 
 module.exports = {
-    addDo, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, getDataSource, getLastDashboard
+    addUser, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, getDataSource
 };

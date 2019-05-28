@@ -13,7 +13,7 @@
 	(factory(global.jQuery));
 }(this, (function ($$1) { 'use strict';
 
-$$1 = $$1 && $$1.hasOwnProperty('default') ? $$1['default'] : $$1;
+$$1 = $$1 && $$1.hasOwnProperty('default_dashboard_view.html') ? $$1['default_dashboard_view.html'] : $$1;
 
 var Renderer = /** @class */ (function () {
     function Renderer(markup, children, options, callback) {

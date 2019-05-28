@@ -1,94 +1,49 @@
 const express = require('express');
 const bp = require('body-parser');
-// const clientES=require('./queryES');
-// const clientMONGO=require('./mongo')
-const sql_db = require('./database');
-//const session = require('express-session');
+const database_dao = require('./model/database_model');
 const path=require('path');
 const fs = require('fs');
 const app=express();
-
-/*const elasticsearch = require('elasticsearch');
-var client = new elasticsearch.Client({
-    hosts: ['http://127.0.0.1:9200']
-});
-
-
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
-
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
-
-
-
-
-
-var db = mongoose.connection;
-var cname = 'test';
-var query = { ticker: "IBM" };
-var ans="d";
-*/
-
-
-
-
-var sourceId,queryReceived,databaseReceived,tableReceived;
-var map={};
-var es="1",md="2",sql="3";
-var queryArr=[];
-var m=[];
-
-
-//const content = fs.readFileSync("data.json");
-
-const new_content = fs.readFileSync("new.json");
+let query_result_map={};
+let dataSource_Map={};
+let query_content;
+const new_query_content = fs.readFileSync("new_data.json");
 
 app.use('/', express.static(__dirname + "/"));
 
-app.use(bp.urlencoded({extended: true}))
-app.use(bp.json())
+app.use(bp.urlencoded({extended: true}));
+app.use(bp.json());
 
 
 app.get('/',(req,res)=>{
-    res.sendFile('index.html');
+    res.sendFile(path.join(__dirname+"/view/"+"index.html"));
 
-})
+});
 
-app.get('/dashboard',(req,res)=>{
-    res.send(map);
-    res.sendFile('dashboard.html');
-
-
-})
+app.get('/controller/dashboard_controller',(req,res)=>{
+    res.send(query_result_map);
+    res.sendFile(path.join(__dirname+"/view/"+"dashboard.html"));
 
 
-app.post('/dashboard',(req,res)=>{
-    //sql_db.getLastDashboard(req.body).then(function () {
-        //console.log(data.title);
-        //res.send({succes:true, data:data});
-        sql_db.getQuery(req.body).then(function (data) {
+});
+
+
+app.post('/controller/dashboard_controller',(req,res)=>{
+        database_dao.getQuery(req.body).then(function (data) {
             console.log('success');
-            res.send({success: true,data:data})
-            content=data.query;
+            res.send({success: true,data:data});
+            query_content=data.query;
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
         })
-
-    /*}).catch(function (err) {
-        console.log('Error'+err);
-        throw err;
-    })*/
-})
+});
 
 
-app.post('/fetch_dashboard',(req,res)=>{
-    sql_db.getDashboard(req.body).then(function (data) {
+app.post('/controller/fetch_dashboard_controller',(req,res)=>{
+    database_dao.getDashboard(req.body).then(function (data) {
         console.log('success dashboard');
         res.send({success:true,data:data});
-        //console.log(data);
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
@@ -96,18 +51,13 @@ app.post('/fetch_dashboard',(req,res)=>{
 })
 
 
-var content;
-
-app.post('/dashboard_click',(req,res)=>{
-   // console.log(req.body.id);
-    //var content = req.body;
-    sql_db.addSession(req.body).then(function () {
+app.post('/controller/dashboard_name_click_controller',(req,res)=>{
+    database_dao.addSession(req.body).then(function () {
         console.log('success add session');
-        //res.send('success');
-        sql_db.getQuery(req.body).then(function (data) {
+        database_dao.getQuery(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data})
-            content=data.query;
+            query_content=data.query;
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
@@ -122,23 +72,23 @@ app.post('/dashboard_click',(req,res)=>{
 
 
 
-app.get('/editbutton',(req,res)=>{
-    res.send({data:content});
+app.get('/controller/edit_query_controller',(req,res)=>{
+    res.send({data:query_content});
 });
 
 
 
-app.get('/new_content',(req,res)=>{
+app.get('/controller/new_content_controller',(req,res)=>{
     res.contentType('json');
-    res.send(JSON.parse(new_content));
+    res.send(JSON.parse(new_query_content));
 });
 
 
 
-app.post('/do', (req, res) => {
-    sql_db.addDo(req.body).then(function () {
-    	console.log('success registration');
-    	res.send({success: true})
+app.post('/controller/registration_controller', (req, res) => {
+    database_dao.addUser(req.body).then(function (data) {
+    	//console.log('success registration');
+    	res.send(data);
     }).catch(function (err) {
     	console.log('Error'+err);
         throw err;
@@ -147,8 +97,8 @@ app.post('/do', (req, res) => {
 
 
 
-app.post('/login', (req, res) => {
-    sql_db.getLogin(req.body).then(function (data) {
+app.post('/controller/login_controller', (req, res) => {
+    database_dao.getLogin(req.body).then(function (data) {
         console.log('success login');
         res.send({success:true,data:data});
     }).catch(function (err) {
@@ -159,9 +109,9 @@ app.post('/login', (req, res) => {
 
 
 
-app.post('/new_content',(req,res)=>{
+app.post('/controller/new_content_controller',(req,res)=>{
 
-    sql_db.addQuery(req.body).then(function (data) {
+    database_dao.addQuery(req.body).then(function (data) {
         console.log('success query');
         res.send({success: true,data:data})
     }).catch(function (err) {
@@ -175,121 +125,83 @@ app.post('/new_content',(req,res)=>{
 
 
 
-app.post('/editbutton',(req,res)=>{
+app.post('/controller/edit_query_controller',(req,res)=>{
     const components=req.body.comp;
     const email = req.body.Email;
-    var data;
-    sql_db.updateQuery(req.body).then(function (data) {
+    let data;
+    database_dao.updateQuery(req.body).then(function (data) {
         console.log('success update query');
         data=data;
-        //console.log(data)
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
     });
 
-    //fs.writeFileSync("data.json",req.body.data);
-    //console.log(req.body.data);
-    //console.log(components);
-    //console.log(JSON.stringify(components[0]));
-   // console.log(components[0].id);
-    //console.log(components.length);
-
-
-
     for(let i=0;i<components.length;i++){
 
-        sourceId=components[i].datasource;
-        queryReceived=components[i].query;
-        databaseReceived = components[i].database;
-        tableReceived = components[i].table;
-        var data_body = {
+        let sourceId=components[i].datasource;
+        let queryReceived=components[i].query;
+        let databaseReceived = components[i].database;
+        let tableReceived = components[i].table;
+        let data_body = {
             Email: email,
             Data_source: sourceId,
             Database: databaseReceived,
             Table: tableReceived,
             Query: queryReceived
         };
-        sql_db.getDataSource(data_body).then(function (data) {
+        //console.log(data_body)
+        database_dao.getDataSource(data_body).then(function (data) {
             for(let j in data) {
-
-                //console.log(data);
                 if (data === "null") {
                     console.log("null");
                 }
                 else if (data[j].data_source_name === "1") {
                     const elasticsearch = require('elasticsearch');
-                    var client = new elasticsearch.Client({
+                    let client = new elasticsearch.Client({
                         hosts: data[j].host
                     });
-                    client.search(
-                        {
-                            index: data[j].database,
-                            body: data[j].query,
-                            type: data[j].table
-                        })
-                        .then(results => {
-                            // console.log(results.hits.hits)
-                            console.log(`found ${results.hits.total} items in ${results.took}ms`);
-                            // set the results to the result array we have
+                    query_arr = data[j].query.split(',');
+                    for(let k in query_arr){
+                        client.search(
+                            {
+                                index: data[j].database,
+                                body: data[j].query,
+                                type: data[j].table
+                            })
+                            .then(results => {
+                                let p = results.hits.hits;
+                                let arr = []
+                                for (let ele = 0; ele < p.length; ele++) {
+                                    let obj = p[ele]["_source"]
+                                    arr.push(obj)
+                                }
+                                query_result_map[components[i]['id']] = arr
+                                console.log(query_result_map)
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            });
+                    }
 
-                            var p = results.hits.hits;
-                            //console.log("hi  "+JSON.stringify(p[0]["_source"]));
-                            //console.log(p)
-                            // queryArr.push(p)
-                            var arr = []
-                            for (var ele = 0; ele < p.length; ele++) {
-                                var obj = p[ele]["_source"]
-                                arr.push(obj)
-                            }
-                            //console.log(arr)
-                            map[components[i]['id']] = arr
-                            console.log(map)
-                        })
-                        .catch(err => {
-                            console.log(err)
-                        });
                 }
                 else if (data[j].data_source_name === "2") {
-
-                    //  console.log(typeof queryReceived);
-                    // console.log(typeof query)
-
-                    /*const mongoose = require('mongoose');
-
-                     mongoose.connect('mongodb://localhost:27017/sample',{useNewUrlParser: true});
-
-                     var MongoClient = require('mongodb').MongoClient;
-                     var url = "mongodb://localhost:27017/";
-
-
-                     console.log('mongodb://'+data.host+'/'+databaseReceived);
-
-
-                     var db = mongoose.connection;*/
 
                     const mongoose = require('mongoose');
 
                     mongoose.connect('mongodb://' + data[j].host + '/' + data[j].database, {useNewUrlParser: true});
 
-                    var MongoClient = require('mongodb').MongoClient;
-                    var url = 'mongodb://' + data[j].host + '/';
-                    var db = mongoose.connection;
-
-
-                    //console.log(queryReceived);
-
+                    let MongoClient = require('mongodb').MongoClient;
+                    let url = 'mongodb://' + data[j].host + '/';
+                    let db = mongoose.connection;
                     MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
                         if (err) throw err;
-                        var dbo = db.db(data[j].database);
+                        let dbo = db.db(data[j].database);
                         dbo.collection(data[j].table).find(JSON.parse(data[j].query)).toArray(function (err, result) {
                             if (err) throw err;
-                            //console.log(queryReceived)
-                            //console.log(result);
-                            //console.log(components[i])
-                            var id = components[i].id;
-                            map[id] = result
-                            console.log(map)
+                            let id = components[i].id;
+                            query_result_map[id] = result
+                            console.log(query_result_map)
                             db.close();
                         });
                     });
@@ -306,131 +218,24 @@ app.post('/editbutton',(req,res)=>{
     }
 
     setTimeout(function () {
-        console.log(map)
-        res.send({success: true,data:data,map:map})
+        console.log(query_result_map)
+        res.send({success: true,data:data,map:query_result_map})
     },2000)
 });
 
 
-//datasource table storing
-
-app.post('/datasource',(req,res)=>{
+app.post('/controller/datasource',(req,res)=>{
     const components=req.body.comp;
-    var data;
-    sql_db.addDataSource(req.body).then(function (data) {
+    let data;
+    database_dao.addDataSource(req.body).then(function (data) {
         console.log('successfull inserted');
     }).catch(function (err) {
         console.log('Error'+err);
         throw err;
     });
 
-    //fs.writeFileSync("data.json",req.body.data);
-    //console.log(req.body.data);
-    //console.log(components);
-    //console.log(JSON.stringify(components[0]));
-    // console.log(components[0].id);
-    //console.log(components.length);
-
-
-
-   /* for(let i=0;i<components.length;i++){
-
-        sourceId=components[i].datasource;
-        queryReceived=components[i].query;
-
-        if(sourceId==="1") {
-
-            client.search(
-                {
-                    index: 'tutorial',
-                    body: queryReceived,
-                    type: 'cities_list'
-                })
-                .then(results => {
-                    // console.log(results.hits.hits)
-                    console.log(`found ${results.hits.total} items in ${results.took}ms`);
-                    // set the results to the result array we have
-
-                    var p = results.hits.hits;
-                    //console.log("hi  "+JSON.stringify(p[0]["_source"]));
-                    //console.log(p)
-                    // queryArr.push(p)
-                    var arr=[]
-                    for(var ele=0;ele<p.length;ele++){
-                        var obj=p[ele]["_source"]
-                        arr.push(obj)
-                    }
-                    //console.log(arr)
-                    map[components[i]['id']]=arr
-                    // console.log(map)
-                })
-                .catch(err => {
-                    console.log(err)
-                });
-        }else if(sourceId==="2"){
-
-            //  console.log(typeof queryReceived);
-            // console.log(typeof query)
-
-            MongoClient.connect(url,{useNewUrlParser: true},function(err, db) {
-                if (err) throw err;
-                var dbo = db.db("sample");
-                dbo.collection("test").find(JSON.parse(queryReceived)).toArray(function(err, result) {
-                    if (err) throw err;
-                    //console.log(queryReceived)
-                    // console.log(result);
-                    map[components[i]['id']]=result
-                    // console.log(map)
-                    db.close();
-                });
-            });
-
-
-        }
-
-
-
-    }
-
-    setTimeout(function () {
-        console.log(map)
-        res.send({success: true,data:data,map:map})
-    },2000)*/
-
 });
 
-//datasource table fetching
-
-/*app.get('/datasource',(req,res)=> {
-    const components = req.body.comp;
-    var data;
-    sql_db.getDataSource(req.body).then(function (data) {
-        console.log('success update query');
-        res.send({data: content});
-    }).catch(function (err) {
-        console.log('Error' + err);
-        throw err;
-    });
-});*/
-
-
-/*app.post('/dashboard',(req,res)=>{
-
-  console.log("inside dash")
-    //console.log(req.body.map)
-    //res.sendFile("dashboard.html")
-
-});*/
-
-// app.get('/test',function (req,res) {
-//     res.contentType('json');
-//     res.send(JSON.parse(content));
-// });
-//
-// app.post('/change',function (req,res) {
-//     console.log(req.body.result);
-//     fs.writeFileSync("data.json",req.body.result);
-// });
 
 app.listen(7852, function () {
     console.log("Server started on http://localhost:7852");

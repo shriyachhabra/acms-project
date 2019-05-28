@@ -5,15 +5,13 @@ $(function () {
 
         let id = $(this).attr('id');
 
-        $.post('/dashboard_click',
+        $.post('/controller/dashboard_name_click_controller',
             {
                 Email:email,
                 id:id
             },function (data, err) {
                 if (data.success) {
-                    console.log("id1="+id);
                     sessionStorage.setItem("dashboard_id",id);
-                    console.log("yay");
                     location.reload();
                 }
                 else
