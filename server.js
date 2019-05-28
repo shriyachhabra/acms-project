@@ -7,7 +7,7 @@ const app=express();
 let query_result_map={};
 let dataSource_Map={};
 let query_content;
-const new_query_content = fs.readFileSync("new_data.json");
+const new_query_content = fs.readFileSync(path.join(__dirname+"/new_data.json"));
 
 app.use('/', express.static(__dirname + "/"));
 
@@ -87,8 +87,8 @@ app.get('/controller/new_content_controller',(req,res)=>{
 
 app.post('/controller/registration_controller', (req, res) => {
     database_dao.addUser(req.body).then(function (data) {
-    	//console.log('success registration');
-    	res.send(data);
+        console.log(data);
+    	res.send({success:true,data:data});
     }).catch(function (err) {
     	console.log('Error'+err);
         throw err;

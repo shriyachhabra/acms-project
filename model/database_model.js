@@ -62,21 +62,22 @@ db.sync({success: true}).then(function () {
 function addUser(data) {
     let success;
     return register.sync().then(function () {
-        register.count({where:{email:data.Email}}).then(function(count){
+        return register.count({where:{email:data.Email}}).then(function(count){
             if(count!=0){
                 success = "false";
+                return success;
             }
             else{
-                register.create({
+                return register.create({
                     username: data.User_name,
                     email: data.Email,
                     password: data.Password
                 }).then(function () {
                     success = "true";
+                    return success;
                 });
             }
         });
-        return success;
     })
 
 }
