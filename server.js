@@ -78,7 +78,7 @@ app.get('/controller/edit_query_controller',(req,res)=>{
 
 
 
-app.get('/controller/new_content_controller',(req,res)=>{
+app.get('/controller/new_query_controller',(req,res)=>{
     res.contentType('json');
     res.send(JSON.parse(new_query_content));
 });

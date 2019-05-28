@@ -22,14 +22,15 @@ $(function () {
                     Password: input_pass.val()
                 },
                 function (req,res) {
-                    if (req.data) {
+                    /*if (req.data) {
                         console.log("success");
                         sessionStorage.setItem("session_email",email.val());
                         sessionStorage.setItem("username",username.val());
                         self.close();
                     }
                     else
-                        alert("user exists");
+                        alert("user exists");*/
+                    console.log('hello');
                 }
             );
         }
