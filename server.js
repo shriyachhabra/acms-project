@@ -7,7 +7,6 @@ const path=require('path');
 const fs = require('fs');
 const app=express();
 let query_result_map={};
-let dataSource_Map={};
 let query_content;
 const new_query_content = fs.readFileSync(path.join(__dirname+"/new_data.json"));
 
@@ -74,7 +73,7 @@ app.post('/controller/dashboard_name_click_controller',(req,res)=>{
 
 
 
-app.get('/controller/edit_query_controller',(req,res)=>{
+app.get('/getConfig',(req,res)=>{
     res.send({data:query_content});
 });
 
@@ -127,7 +126,7 @@ app.post('/controller/new_content_controller',(req,res)=>{
 
 
 
-app.post('/controller/edit_query_controller',(req,res)=>{
+app.post('/updateConfig',(req,res)=>{
     const components=req.body.comp;
     const email = req.body.Email;
     let data;
