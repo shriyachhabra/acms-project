@@ -1,6 +1,8 @@
 const express = require('express');
 const bp = require('body-parser');
 const database_dao = require('./model/database_model');
+const elastic_dao = require('./model/elasticsearch_model');
+const mongodb_dao = require('./model/mongodb_model');
 const path=require('path');
 const fs = require('fs');
 const app=express();
@@ -152,7 +154,37 @@ app.post('/controller/edit_query_controller',(req,res)=>{
         };
         //console.log(data_body)
         database_dao.getDataSource(data_body).then(function (data) {
+
             for(let j in data) {
+                if (data === "null") {
+                    console.log("null");
+                }
+                else if (data[j].data_source_name === "elasticsearch") {
+
+                    elastic_dao.query(data[j]).then(function (data) {
+                        query_result_map[components[i]['id']] = data;
+                        //console.log(data);
+                        //console.log(query_result_map);
+                    }).catch(function (err) {
+                        console.log('Error'+err);
+                        throw err;
+                    });
+
+                }
+                else if (data[j].data_source_name === "mongodb") {
+                    //console.log(data[j])
+                    mongodb_dao.query(data[j],req=>{
+                        console.log("REq "+req);
+                        query_result_map[components[i]['id']] = req;
+                        //console.log(data);
+                        console.log("query"+query_result_map);
+                    })
+
+                }
+
+            }
+
+            /*for(let j in data) {
                 if (data === "null") {
                     console.log("null");
                 }
@@ -209,7 +241,7 @@ app.post('/controller/edit_query_controller',(req,res)=>{
 
                 }
 
-            }
+            }*/
 
     }).catch(function (err){
             console.log('Error'+err);

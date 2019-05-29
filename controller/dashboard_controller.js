@@ -19,10 +19,10 @@ $(function () {
 
 
     //NOTE: map contains the result of the query according to the component id
- var map=sessionStorage.getItem("map")
+ let map=sessionStorage.getItem("map")
     console.log(map)
     map=JSON.parse(map)
- var components=sessionStorage.getItem("components")
+ let components=sessionStorage.getItem("components")
     components=JSON.parse(components)
     console.log(components)
     console.log(map)
@@ -34,7 +34,7 @@ $(function () {
      let y=ele['y-val']
      outputCSV+=x+","+y+"\n";
      console.log(outputCSV)
-     var index = ele['id'];
+     let index = ele['id'];
      //console.log(index)
      let arr=map['map'][index]
      console.log("map"+arr)
@@ -43,7 +43,7 @@ $(function () {
         outputCSV+=arr[j][x]+","+arr[j][y]+"\n"
     }
     console.log("csv"+outputCSV)
-     $('<div id='+i+' width="50%" height="60"></div>').appendTo('#graphid');
+     $('<div id='+i+' width="100%" height="60"></div>').appendTo('#graphid');
      let type=ele['type']
 
      if(type==='graph'){
@@ -58,32 +58,32 @@ $(function () {
          if(document.getElementById(i)){
              console.log('exists');
              //console.log(outputCSV);
-             ele['style']["plotter"]=barChartPlotter;
+             //ele['style']["plotter"]=barChartPlotter;
              function darkenColor(colorStr) {
                  // Defined in dygraph-utils.js
-                 var color = Dygraph.toRGB_(colorStr);
+                 let color = Dygraph.toRGB_(colorStr);
                  color.r = Math.floor((255 + color.r) / 2);
                  color.g = Math.floor((255 + color.g) / 2);
                  color.b = Math.floor((255 + color.b) / 2);
                  return 'rgb(' + color.r + ',' + color.g + ',' + color.b + ')';
              }
-             function barChartPlotter(e) {
-                 var ctx = e.drawingContext;
-                 var points = e.points;
-                 var y_bottom = e.dygraph.toDomYCoord(0);
+             ele['style']["plotter"]=function (e) {
+                 let ctx = e.drawingContext;
+                 let points = e.points;
+                 let y_bottom = e.dygraph.toDomYCoord(0);
                  ctx.fillStyle = darkenColor(e.color);
                  // Find the minimum separation between x-values.
                  // This determines the bar width.
-                 var min_sep = Infinity;
-                 for (var i = 1; i < points.length; i++) {
-                     var sep = points[i].canvasx - points[i - 1].canvasx;
+                 let min_sep = Infinity;
+                 for (let i = 1; i < points.length; i++) {
+                     let sep = points[i].canvasx - points[i - 1].canvasx;
                      if (sep < min_sep) min_sep = sep;
                  }
-                 var bar_width = Math.floor(1.0 / 3 * min_sep);
+                 let bar_width = Math.floor(1.0 / 3 * min_sep);
                  // Do the actual plotting.
-                 for (var i = 0; i < points.length; i++) {
-                     var p = points[i];
-                     var center_x = p.canvasx;
+                 for (let i = 0; i < points.length; i++) {
+                     let p = points[i];
+                     let center_x = p.canvasx;
                      ctx.fillRect(center_x - bar_width / 2, p.canvasy,
                          bar_width, y_bottom - p.canvasy);
                      ctx.strokeRect(center_x - bar_width / 2, p.canvasy,
