@@ -92,7 +92,7 @@ function getLogin(data){
 }
 
 
-function addQuery(data) {
+function addConfig(data) {
 
          return dashboard.create({
              title:data.dashboard_Title,
@@ -107,21 +107,21 @@ function addQuery(data) {
 
 
 
-function updateQuery(data) {
+function updateConfig(data) {
    return dashboard.update({
         config:data.data,
         title:data.Dash_name
-    },{where:{databaseID:data.databaseID}})
+    },{where:{databaseID:data.database_id}})
 }
 
 
 
-function getQuery(data){
+function getConfig(data){
 
     return dashboard.findOne({
         attributes:['config','title','email'],
         where:{
-            databaseID: data.id
+            databaseID: data.dashboard_id
         }
     }).then(function (result) {
         return result;
@@ -152,7 +152,7 @@ function getDashboard(data){
 
 function addSession(data){
     return register.update({
-        last_session:data.id},
+        last_session:data.database_id},
         {where:{
             email:data.Email}
 
@@ -166,7 +166,7 @@ function addSession(data){
 //datasource retrieve
 function getDataSource(data) {
     return datasource.update({
-            config: data.Query
+            config: data.Config
         },
         {
             where: {
@@ -194,5 +194,5 @@ function getDataSource(data) {
 
 
 module.exports = {
-    addUser, getLogin, addQuery, getQuery, getDashboard, updateQuery, addSession, getDataSource
+    addUser, getLogin, addConfig, getConfig, getDashboard, updateConfig, addSession, getDataSource
 };

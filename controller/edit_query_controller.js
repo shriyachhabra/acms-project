@@ -9,10 +9,10 @@ $(function () {
     let new_dashboard_button=$('#new_dashboard_button');
     let username = $('#username');
     let get_user = sessionStorage.getItem("username");
-    let id = sessionStorage.getItem("dashboard_id");
+    let dashboard_id = sessionStorage.getItem("dashboard_id");
     $.get('/getConfig',
         function (req,res) {
-            var data = JSON.parse(req.data);
+            let data = JSON.parse(req.data);
             console.log(data);
               text_box.html(JSON.stringify(data));
 
@@ -20,8 +20,8 @@ $(function () {
 
 
             dashboard_name.html(data.header.title);
-            var styles = data.header.style;
-            var tags = Object.keys(styles);
+            let styles = data.header.style;
+            let tags = Object.keys(styles);
             $.each(tags,function (i) {
                 dashboard_name.css(tags[i],styles[tags[i]]);
                 //console.log(tags[i]+":"+styles[tags[i]]);
@@ -70,11 +70,11 @@ $(function () {
         sessionStorage.setItem("components",JSON.stringify(components));
         $.post('/updateConfig',
                     {
-                        comp:components,
+                        components:components,
                         data:text_box.val(),
-                        dno:id,
-                        Email:email
-                        //Dash_name:result.page_header.title
+                        dashboard_id:dashboard_id,
+                        Email:email,
+                        Dashboard_name:result.page_header_title.title
                     },
                     function (res) {
                       //console.log(res);

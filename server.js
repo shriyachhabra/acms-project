@@ -7,8 +7,8 @@ const path=require('path');
 const fs = require('fs');
 const app=express();
 let query_result_map={};
-let query_content;
-const new_query_content = fs.readFileSync(path.join(__dirname+"/new_data.json"));
+let config_content;
+const new_config_content = fs.readFileSync(path.join(__dirname+"/new_data.json"));
 
 app.use('/', express.static(__dirname + "/"));
 
@@ -30,10 +30,10 @@ app.get('/controller/dashboard_controller',(req,res)=>{
 
 
 app.post('/controller/dashboard_controller',(req,res)=>{
-        database_dao.getQuery(req.body).then(function (data) {
+        database_dao.getConfig(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data});
-            if(data!=null){query_content=data.query;}
+            if(data!=null){config_content=data.config;}
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
@@ -54,11 +54,12 @@ app.post('/controller/fetch_dashboard_controller',(req,res)=>{
 
 app.post('/dashboard_name_click_controller/click',(req,res)=>{
     database_dao.addSession(req.body).then(function () {
+        console.log("dashboard click "+req.body);
         console.log('success add session');
-        database_dao.getQuery(req.body).then(function (data) {
+        database_dao.getConfig(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data})
-            if(data!=null){query_content=data.query;}
+            if(data!=null){config_content=data.config;}
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
@@ -74,14 +75,14 @@ app.post('/dashboard_name_click_controller/click',(req,res)=>{
 
 
 app.get('/getConfig',(req,res)=>{
-    res.send({data:query_content});
+    res.send({data:config_content});
 });
 
 
 
 app.get('/getNewConfig/sampleData',(req,res)=>{
     res.contentType('json');
-    res.send(JSON.parse(new_query_content));
+    res.send(JSON.parse(new_config_content));
 });
 
 
@@ -112,8 +113,8 @@ app.post('/login', (req, res) => {
 
 app.post('/save_newConfig',(req,res)=>{
 
-    database_dao.addQuery(req.body).then(function (data) {
-        console.log('success query');
+    database_dao.addConfig(req.body).then(function (data) {
+        console.log('success config');
         res.send({success: true,data:data})
     }).catch(function (err) {
         console.log('Error'+err);
@@ -127,11 +128,11 @@ app.post('/save_newConfig',(req,res)=>{
 
 
 app.post('/updateConfig',(req,res)=>{
-    const components=req.body.comp;
+    const components=req.body.components;
     const email = req.body.Email;
     let data;
-    database_dao.updateQuery(req.body).then(function (data) {
-        console.log('success update query');
+    database_dao.updateConfig(req.body).then(function (data) {
+        console.log('success update config');
         data=data;
     }).catch(function (err) {
         console.log('Error'+err);

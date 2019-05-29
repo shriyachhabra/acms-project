@@ -8,9 +8,10 @@ $(function () {
         $.post('/dashboard_name_click_controller/click',
             {
                 Email:email,
-                id:dashboard_id
+                dashboard_id:dashboard_id
             },function (data, err) {
                 if (data.success) {
+                    console.log("Current dashboard id"+dashboard_id);
                     sessionStorage.setItem("dashboard_id",dashboard_id);
                     location.reload();
                 }
