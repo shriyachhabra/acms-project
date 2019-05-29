@@ -98,7 +98,7 @@ app.post('/controller/registration_controller', (req, res) => {
 
 
 
-app.post('/controller/login_controller', (req, res) => {
+app.post('/login', (req, res) => {
     database_dao.getLogin(req.body).then(function (data) {
         console.log('success login');
         res.send({success:true,data:data});
