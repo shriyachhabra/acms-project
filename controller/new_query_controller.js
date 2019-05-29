@@ -1,24 +1,24 @@
 $(function () {
-    let new_dashboard = $('#myTextAreaNew');
-    let save=$('#save');
-$.get('/controller/new_query_controller',
+    let text_area = $('#myTextAreaNew');
+    let save_button=$('#save');
+$.get('/getNewConfig/sampleData',
     function (req) {
         console.log(req);
-        new_dashboard.html(JSON.stringify(req));
+        text_area.html(JSON.stringify(req));
     }
 );
 
-save.click(function () {
-    let result=new_dashboard.val();
+save_button.click(function () {
+    let result=text_area.val();
     result=JSON.parse(result);
-    console.log("hi vh");
+
     let components=result.components;
     let email = sessionStorage.getItem("session_email");
 
     sessionStorage.setItem("components",JSON.stringify(components));
-    $.post('/controller/new_query_controller',
+    $.post('/save_newConfig',
         {comp:components,
-            Query:new_dashboard.val(),
+            Config:text_area.val(),
             Email:email,
             dashboard_Title:result.page_header.title
         },

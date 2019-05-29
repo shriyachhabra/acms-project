@@ -79,7 +79,7 @@ app.get('/getConfig',(req,res)=>{
 
 
 
-app.get('/controller/new_query_controller',(req,res)=>{
+app.get('/getNewConfig/sampleData',(req,res)=>{
     res.contentType('json');
     res.send(JSON.parse(new_query_content));
 });
@@ -110,7 +110,7 @@ app.post('/login', (req, res) => {
 
 
 
-app.post('/controller/new_content_controller',(req,res)=>{
+app.post('/save_newConfig',(req,res)=>{
 
     database_dao.addQuery(req.body).then(function (data) {
         console.log('success query');

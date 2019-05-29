@@ -97,7 +97,7 @@ function addQuery(data) {
 
          return dashboard.create({
              title:data.dashboard_Title,
-            query: data.Query,
+            query: data.Config,
             email: data.Email
 
         }).then(function (result) {
