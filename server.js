@@ -33,7 +33,7 @@ app.post('/controller/dashboard_controller',(req,res)=>{
         database_dao.getQuery(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data});
-            if(data.query!=null){query_content=data.query;}
+            if(data!=null){query_content=data.query;}
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
@@ -86,7 +86,7 @@ app.get('/getNewConfig/sampleData',(req,res)=>{
 
 
 
-app.post('/controller/registration_controller', (req, res) => {
+app.post('/registration', (req, res) => {
     database_dao.addUser(req.body).then(function (data) {
         //console.log(data);
     	res.send({success:true,data:data});

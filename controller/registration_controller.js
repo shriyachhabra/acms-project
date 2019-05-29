@@ -15,7 +15,7 @@ $(function () {
         else
         {
 
-            $.post('/controller/registration_controller',
+            $.post('/registration',
                 {
                     User_name: username.val(),
                     Email: email.val(),
