@@ -1,10 +1,10 @@
 $(function () {
 
     let email=sessionStorage.getItem("session_email");
-    let userid = sessionStorage.getItem("username");
+    let get_user_name = sessionStorage.getItem("username");
     let username = $('#username');
 
-    username.html(userid);
+    username.html(get_user_name);
 
     $.post('/controller/fetch_dashboard_controller',
         {
