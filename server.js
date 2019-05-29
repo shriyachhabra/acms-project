@@ -52,7 +52,7 @@ app.post('/controller/fetch_dashboard_controller',(req,res)=>{
 })
 
 
-app.post('/controller/dashboard_name_click_controller',(req,res)=>{
+app.post('/dashboard_name_click_controller/click',(req,res)=>{
     database_dao.addSession(req.body).then(function () {
         console.log('success add session');
         database_dao.getQuery(req.body).then(function (data) {
