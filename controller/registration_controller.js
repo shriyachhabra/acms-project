@@ -22,17 +22,25 @@ $(function () {
                     Password: input_pass.val()
                 },
                 function (req,res) {
-                    /*if (req.data) {
-                        console.log("success");
+                    //console.log(req.data);
+                    if (req.data === 0) {
+
+                        alert("user exists try again");
+
+                    }
+                    else{
+                        alert("successfull registration");
                         sessionStorage.setItem("session_email",email.val());
                         sessionStorage.setItem("username",username.val());
+                        window.open("/view/default_dashboard_view.html","_self");
                         self.close();
                     }
-                    else
-                        alert("user exists");*/
-                    console.log('hello');
-                }
-            );
+                });
+            //console.log('hello');
+            //sessionStorage.setItem("session_email",email.val());
+            //sessionStorage.setItem("username",username.val());
+            //window.open("/view/default_dashboard_view.html");
+            //self.close();
         }
     })
 });

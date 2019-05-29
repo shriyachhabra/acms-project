@@ -32,7 +32,9 @@ app.post('/controller/dashboard_controller',(req,res)=>{
         database_dao.getQuery(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data});
-            query_content=data.query;
+            if(data!=null){
+                query_content=data.query;
+            }
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
@@ -73,7 +75,9 @@ app.post('/controller/dashboard_name_click_controller',(req,res)=>{
 
 
 app.get('/controller/edit_query_controller',(req,res)=>{
-    res.send({data:query_content});
+    //if(query_content!=null) {
+        res.send({data: query_content});
+    //}
 });
 
 
@@ -88,7 +92,7 @@ app.get('/controller/new_query_controller',(req,res)=>{
 app.post('/controller/registration_controller', (req, res) => {
     database_dao.addUser(req.body).then(function (data) {
         console.log(data);
-    	res.send({success:true,data:data});
+    	res.send({data:data});
     }).catch(function (err) {
     	console.log('Error'+err);
         throw err;

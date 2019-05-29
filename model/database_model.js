@@ -6,7 +6,7 @@ const db = new Sequelize({
     host: 'localhost',
     username: 'root',
     database: 'amazon',
-    password: 'S@nket123',
+    password: '',
     dialect: 'mysql'
 });
 
@@ -61,10 +61,10 @@ db.sync({success: true}).then(function () {
 
 function addUser(data) {
     let success;
-    return register.sync().then(function () {
+
         return register.count({where:{email:data.Email}}).then(function(count){
             if(count!=0){
-                success = "false";
+                success = 0;
                 return success;
             }
             else{
@@ -73,12 +73,12 @@ function addUser(data) {
                     email: data.Email,
                     password: data.Password
                 }).then(function () {
-                    success = "true";
+                    success = 1;
                     return success;
                 });
             }
         });
-    })
+
 
 }
 
