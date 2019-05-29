@@ -43,7 +43,7 @@
                     "y-val":"lng",
                     "position":1,
                     "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
-                    "datasource":"1",
+                    "datasource":"elasticsearch",
                     "database": "tutorial",
                     "table": "cities_list"
                   },
@@ -62,7 +62,7 @@
                               "width":480
                     },
                     "query":"{ \"name\": \"Jobat\" }",
-                    "datasource":"2",
+                    "datasource":"mongodb",
                     "database": "sample",
                     "table": "test"
                   }

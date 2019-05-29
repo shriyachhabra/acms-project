@@ -12,7 +12,7 @@ const db = new Sequelize({
 
 
 const register = db.define('Registration', {
-    SNo:{type: Sequelize.DataTypes.INTEGER,
+    userID:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true
     },
@@ -24,19 +24,19 @@ const register = db.define('Registration', {
 
 
 const dashboard = db.define('Database',{
-    DNo:{type: Sequelize.DataTypes.INTEGER,
+    databaseID:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true
     },
     title:Sequelize.DataTypes.STRING,
-    query:Sequelize.DataTypes.TEXT
+    config:Sequelize.DataTypes.TEXT
 });
 
 register.hasMany(dashboard,{foreignKey:'email',sourceKey:'email'});
 
 //Data Source Table
 const datasource = db.define('Data_Source', {
-    SNo:{type: Sequelize.DataTypes.INTEGER,
+    data_sourceID:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true
     },
@@ -46,7 +46,6 @@ const datasource = db.define('Data_Source', {
     host:Sequelize.DataTypes.STRING,
     table:Sequelize.DataTypes.STRING,
     data_source_name:Sequelize.DataTypes.STRING,
-    query:Sequelize.DataTypes.STRING
 
 });
 
@@ -97,11 +96,11 @@ function addQuery(data) {
 
          return dashboard.create({
              title:data.dashboard_Title,
-            query: data.Config,
+            config: data.Config,
             email: data.Email
 
         }).then(function (result) {
-             return result.DNo;
+             return result.databaseID;
          });
 
 }
@@ -110,9 +109,9 @@ function addQuery(data) {
 
 function updateQuery(data) {
    return dashboard.update({
-        query:data.data,
+        config:data.data,
         title:data.Dash_name
-    },{where:{DNo:data.dno}})
+    },{where:{databaseID:data.databaseID}})
 }
 
 
@@ -120,9 +119,9 @@ function updateQuery(data) {
 function getQuery(data){
 
     return dashboard.findOne({
-        attributes:['query','title','email'],
+        attributes:['config','title','email'],
         where:{
-            DNo: data.id
+            databaseID: data.id
         }
     }).then(function (result) {
         return result;
@@ -132,7 +131,7 @@ function getQuery(data){
 
 function getDashboard(data){
     return dashboard.findAll({
-        attributes:['DNo','title'],
+        attributes:['databaseID','title'],
         where:{
             email:data.Email
         }
@@ -167,7 +166,7 @@ function addSession(data){
 //datasource retrieve
 function getDataSource(data) {
     return datasource.update({
-            query: data.Query
+            config: data.Query
         },
         {
             where: {

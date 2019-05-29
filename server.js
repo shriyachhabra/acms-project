@@ -58,7 +58,7 @@ app.post('/dashboard_name_click_controller/click',(req,res)=>{
         database_dao.getQuery(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data})
-            query_content=data.query;
+            if(data!=null){query_content=data.query;}
         }).catch(function (err) {
             console.log('Error'+err);
             throw err;
