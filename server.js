@@ -75,9 +75,9 @@ app.post('/controller/dashboard_name_click_controller',(req,res)=>{
 
 
 app.get('/controller/edit_query_controller',(req,res)=>{
-    //if(query_content!=null) {
+    if(query_content!=null) {
         res.send({data: query_content});
-    //}
+    }
 });
 
 
