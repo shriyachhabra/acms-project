@@ -21,13 +21,13 @@ app.get('/',(req,res)=>{
 
 });
 
-app.get('/controller/dashboard_controller',(req,res)=>{
+/*app.get('/controller/dashboard_controller',(req,res)=>{
     res.send(query_result_map);
     res.sendFile(path.join(__dirname+"/view/"+"dashboard.html"));
 
 
 });
-
+*/
 
 app.post('/controller/dashboard_controller',(req,res)=>{
         database_dao.getConfig(req.body).then(function (data) {

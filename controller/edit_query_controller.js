@@ -66,7 +66,7 @@ $(function () {
         //console.log("hi vh");
         let components = result.components;
 
-        console.log("components"+components);
+        /*console.log("components"+components);
         console.log("length"+components.length);
 
         for(let i=0;i<components.length;i++) {
@@ -87,7 +87,7 @@ $(function () {
                             //alert("query updated");
                             window.open("/view/dashboard_view.html", "_self");
                         })
-                    }
+                    }*/
 
         sessionStorage.setItem("components",JSON.stringify(components));
 
@@ -104,7 +104,7 @@ $(function () {
                     //sessionStorage.setItem("map", JSON.stringify(res));
                     //console.log("map"+JSON.stringify(res));
                     //alert("query updated");
-                   // window.open("/view/dashboard_view.html", "_self");
+                   window.open("/view/dashboard_view.html", "_self");
                 }
             )
 
