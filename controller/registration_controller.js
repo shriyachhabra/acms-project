@@ -44,8 +44,10 @@ $(function () {
                     else{
                         swal({
                             title: "Success!",
-                            text: "Successful Registration!",
+                            text: "Registration Successful!",
                             icon: "success",
+                        }).then(() => {
+                            window.open("/view/index.html", "_self");
                         });
                     }
             });
