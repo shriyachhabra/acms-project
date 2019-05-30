@@ -5,7 +5,7 @@ $(function () {
     let page_heading = $('#pageheader_title');
     let which_dashboard_title = $('#which_title');
     let config;
-    $.post('/controller/dashboard_controller',{
+    $.post('/getConfig',{
         dashboard_id:dashboard_id
     },function (req,res) {
         if (req.data === null) {

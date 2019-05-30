@@ -19,7 +19,8 @@ const register = db.define('Registration', {
     username:Sequelize.DataTypes.STRING,
     email:{type:Sequelize.DataTypes.STRING,unique:true},
     password:Sequelize.DataTypes.STRING,
-    last_session:Sequelize.DataTypes.INTEGER
+    last_session:Sequelize.DataTypes.INTEGER,
+    allowed_login:Sequelize.DataTypes.INTEGER
 });
 
 
@@ -52,7 +53,7 @@ const datasource = db.define('Data_Source', {
 register.hasMany(datasource,{foreignKey:'email',sourceKey:'email'});
 
 
-db.sync({success: true}).then(function () {
+db.sync({alter: true}).then(function () {
     console.log("Database is ready");
 });
 
@@ -70,7 +71,8 @@ function addUser(data) {
                 return register.create({
                     username: data.User_name,
                     email: data.Email,
-                    password: data.Password
+                    password: data.Password,
+                    allowed_login:data.Allowed
                 }).then(function () {
                     success = 1;
                     return success;

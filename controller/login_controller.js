@@ -18,12 +18,27 @@ $(function () {
                     if (req.data === null) {
                         alert('details not match');
                     } else if (input_email.val() === req.data.email && input_pass.val() === req.data.password) {
-                        sessionStorage.clear();
-                        sessionStorage.setItem("session_email", input_email.val());
-                        sessionStorage.setItem("username", req.data.username);
-                        sessionStorage.setItem("dashboard_id",req.data.last_session);
-                        console.log(req.data.last_session)
-                        window.open("/view/dashboard_view.html","_self");
+                        if(req.data.allowed_login===0){
+
+                            alert("not allowed to login");
+                        }else{
+                            sessionStorage.setItem("session_email", input_email.val());
+                            sessionStorage.setItem("username", req.data.username);
+                            sessionStorage.setItem("dashboard_id",req.data.last_session);
+                            console.log(req.data.last_session);
+                            let dashboard_id = req.data.last_session;
+                            $.post('/getConfig',{
+                                    dashboard_id:dashboard_id
+                                },
+                                function (req,res) {
+                                    if(req.data!=null){
+                                        window.open("/view/dashboard_view.html","_self");
+                                    }else{
+                                        window.open("/view/default_dashboard_view.html","_self");
+                                    }
+                                });
+                        }
+
 
                     }
                 })

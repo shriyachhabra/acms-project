@@ -14,12 +14,14 @@ $(function () {
         }
         else
         {
+            let allowed = "false";
 
             $.post('/registration',
                 {
                     User_name: username.val(),
                     Email: email.val(),
-                    Password: input_pass.val()
+                    Password: input_pass.val(),
+                    Allowed:allowed
                 },
                 function (req,res) {
                     //console.log(req.data);
@@ -30,10 +32,10 @@ $(function () {
                     }
                     else{
                         alert("successfull registration");
-                        sessionStorage.setItem("session_email",email.val());
+                        /*sessionStorage.setItem("session_email",email.val());
                         sessionStorage.setItem("username",username.val());
                         window.open("/view/default_dashboard_view.html","_self");
-                        self.close();
+                        self.close();*/
                     }
                 });
             //console.log('hello');

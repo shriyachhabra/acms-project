@@ -10,9 +10,11 @@ $(function () {
     let username = $('#username');
     let get_user = sessionStorage.getItem("username");
     let dashboard_id = sessionStorage.getItem("dashboard_id");
-    $.get('/getConfig',
+    $.post('/getConfig',{
+        dashboard_id:dashboard_id
+    },
         function (req,res) {
-            let config = JSON.parse(req.data);
+            let config = JSON.parse(req.data.config);
             console.log(config);
               text_box.html(JSON.stringify(config));
 
@@ -93,14 +95,12 @@ $(function () {
 
             $.post('/updateConfig',
                 {
+                    config:text_box.val(),
                     dashboard_id: dashboard_id,
                     Email: email,
                     Dashboard_name: result.page_header_title.title
                 },
                 function (res) {
-
-
-                    console.log(res);
                     //sessionStorage.setItem("map", JSON.stringify(res));
                     //console.log("map"+JSON.stringify(res));
                     //alert("query updated");

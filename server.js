@@ -29,7 +29,7 @@ app.get('/',(req,res)=>{
 });
 */
 
-app.post('/controller/dashboard_controller',(req,res)=>{
+app.post('/getConfig',(req,res)=>{
         database_dao.getConfig(req.body).then(function (data) {
             console.log('success');
             res.send({success: true,data:data});
@@ -39,6 +39,7 @@ app.post('/controller/dashboard_controller',(req,res)=>{
             throw err;
         })
 });
+
 
 
 app.post('/controller/fetch_dashboard_controller',(req,res)=>{
@@ -70,12 +71,6 @@ app.post('/dashboard_name_click_controller/click',(req,res)=>{
     })
 
 
-});
-
-
-
-app.get('/getConfig',(req,res)=>{
-    res.send({data:config_content})
 });
 
 
