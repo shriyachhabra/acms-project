@@ -26,9 +26,15 @@ save_button.click(function () {
             console.log(res+" "+res.data);
             let item=$('<li class="nav-item"></li>').appendTo('#dashboard_list');
             item.append($("<a class='nav-link' href='../dashboard_view.html' id="+res.data+">"+result.page_header_title.title+"</a>"));
-            alert("new dashboard created");
             sessionStorage.setItem('dashboard_id',res.data);
-            window.open("/view/dashboard_view.html","_self");
+            swal({
+                title: "Success!",
+                text: "Login Successful!",
+                icon: "success",
+            }).then(()=> {
+                window.open("/view/dashboard_view.html","_self");
+            });
+            //window.open("/view/dashboard_view.html","_self");
         }
     )
 

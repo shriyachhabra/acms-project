@@ -24,25 +24,23 @@ $(function () {
                     Allowed:allowed
                 },
                 function (req,res) {
-                    //console.log(req.data);
                     if (req.data === 0) {
 
-                        alert("user exists try again");
+                        swal({
+                            title: "Oops!",
+                            text: "User Already Exists!",
+                            icon: "error",
+                        });
 
                     }
                     else{
-                        alert("successfull registration");
-                        /*sessionStorage.setItem("session_email",email.val());
-                        sessionStorage.setItem("username",username.val());
-                        window.open("/view/default_dashboard_view.html","_self");
-                        self.close();*/
+                        swal({
+                            title: "Success!",
+                            text: "Successful Registration!",
+                            icon: "success",
+                        });
                     }
                 });
-            //console.log('hello');
-            //sessionStorage.setItem("session_email",email.val());
-            //sessionStorage.setItem("username",username.val());
-            //window.open("/view/default_dashboard_view.html");
-            //self.close();
         }
     })
 });

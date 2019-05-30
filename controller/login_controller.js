@@ -16,27 +16,44 @@ $(function () {
 
                     console.log(input_email.val());
                     if (req.data === null) {
-                        alert('details not match');
+                        swal({
+                            title: "Oops!",
+                            text: "Details not matched!",
+                            icon: "error",
+                        });
                     } else if (input_email.val() === req.data.email && input_pass.val() === req.data.password) {
                         if(req.data.allowed_login===0){
-
-                            alert("not allowed to login");
+                            swal({
+                                title: "Oops!",
+                                text: "Not allowed to login. Ask admin to give access!",
+                                icon: "error",
+                            });
                         }else{
                             sessionStorage.setItem("session_email", input_email.val());
                             sessionStorage.setItem("username", req.data.username);
                             sessionStorage.setItem("dashboard_id",req.data.last_session);
                             console.log(req.data.last_session);
-                            let dashboard_id = req.data.last_session;
-                            $.post('/getConfig',{
-                                    dashboard_id:dashboard_id
-                                },
-                                function (req,res) {
-                                    if(req.data!=null){
-                                        window.open("/view/dashboard_view.html","_self");
-                                    }else{
-                                        window.open("/view/default_dashboard_view.html","_self");
-                                    }
+                            if(req.data.last_session!=null){
+                                swal({
+                                    title: "Success!",
+                                    text: "Login Successful!",
+                                    icon: "success",
+                                }).then(()=> {
+                                    window.open("/view/dashboard_view.html","_self");
                                 });
+
+                            }else{
+                                swal({
+                                    title: "Success!",
+                                    text: "Login Successful!",
+                                    icon: "success",
+                                }).then(()=>{
+                                        window.open("/view/default_dashboard_view.html","_self");
+
+                                });
+
+                            }
+
                         }
 
 

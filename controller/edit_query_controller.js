@@ -26,7 +26,6 @@ $(function () {
             let tags = Object.keys(styles);
             $.each(tags,function (i) {
                 dashboard_name.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
             which_dashboard_title.html(config.page_header_title.title);
@@ -37,7 +36,6 @@ $(function () {
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 page_heading.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
 
@@ -46,7 +44,6 @@ $(function () {
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 edit_button.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
 
@@ -55,7 +52,6 @@ $(function () {
             tags = Object.keys(styles);
             $.each(tags,function (i) {
                 new_dashboard_button.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
             });
 
             sessionStorage.setItem("map",JSON.stringify(req));
@@ -104,7 +100,13 @@ $(function () {
                     //sessionStorage.setItem("map", JSON.stringify(res));
                     //console.log("map"+JSON.stringify(res));
                     //alert("query updated");
-                   window.open("/view/dashboard_view.html", "_self");
+                    swal({
+                        title: "Success!",
+                        text: "Query Updated!",
+                        icon: "success",
+                    }).then(()=> {
+                        window.open("/view/dashboard_view.html","_self");
+                    });
                 }
             )
 
