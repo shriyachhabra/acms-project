@@ -23,8 +23,8 @@ const register = db.define('Registration', {
 });
 
 
-const dashboard = db.define('Database',{
-    databaseID:{type: Sequelize.DataTypes.INTEGER,
+const dashboard = db.define('Dashboard',{
+    dashboardID:{type: Sequelize.DataTypes.INTEGER,
         autoIncrement:true,
         primaryKey:true
     },
@@ -100,7 +100,7 @@ function addConfig(data) {
             email: data.Email
 
         }).then(function (result) {
-             return result.databaseID;
+             return result.dashboardID;
          });
 
 }
@@ -109,9 +109,9 @@ function addConfig(data) {
 
 function updateConfig(data) {
    return dashboard.update({
-        config:data.data,
+        config:data.config,
         title:data.Dash_name
-    },{where:{databaseID:data.database_id}})
+    },{where:{dashboardID:data.dashboard_id}})
 }
 
 
@@ -121,7 +121,7 @@ function getConfig(data){
     return dashboard.findOne({
         attributes:['config','title','email'],
         where:{
-            databaseID: data.dashboard_id
+            dashboardID: data.dashboard_id
         }
     }).then(function (result) {
         return result;
@@ -131,7 +131,7 @@ function getConfig(data){
 
 function getDashboard(data){
     return dashboard.findAll({
-        attributes:['databaseID','title'],
+        attributes:['dashboardID','title'],
         where:{
             email:data.Email
         }
@@ -152,7 +152,7 @@ function getDashboard(data){
 
 function addSession(data){
     return register.update({
-        last_session:data.database_id},
+        last_session:data.dashboard_id},
         {where:{
             email:data.Email}
 
@@ -165,30 +165,17 @@ function addSession(data){
 
 //datasource retrieve
 function getDataSource(data) {
-    return datasource.update({
-            config: data.Config
-        },
-        {
-            where: {
-                email: data.Email,
-                database: data.Database,
-                data_source_name: data.Data_source,
-                table: data.Table,
-            }
-
-        }).then(function (result) {
             return datasource.findOne({
             where: {
                 email: data.Email,
-                database: data.Database,
-                data_source_name: data.Data_source,
-                table: data.Table
+                database: data.database,
+                data_source_name: data.datasource,
+                table: data.table
             }
         }).then(function (answer) {
             return answer;
 
         });
-    })
 }
 
 

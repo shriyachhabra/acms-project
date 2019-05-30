@@ -20,12 +20,12 @@ save_button.click(function () {
         {comp:components,
             Config:text_area.val(),
             Email:email,
-            dashboard_Title:result.page_header.title
+            dashboard_Title:result.page_header_title.title
         },
         function (res) {
             console.log(res+" "+res.data);
             let item=$('<li class="nav-item"></li>').appendTo('#dashboard_list');
-            item.append($("<a class='nav-link' href='../dashboard_view.html' id="+res.data+">"+result.page_header.title+"</a>"));
+            item.append($("<a class='nav-link' href='../dashboard_view.html' id="+res.data+">"+result.page_header_title.title+"</a>"));
             alert("new dashboard created");
             sessionStorage.setItem('dashboard_id',res.data);
             window.open("/view/dashboard_view.html","_self");

@@ -19,7 +19,7 @@ $(function () {
             else {
                 for(let i=0;i<req.data.length;i++){
                 let item=$('<li class="nav-item"></li>').appendTo('#dashboard_list');
-                item.append($("<a class='nav-link' name='dashboard_name' href='#' id="+req.data[i].databaseID+">"+req.data[i].title+"</a>"));
+                item.append($("<a class='nav-link' name='dashboard_name' href='#' id="+req.data[i].dashboardID+">"+req.data[i].title+"</a>"));
                 }
 
 

@@ -75,7 +75,7 @@ app.post('/dashboard_name_click_controller/click',(req,res)=>{
 
 
 app.get('/getConfig',(req,res)=>{
-    res.send({data:config_content});
+    res.send({data:config_content})
 });
 
 
@@ -124,12 +124,58 @@ app.post('/save_newConfig',(req,res)=>{
 });
 
 
+app.post('/components/query/result',(req,res)=>{
+    database_dao.getDataSource(req.body).then(function (data) {
 
+        let data_body = {
+            query: req.body.query,
+            host: data.host,
+            datasource: data.data_source_name,
+            database: data.database,
+            table: data.table
+        }
+
+        if (data === "null") {
+            console.log("null");
+        }
+        else if (data.data_source_name === "elasticsearch") {
+
+            elastic_dao.query(data_body).then(function (data) {
+                //query_result_map[components[i]['id']] = data;
+                console.log("elastic"+data);
+                res.send({success:true,data:data});
+                //console.log(query_result_map);
+            }).catch(function (err) {
+                console.log('Error'+err);
+                throw err;
+            });
+
+        }
+        else if (data.data_source_name === "mongodb") {
+            //console.log(data[j])
+            mongodb_dao.query(data_body,data=>{
+                //console.log("REq "+req);
+                //query_result_map[components[i]['id']] = req;
+                console.log("mongo"+data);
+                res.send({success:true,data:data});
+                //console.log("query"+query_result_map);
+            })
+
+        }
+
+
+
+    }).catch(function (err){
+        console.log('Error'+err);
+        throw err;
+    });
+});
 
 
 app.post('/updateConfig',(req,res)=>{
-    const components=req.body.components;
-    const email = req.body.Email;
+    //const components=req.body.components;
+    //const email = req.body.Email;
+
     let data;
     database_dao.updateConfig(req.body).then(function (data) {
         console.log('success update config');
@@ -139,7 +185,7 @@ app.post('/updateConfig',(req,res)=>{
         throw err;
     });
 
-    for(let i=0;i<components.length;i++){
+    /*for(let i=0;i<components.length;i++){
 
         let sourceId=components[i].datasource;
         let queryReceived=components[i].query;
@@ -151,17 +197,16 @@ app.post('/updateConfig',(req,res)=>{
             Database: databaseReceived,
             Table: tableReceived,
             Query: queryReceived
-        };
+        };*/
         //console.log(data_body)
-        database_dao.getDataSource(data_body).then(function (data) {
 
-            for(let j in data) {
+           /* for(let j in data) {
                 if (data === "null") {
                     console.log("null");
                 }
-                else if (data[j].data_source_name === "elasticsearch") {
+                else if (data.data_source_name === "elasticsearch") {
 
-                    elastic_dao.query(data[j]).then(function (data) {
+                    elastic_dao.query(data).then(function (data) {
                         query_result_map[components[i]['id']] = data;
                         //console.log(data);
                         //console.log(query_result_map);
@@ -171,9 +216,9 @@ app.post('/updateConfig',(req,res)=>{
                     });
 
                 }
-                else if (data[j].data_source_name === "mongodb") {
+                else if (data.data_source_name === "mongodb") {
                     //console.log(data[j])
-                    mongodb_dao.query(data[j],req=>{
+                    mongodb_dao.query(data,req=>{
                         console.log("REq "+req);
                         query_result_map[components[i]['id']] = req;
                         //console.log(data);
@@ -182,7 +227,7 @@ app.post('/updateConfig',(req,res)=>{
 
                 }
 
-            }
+            //}
 
             /*for(let j in data) {
                 if (data === "null") {
@@ -243,14 +288,11 @@ app.post('/updateConfig',(req,res)=>{
 
             }*/
 
-    }).catch(function (err){
-            console.log('Error'+err);
-            throw err;
-        });
-    }
+
+    //}
 
     setTimeout(function () {
-        console.log(query_result_map)
+        //console.log(query_result_map)
         res.send({success: true,data:data,map:query_result_map})
     },2000)
 });

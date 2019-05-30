@@ -1,17 +1,17 @@
 $(function () {
 
-    let id = sessionStorage.getItem('dashboard_id');
-    let pageheader_title = $('#pageheader_title');
-    let which_title = $('#which_title');
+    let dashboard_id = sessionStorage.getItem('dashboard_id');
+    let page_heading = $('#pageheader_title');
+    let which_dashboard_title = $('#which_title');
     $.post('/controller/dashboard_controller',{
-        id:id
+        dashboard_id:dashboard_id
     },function (req,res) {
         if (req.data === null) {
             console.log('data doesnt exist');
         } else {
             //console.log(req.data.title)
-            pageheader_title.html(req.data.title);
-            which_title.html(req.data.title);
+            page_heading.html(req.data.title);
+            which_dashboard_title.html(req.data.title);
         }
     })
 
@@ -36,7 +36,7 @@ $(function () {
      console.log(outputCSV)
      let index = ele['id'];
      //console.log(index)
-     let arr=map['map'][index]
+     let arr=map
      console.log("map"+arr)
     for(let j in arr ){
 
@@ -75,11 +75,12 @@ $(function () {
                  // Find the minimum separation between x-values.
                  // This determines the bar width.
                  let min_sep = Infinity;
-                 for (let i = 1; i < points.length; i++) {
-                     let sep = points[i].canvasx - points[i - 1].canvasx;
+                 //for (let i = 1; i < points.length; i++) {
+                     //let sep = points[i].canvasx - points[i - 1].canvasx;
+                 let sep=50;
                      if (sep < min_sep) min_sep = sep;
-                 }
-                 let bar_width = Math.floor(1.0 / 3 * min_sep);
+                 //}
+                 let bar_width = Math.floor(4.0 / 3 * min_sep);
                  // Do the actual plotting.
                  for (let i = 0; i < points.length; i++) {
                      let p = points[i];
