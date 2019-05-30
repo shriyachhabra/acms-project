@@ -7,10 +7,18 @@ $(function () {
 
     register_button.click(function () {
         if(username.val()===""||email.val()===""||input_pass.val()===""||confirm_pass.val()===""){
-            alert("empty field");
+            swal({
+                title: "Oops!",
+                text: "Empty fields!",
+                icon: "error",
+            });
         }
         else if(input_pass.val()!=confirm_pass.val()){
-            alert("password dont match");
+            swal({
+                title: "Oops!",
+                text: "Password doesnt match!",
+                icon: "error",
+            });
         }
         else
         {
@@ -40,7 +48,7 @@ $(function () {
                             icon: "success",
                         });
                     }
-                });
+            });
         }
-    })
+    });
 });

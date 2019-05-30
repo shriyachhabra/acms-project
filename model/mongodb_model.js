@@ -11,7 +11,6 @@ function query(data,callback) {
         let dbo = db.db(data.database);
         dbo.collection(data.table).find(JSON.parse(data.query)).toArray(function (err, result) {
             if (err) throw err;
-            //console.log(result)
             callback(result);
         });
     });
