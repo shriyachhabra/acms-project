@@ -63,7 +63,6 @@
               <input type="text" name="query"  id="qu">
                 <input type="text" name="x" placeholder="x value" id="x">
                 <input type="text" name="y" placeholder="y value" id="y">
-
               <p>Choose your tool:</p>
               <div class="btns">
                   <button type="submit" value="Submit" id="bar">Bar graph</button>
@@ -72,29 +71,23 @@
                   <button type="submit" value="Submit">Table</button>
               </div>
             </div>
-
           </div-->
 
                 <!--script>
                 // Get the modal
                 var modal = document.getElementById('myModal');
-
                 // Get the button that opens the modal
                 var btn = document.getElementById("myBtn");
-
                 // Get the <span> element that closes the modal
                 var span = document.getElementsByClassName("close")[0];
-
                 // When the user clicks the button, open the modal
                 btn.onclick = function() {
                   modal.style.display = "block";
                 }
-
                 // When the user clicks on <span> (x), close the modal
                 span.onclick = function() {
                   modal.style.display = "none";
                 }
-
                 // When the user clicks anywhere outside of the modal, close it
                 window.onclick = function(event) {
                   if (event.target == modal) {
@@ -214,16 +207,13 @@ font-size: 16px;
 border: none;
 cursor: pointer;
 }
-
 .dropbtn:hover, .dropbtn:focus {
 background-color: #2980B9;
 }
-
 .dropdown {
 position: relative;
 display: inline-block;
 }
-
 .dropdown-content {
 display: none;
 position: absolute;
@@ -233,22 +223,17 @@ overflow: auto;
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 z-index: 1;
 }
-
 .dropdown-content a {
 color: black;
 padding: 12px 16px;
 text-decoration: none;
 display: block;
 }
-
 .dropdown a:hover {background-color: #ddd;}
-
 .show {display: block;}
 </style>
 </head>
 <body>
-
-
 <div class="dropdown">
 <button onclick="myFunction()" class="dropbtn" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4">EDIT</button>
 <div id="myDropdown" class="dropdown-content">
@@ -256,13 +241,10 @@ display: block;
 <a class="nav-link" href="pages/new_query_view.html">New Dashboard</a>
 </div>
 </div>
-
 <script>
 function myFunction() {
 document.getElementById("myDropdown").classList.toggle("show");
 }
-
-
 window.onclick = function(event) {
 if (!event.target.matches('.dropbtn')) {
 var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -366,7 +348,6 @@ openDropdown.classList.remove('show');
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
                 </div> -->
                 <!-- ============================================================== -->
                 <!-- end pageheader  -->
@@ -376,22 +357,45 @@ openDropdown.classList.remove('show');
                 <div class="row">
                     <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                         <li class="nav-item34">
-                            <a href='new_query_view.html'><button>Get Started!!</button></a>
+                            <a href='new_query_view.html'><button class="block">Get
+                                    Started!!</button></a>
                         </li>
                         <style>
-                            .nav-item34 {
+                            /* .nav-item34 {
+                                width: 1000px;
+                                height: 1000px;
+                                text-align:center;
+                                margin-bottom: 100px;
+                            } */
+
+                            /* .button {
                                 width: 1000px;
                                 height: 1000px;
                                 text-align: center;
                                 margin-bottom: 100px;
+                            } */
 
+                            .block {
+                                display: ruby-base;
+                                width: 250px;
+                                height: 250px;
+                                border: white;
+                                background-color: black;
+                                color: white;
+                                padding: 14px 28px;
+                                font-size: 36px;
+                                cursor: pointer;
+                                text-align: center;
+                                position: fixed;
+                                top: 50%;
+                                left: 50%;
+                                bottom: 50%;
+                                right: 50%;
                             }
 
-                            .button {
-                                width: 1000px;
-                                height: 1000px;
-                                text-align: center;
-                                margin-bottom: 100px;
+                            .block:hover {
+                                background-color: #ddd;
+                                color: black;
                             }
                         </style>
                         <!-- <div class="card">
@@ -560,7 +564,6 @@ openDropdown.classList.remove('show');
                             <span class="legend-text">Returning</span>
                             </span>
                             <span class="legend-item mr-2">
-
                                     <span class="fa-xs text-secondary mr-1 legend-tile"><i class="fa fa-fw fa-square-full"></i></span>
                             <span class="legend-text">First Time</span>
                             </span>
@@ -686,7 +689,6 @@ openDropdown.classList.remove('show');
         </div> -->
 
                         <!-- <div class="row">
-
             sales  -->
                         <!-- ============================================================== -->
                         <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
@@ -946,23 +948,6 @@ openDropdown.classList.remove('show');
                         <!-- </div>
         </div>
     </div>
-=======
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end category revenue  -->
-            <!-- ============================================================== -->
-
-        </div>
-        
-            
-</div>
-
-        </div>
-        <!-- ============================================================== -->
-        <!-- end wrapper  -->
-        <!-- ============================================================== -->
->>>>>>> 59853673d020d715022f74eb249431bd33446a92
     </div>
 
     </div> -->
