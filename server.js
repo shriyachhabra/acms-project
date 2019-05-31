@@ -1,8 +1,8 @@
 const express = require('express');
 const bp = require('body-parser');
-const database_dao = require('./model/database_model');
-const elastic_dao = require('./model/elasticsearch_model');
-const mongodb_dao = require('./model/mongodb_model');
+const database_dao = require('./dao/database_dao');
+const elastic_dao = require('./dao/elasticsearch_dao');
+const mongodb_dao = require('./dao/mongodb_dao');
 const path=require('path');
 const fs = require('fs');
 const app=express();
