@@ -44,7 +44,7 @@
                     "x-val":"lat",
                     "y-val":"lng",
                     "position":1,
-                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}},\"sort\":[{\"lat\":{\"order\":\"asc\"}}]}",
+                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
                     "datasource":"elasticsearch",
                     "database": "tutorial",
                     "table": "cities_list"

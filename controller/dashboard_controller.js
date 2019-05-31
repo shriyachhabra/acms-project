@@ -64,22 +64,26 @@ $(function () {
 
             for(let i=0;i<components.length;i++) {
 
-                console.log("database"+components[i].database);
-                console.log("query"+components[i].query);
-                console.log("table"+components[i].table);
-                console.log("datasource"+components[i].datasource);
+                query=components[i].query;
+                let datasource=components[i].datasource;
+                let database=components[i].database;
+                let datasource_table=components[i].table;
+                console.log("database"+database);
+                console.log("query"+query);
+                console.log("table"+datasource_table);
+                console.log("datasource"+datasource);
                 $.post('/components/query/result',{
-                        query: components[i].query,
-                        datasource: components[i].datasource,
-                        database: components[i].database,
-                        table: components[i].table,
+                        query: query,
+                        datasource: datasource,
+                        database: database,
+                        table: datasource_table,
                         Email:email
                 },function (res) {
                     console.log("result of query"+res.data);
                     let result=res.data;
                     console.log("result"+result);
                     console.log("components"+components);
-                    for(let i in components){
+                    for(let i=0;i<components.length;i++){
                         let outputCSV="";
                         let elements=components[i];
                         console.log("elements"+elements);
@@ -93,7 +97,7 @@ $(function () {
                             outputCSV+=arr[j][x]+","+arr[j][y]+"\n";
                         }
                         console.log("csv"+outputCSV);
-                        $('<div id='+i+' style="display:inline-flex;"></div>').appendTo('#graphid');
+                        $('<div id='+i+' style="display:inline-flex; margin:10px"></div>').appendTo('#graphid');
                         let type=elements['type'];
                         if(type==='graph') {
                             if (document.getElementById(i)) {
@@ -103,7 +107,7 @@ $(function () {
                                 console.log('div with id =' + i + 'not exists');
                             }
                         }
-                        if(type ==='bar'){
+                        else if(type ==='bar'){
                             if(document.getElementById(i)){
                                 console.log('div with id =' + i + 'exists');
                                 function darkenColor(colorStr) {
@@ -143,6 +147,41 @@ $(function () {
                             }else{
                                 console.log('div with id =' + i + 'not exists');
                             }
+                        }
+                        else if(type==="table"){
+                            let col = [];
+                            for(let i=0;i<result.length;i++){
+                                for(let key in result[i]){
+                                    if(col.indexOf(key)=== -1){
+                                        col.push(key);
+                                    }
+                                }
+                            }
+                            let table = document.createElement("table");
+                            /*let header = table.createCaption();
+                            header.caption = "table";*/
+                            let tr = table.insertRow(-1);
+                            for(let i=0;i<col.length;i++){
+                                let th = document.createElement("th");
+                                th.innerHTML = col[i];
+                                tr.appendChild(th);
+                            }
+                            for(let i=0;i<result.length;i++){
+                                tr = table.insertRow(-1);
+                                for(let j=0;j<col.length;j++){
+                                    let tableCell = tr.insertCell(-1);
+                                    tableCell.innerHTML = result[i][col[j]];
+                                    if(j===0){
+                                        tableCell.setAttribute("style","cursor:pointer");
+                                        tableCell.onclick = function() {
+                                            window.open("/view/table_view.html?id="+result[i][col[j]]+"?"+database+"?"+datasource+"?"+datasource_table,"_self");
+                                        }
+                                    }
+                                }
+                            }
+                            let divContainer = document.getElementById(i);
+                            divContainer.innerHTML = "";
+                            divContainer.appendChild(table);
                         }
                     }
                 });
