@@ -93,7 +93,7 @@ $(function () {
                             outputCSV+=arr[j][x]+","+arr[j][y]+"\n";
                         }
                         console.log("csv"+outputCSV);
-                        $('<div id='+i+' width="100%" height="60"></div>').appendTo('#graphid');
+                        $('<div id='+i+' style="display:inline-flex;"></div>').appendTo('#graphid');
                         let type=elements['type'];
                         if(type==='graph') {
                             if (document.getElementById(i)) {

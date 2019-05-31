@@ -121,26 +121,31 @@ app.post('/save_newConfig',(req,res)=>{
 app.post('/components/query/result',(req,res)=>{
     database_dao.getDataSource(req.body).then(function (data) {
 
+
+
         let data_body = {
             query: req.body.query,
             host: data.host,
             datasource: data.data_source_name,
             database: data.database,
             table: data.table
-        }
+        };
 
         if (data === "null") {
             console.log("data received is null in /components/query/result");
         }
         else if (data.data_source_name === "elasticsearch") {
 
-                elastic_dao.query(data_body).then(function (data) {
-                    res.send({success:true,data:data});
-                    console.log("result from elasticsearch"+data);
-                }).catch(function (err) {
+            try {
+                elastic_dao.query(data_body, data => {
+                    res.send({success: true, data: data});
+                    console.log("result from elasticsearch" + data);
+                })
+            }
+                catch(err) {
                     console.log('Error from elasticsearch'+err);
                     throw err;
-                });
+                };
 
         }
         else if (data.data_source_name === "mongodb") {

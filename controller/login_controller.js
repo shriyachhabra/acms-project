@@ -29,11 +29,11 @@ $(function () {
                                 icon: "error",
                             });
                         }else{
-                            sessionStorage.setItem("session_email", input_email.val());
-                            sessionStorage.setItem("username", req.data.username);
-                            sessionStorage.setItem("dashboard_id",req.data.last_session);
-                            console.log(req.data.last_session);
                             if(req.data.last_session!=null){
+                                sessionStorage.setItem("session_email", input_email.val());
+                                sessionStorage.setItem("username", req.data.username);
+                                sessionStorage.setItem("dashboard_id",req.data.last_session);
+                                console.log(req.data.last_session);
                                 swal({
                                     title: "Success!",
                                     text: "Login Successful!",
@@ -43,6 +43,8 @@ $(function () {
                                 });
 
                             }else{
+                                sessionStorage.setItem("session_email", input_email.val());
+                                sessionStorage.setItem("username", req.data.username);
                                 swal({
                                     title: "Success!",
                                     text: "Login Successful!",

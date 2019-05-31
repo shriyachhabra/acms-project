@@ -50,7 +50,6 @@ const datasource = db.define('Data_Source', {
 
 });
 
-register.hasMany(datasource,{foreignKey:'email',sourceKey:'email'});
 
 
 db.sync({alter: true}).then(function () {
@@ -140,14 +139,7 @@ function getDashboard(data){
     })
 }
 
-/*function getLastDashboard(data) {
-    return dashboard.findOne({
-        attributes:['title'],
-        where:{
-            DNo:data.id
-        }
-    })
-}*/
+
 
 
 
@@ -169,7 +161,6 @@ function addSession(data){
 function getDataSource(data) {
             return datasource.findOne({
             where: {
-                email: data.Email,
                 database: data.database,
                 data_source_name: data.datasource,
                 table: data.table

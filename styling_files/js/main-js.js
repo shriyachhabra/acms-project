@@ -57,13 +57,13 @@ jQuery(document).ready(function($) {
                             } else {
                                 $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
                                 $target.focus(); // Set focus again
-                            };
+                            }
                         });
                     }
-                };
+                }
                 $('.sidebar-nav-fixed a').each(function() {
                     $(this).removeClass('active');
-                })
+                });
                 $(this).addClass('active');
             });
 

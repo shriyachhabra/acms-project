@@ -18,4 +18,4 @@ function query(data,callback) {
 
 module.exports = {
     query
-}
+};

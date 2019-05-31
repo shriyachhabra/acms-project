@@ -1,10 +1,10 @@
 const elasticsearch = require('elasticsearch');
 
-function query(data){
+function query(data,callback){
     const client = new elasticsearch.Client({
         hosts: data.host
     });
-    return client.search(
+    client.search(
             {
                 index: data.database,
                 body: data.query,
@@ -12,19 +12,19 @@ function query(data){
             })
             .then(results => {
                 let p = results.hits.hits;
-                let arr = []
+                let arr = [];
                 for (let ele = 0; ele < p.length; ele++) {
-                    let obj = p[ele]["_source"]
-                    arr.push(obj)
+                    let obj = p[ele]["_source"];
+                    arr.push(obj);
                 }
-                return arr;
+                callback(arr);
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
             }
             );
 }
 
 module.exports={
     query
-}
+};

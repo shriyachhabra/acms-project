@@ -35,6 +35,8 @@
                     "id":1,
                     "type":"graph",
                     "style":{
+                              "ylabel": "longitude",
+                              "xlabel": "latitude",
                               "title":"Line Graph",
                               "height":300,
                               "width":480
@@ -42,7 +44,7 @@
                     "x-val":"lat",
                     "y-val":"lng",
                     "position":1,
-                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
+                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}},\"sort\":[{\"lat\":{\"order\":\"asc\"}}]}",
                     "datasource":"elasticsearch",
                     "database": "tutorial",
                     "table": "cities_list"
@@ -54,10 +56,11 @@
                     "y-val":"lng",
                     "position":2,
                     "style":{
-                              "legend": "always",
+                              "ylabel": "longitude",
+                              "xlabel": "latitude",
                               "includeZero": true,
                               "animatedZooms": true,
-                              "title":"Graph 2",
+                              "title":"Bar Graph",
                               "height":300,
                               "width":480
                     },
