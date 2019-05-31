@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
- 
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,137 +9,161 @@
     <link rel="stylesheet" href="../styling_files/bootstrap/css/bootstrap.min.css">
     <link href="../styling_files/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../styling_files/css/style.css">
-    
-   
+
+
     <link rel="stylesheet" href="../styling_files/fontawesome/css/fontawesome-all.css">
     <script src="../styling_files/validate.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.js"></script>
 
 
 </head>
 
 <body>
-    
+
     <div class="dashboard-main-wrapper">
-        
-         <div class="dashboard-header">
+
+        <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
                 <a class="navbar-brand" href="../view/dashboard_view.html" id="dashboard_name">ACMS DASHBOARD</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
-                        
-                        <li class="nav-item dropdow ">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"></i></a>
-                                <div id="submenu-4" class="collapse submenu" style="">
 
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="../view/edit_query_view.html">Edit </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="../view/new_query_view.html">New Dashboard</a>
-                                        </li>
-                                    
-                                
-                                </li>
-                            
+                        <li class="nav-item dropdow ">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false"
+                                data-target="#submenu-4" aria-controls="submenu-4"></i></a>
+                            <div id="submenu-4" class="collapse submenu" style="">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="../view/edit_query_view.html">Edit </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../view/new_query_view.html">New Dashboard</a>
+                        </li>
+
+
+                        </li>
+
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../styling_files/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
-                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img
+                                    src="../styling_files/images/avatar-1.jpg" alt=""
+                                    class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown"
+                                aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
                                     <h5 class="mb-0 text-white nav-user-name" id="username">John Abraham</h5>
                                     <span class="status"></span><span class="ml-2">Available</span>
                                 </div>
                                 <!--a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a-->
-                                <a class="dropdown-item" href="#" id="logout"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                <a class="dropdown-item" href="#" id="logout"><i
+                                        class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </nav>
         </div>
-        
-      <div class="nav-left-sidebar sidebar-dark">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav flex-column">
-                            <li class="nav-divider">
-                                Menu
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style="">
+
+        <div class="nav-left-sidebar sidebar-dark">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-divider">
+                            Menu
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false"
+                                data-target="#submenu-1" aria-controls="submenu-1"><i
+                                    class="fa fa-fw fa-user-circle"></i>Dashboard <span
+                                    class="badge badge-success">6</span></a>
+                            <div id="submenu-1" class="collapse submenu" style="">
 
 
 
-                                    <ul class="nav flex-column" id="dashboard_list">
+                                <ul class="nav flex-column" id="dashboard_list">
 
 
-                                       
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        
-        <div class="dashboard-wrapper">
-            <div class="container-fluid dashboard-content">
-                <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="page-header">
-                                <h2 class="pageheader-title" id="pageheader_title">Make Dashboard</h2>
-                                <!--p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
-                                --><div class="page-breadcrumb">
-                                    <nav aria-label="breadcrumb">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page" id="which_title">Make Dashboard</li>
-                                        </ol>
-                                    </nav>
-                                </div>
+
+                                </ul>
                             </div>
-                        <head>
-<style>
-.button {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-</style>
-<meta charset="utf-8" />
-
-</head>
-<body>
-<textarea id="myTextAreaNew" style="background-color: black;color: yellow;height:400px;width:900px;font-size:12pt"></textarea>
-<a href="#" class="button" id="save">Save</a>
-<button class="button" id="pretty">Pretty Print</button>
-<a href="#" class="button">Cancel</a>
-
-                    </div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-            
+            </nav>
         </div>
     </div>
-    
+
+    <div class="dashboard-wrapper">
+        <div class="container-fluid dashboard-content">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title" id="pageheader_title">Make Dashboard</h2>
+                        <!--p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                -->
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page" id="which_title">Make
+                                        Dashboard</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <head>
+                        <style>
+                            .button {
+                                background-color: #4CAF50;
+                                border: none;
+                                color: white;
+                                padding: 10px 20px;
+                                text-align: center;
+                                text-decoration: none;
+                                display: inline-block;
+                                font-size: 16px;
+                                margin: 4px 2px;
+                                cursor: pointer;
+                                position: relative;
+                            }
+
+                            make-item {
+                                position: left;
+                            }
+                        </style>
+                        <meta charset="utf-8" />
+
+                    </head>
+
+                    <body>
+                        <textarea id="myTextAreaNew"
+                            style="background-color: black;color: yellow;height:400px;width:900px;font-size:12pt">
+                        </textarea>
+                        <li class="make-item">
+                            <a href="#" class="button" id="save">Save</a>
+                            <button class="button" id="pretty">Pretty Print</button>
+                            <a href="#" class="button">Cancel</a>
+                        </li>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
     <script src="../styling_files/jquery/jquery-3.3.1.min.js"></script>
     <script src="../styling_files/bootstrap/js/bootstrap.bundle.js"></script>
     <script src="../styling_files/slimscroll/jquery.slimscroll.js"></script>
@@ -154,211 +178,212 @@
 
 </body>
 <!-- Formatter Script -->
- <script>
- $(document).ready(function(){
-    var prettyPrint = $("#pretty");
-    prettyPrint.click(function() {
-        var ugly = document.getElementById('myTextAreaNew').value;
-        var tData = JSON.parse(ugly);
-        var constraint = {
-        "header.title": {
-            presence: true
-        },
-        "header.style": {
-            presence: true
-        },
-        "header.style.color": {
-            presence: true,
-            format: {
-                pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-            }
-        },
-        "header.style.height": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
-        "header.style.width": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
+<script>
+    $(document).ready(function () {
+        var prettyPrint = $("#pretty");
+        prettyPrint.click(function () {
+            var ugly = document.getElementById('myTextAreaNew').value;
+            var tData = JSON.parse(ugly);
+            var constraint = {
+                "header.title": {
+                    presence: true
+                },
+                "header.style": {
+                    presence: true
+                },
+                "header.style.color": {
+                    presence: true,
+                    format: {
+                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
+                    }
+                },
+                "header.style.height": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
+                "header.style.width": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
 
-        "page_header.title": {
-            presence: true
-        },
-        "page_header.style": {
-            presence: true
-        },
-        "page_header.style.color": {
-            presence: true,
-            format: {
-                pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-            }
-        },
-        "page_header.style.height": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
-        "page_header.style.width": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
+                "page_header.title": {
+                    presence: true
+                },
+                "page_header.style": {
+                    presence: true
+                },
+                "page_header.style.color": {
+                    presence: true,
+                    format: {
+                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
+                    }
+                },
+                "page_header.style.height": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
+                "page_header.style.width": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
 
-        "edit_button.title": {
-            presence: true
-        },
-        "edit_button.style": {
-            presence: true
-        },
-        "edit_button.style.color": {
-            presence: true,
-            format: {
-                pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-            }
-        },
-        "edit_button.style.height": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
-        "edit_button.style.width": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
+                "edit_button.title": {
+                    presence: true
+                },
+                "edit_button.style": {
+                    presence: true
+                },
+                "edit_button.style.color": {
+                    presence: true,
+                    format: {
+                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
+                    }
+                },
+                "edit_button.style.height": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
+                "edit_button.style.width": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
 
-        "new_dashboard_button.title": {
-            presence: true
-        },
-        "new_dashboard_button.style": {
-            presence: true
-        },
-        "new_dashboard_button.style.color": {
-            presence: true,
-            format: {
-                pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
+                "new_dashboard_button.title": {
+                    presence: true
+                },
+                "new_dashboard_button.style": {
+                    presence: true
+                },
+                "new_dashboard_button.style.color": {
+                    presence: true,
+                    format: {
+                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
+                    }
+                },
+                "new_dashboard_button.style.height": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                },
+                "new_dashboard_button.style.width": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string having only integer"
+                    }
+                }
+            };
+            var constraint1 = {
+                "id": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string of integers"
+                    }
+                },
+                "type": {
+                    presence: true,
+                    format: {
+                        pattern: "^[a-zA-Z]*$"
+                    }
+                },
+                "x-val": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string of integers"
+                    }
+                },
+                "y-val": {
+                    presence: true,
+                    format: {
+                        pattern: "^\\d+$",
+                        message: "Enter a valid string of integers"
+                    }
+                },
+                "position": {
+                    presence: true,
+                    format: {
+                        pattern: "^[1-9][0-9]*$",
+                        message: "Enter a valid string of integers"
+                    }
+                },
+                "datasource": {
+                    presence: true,
+                    format: {
+                        pattern: "^[1-2]$",
+                        message: "Enter a valid string of integers"
+                    }
+                }
             }
-        },
-        "new_dashboard_button.style.height": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        },
-        "new_dashboard_button.style.width": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string having only integer"
-            }
-        }
-    };
-    var constraint1 = {
-        "id": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string of integers"
-            }
-        },
-        "type": {
-            presence: true,
-            format: {
-                pattern: "^[a-zA-Z]*$"
-            }
-        },
-        "x-val": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string of integers"
-            }
-        },
-        "y-val": {
-            presence: true,
-            format: {
-                pattern: "^\\d+$",
-                message: "Enter a valid string of integers"
-            }
-        },
-        "position": {
-            presence: true,
-            format: {
-                pattern: "^[1-9][0-9]*$",
-                message: "Enter a valid string of integers"
-            }
-        },
-        "datasource": {
-            presence: true,
-            format: {
-                pattern: "^[1-2]$",
-                message: "Enter a valid string of integers"
-            }
-        }
-    }
-    var condition1 = (validate(tData, constraint));
-    var condition2 = validate.isArray(tData["components"]);
-    tData["components"].forEach(function (el) {
-        if ((validate(el, constraint1) !== undefined)) {
-            condition3 = validate(el,constraint1);
-            //console.log(condition3);
-            return;
-        } else {
-            //console.log("ok");
-            condition3 = undefined;
-        }
-    })
-    
-    if(condition1===undefined && condition2===true && condition3===undefined) {
-        var pretty = JSON.stringify(tData, undefined, 4);
-        document.getElementById('myTextAreaNew').value = pretty;
-    } else {
-        console.log(condition1, condition2, condition3)
-        $.each(condition1, function(i, val){
-            console.log(val[0])
-            notycall(val[0]);
-        })
-        $.each(condition3, function(i, val){
-            console.log(val[0])
-            notycall(val[0]);
-        })  
+            var condition1 = (validate(tData, constraint));
+            var condition2 = validate.isArray(tData["components"]);
+            tData["components"].forEach(function (el) {
+                if ((validate(el, constraint1) !== undefined)) {
+                    condition3 = validate(el, constraint1);
+                    //console.log(condition3);
+                    return;
+                } else {
+                    //console.log("ok");
+                    condition3 = undefined;
+                }
+            })
 
-        
-    }
+            if (condition1 === undefined && condition2 === true && condition3 === undefined) {
+                var pretty = JSON.stringify(tData, undefined, 4);
+                document.getElementById('myTextAreaNew').value = pretty;
+            } else {
+                console.log(condition1, condition2, condition3)
+                $.each(condition1, function (i, val) {
+                    console.log(val[0])
+                    notycall(val[0]);
+                })
+                $.each(condition3, function (i, val) {
+                    console.log(val[0])
+                    notycall(val[0]);
+                })
+
+
+            }
+
+        });
 
     });
 
- });
-
- function notycall(input_text) {
-    noty({
+    function notycall(input_text) {
+        noty({
             text: input_text,
             layout: 'topRight',
             theme: 'defaultTheme', // or relax
             type: 'warning',
             animation: {
-                open: {height: 'toggle'},
-                close: {height: 'toggle'},
+                open: { height: 'toggle' },
+                close: { height: 'toggle' },
                 easing: 'swing',
                 speed: 500 // opening & closing animation speed
+            }
+        });
     }
-});
- }
- </script>
+</script>
+
 </html>
