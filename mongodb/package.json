@@ -1,0 +1,21 @@
+{
+  "name": "nodedemo",
+  "version": "1.0.0",
+  "description": "node demo showing how to store data into mongodb database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "mongodb",
+    "mongoose",
+    "demo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.2.2",
+    "mongoose": "^4.7.6"
+  }
+}
