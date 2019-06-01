@@ -77,13 +77,13 @@ $(function () {
     }
     //console.log(id+database+table+datasource);
     if(datasource==="mongodb"){
-        query = '{\"_id\":ObjectId(\"'+id+'\")}';
-        //console.log(JSON.parse(query));
+        query = "{_id:ObjectId("+id+")}";
+        console.log(JSON.stringify(query));
     }else if (datasource === "elasticsearch"){
         query = "{\"query\":{\"match\": {\"Product Id\": \""+id+"\"}}}";
     }
     $.post('/components/query/result',{
-        query:query,
+        query:JSON.stringify(query),
         datasource: datasource,
         database: database,
         table: table
