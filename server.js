@@ -134,7 +134,7 @@ app.post('/components/query/result',(req,res)=>{
         if (data === "null") {
             console.log("data received is null in /components/query/result");
         }
-        else if (data.data_source_name === "elasticsearch") {
+        if (data.data_source_name === "elasticsearch") {
 
             try {
                 elastic_dao.query(data_body, data => {
@@ -143,12 +143,12 @@ app.post('/components/query/result',(req,res)=>{
                 })
             }
                 catch(err) {
-                    console.log('Error from elasticsearch'+err);
+                    console.log('Error from elasticsearch' + err);
                     throw err;
-                };
+                }
 
         }
-        else if (data.data_source_name === "mongodb") {
+        if (data.data_source_name === "mongodb") {
 
             try{
 

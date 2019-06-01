@@ -14,7 +14,11 @@ $(function () {
     let url = new URL(window.location.href);
     let searchParams = new URLSearchParams(url.search);
     let url_param = searchParams.get("id").split('?');
-    let id,database,datasource,table,query;
+    let id;
+    let database;
+    let datasource
+    let table;
+    let query={};
     let okay_button = $('#okay');
     $.post('/getConfig',{
             dashboard_id:dashboard_id
@@ -73,11 +77,13 @@ $(function () {
     }
     //console.log(id+database+table+datasource);
     if(datasource==="mongodb"){
-        query = "{ \"_id\": \"ObjectId("+"+id+"+")\" }";
-        console.log(query);
+        query = '{\"_id\":ObjectId(\"'+id+'\")}';
+        //console.log(JSON.parse(query));
+    }else if (datasource === "elasticsearch"){
+        query = "{\"query\":{\"match\": {\"Product Id\": \""+id+"\"}}}";
     }
     $.post('/components/query/result',{
-        query: query,
+        query:query,
         datasource: datasource,
         database: database,
         table: table

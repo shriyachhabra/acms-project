@@ -35,39 +35,47 @@
                     "id":1,
                     "type":"graph",
                     "style":{
-                              "ylabel": "longitude",
-                              "xlabel": "latitude",
+                              "ylabel": "Stock",
+                              "xlabel": "TimeStamp",
                               "title":"Line Graph",
                               "height":300,
                               "width":480
                     },
-                    "x-val":"lat",
-                    "y-val":"lng",
+                    "x-val":"Timestamp",
+                    "y-val":"Stock",
                     "position":1,
-                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
+                    "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300,\"lte\":400}}}}",
                     "datasource":"elasticsearch",
-                    "database": "tutorial",
-                    "table": "cities_list"
+                    "database": "product",
+                    "table": "order_list"
                   },
                   {
                     "id":2,
                     "type":"bar",
-                    "x-val":"lat",
-                    "y-val":"lng",
+                    "x-val":"Timestamp",
+                    "y-val":"Stock",
                     "position":2,
                     "style":{
-                              "ylabel": "longitude",
-                              "xlabel": "latitude",
+                              "ylabel": "Stock",
+                              "xlabel": "Timestamp",
                               "includeZero": true,
                               "animatedZooms": true,
                               "title":"Bar Graph",
                               "height":300,
                               "width":480
                     },
-                    "query":"{ \"name\": \"Jobat\" }",
+                    "query":"{ \"Stock\": {$gt:900} }",
                     "datasource":"mongodb",
-                    "database": "sample",
-                    "table": "test"
+                    "database": "product",
+                    "table": "order_list"
+                  },
+                  {
+                    "id":3,
+                    "type":"table",
+                    "query":"{ \"Stock\": {$gt:900} }",
+                    "datasource":"mongodb",
+                    "database": "product",
+                    "table": "order_list"
                   }
   ]
 }

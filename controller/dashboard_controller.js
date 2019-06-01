@@ -64,7 +64,7 @@ $(function () {
 
             for(let i=0;i<components.length;i++) {
 
-                query=components[i].query;
+                let query=JSON.parse(components[i].query);
                 let datasource=components[i].datasource;
                 let database=components[i].database;
                 let datasource_table=components[i].table;
@@ -90,7 +90,7 @@ $(function () {
                         let x=elements['x-val'];
                         let y=elements['y-val'];
                         outputCSV+=x+","+y+"\n";
-                        let index = elements['id'];
+                        //let index = elements['id'];
                         let arr=result;
                         console.log("array_result"+arr);
                         for(let j in arr ){

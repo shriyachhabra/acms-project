@@ -9,9 +9,8 @@ function query(data,callback) {
     MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
         if (err) throw err;
         let dbo = db.db(data.database);
-        dbo.collection(data.table).find(JSON.parse(data.query)).toArray(function (err, result) {
+        dbo.collection(data.table).find(data.query).toArray(function (err, result) {
             if (err) throw err;
-            db.close();
             callback(result);
         });
     });
