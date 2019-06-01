@@ -64,7 +64,7 @@
                               "height":300,
                               "width":480
                     },
-                    "query":"{ \"Stock\": {$gt:900} }",
+                    "query":"{\"Stock\": {$gt:900} }",
                     "datasource":"mongodb",
                     "database": "product",
                     "table": "order_list"
@@ -72,7 +72,7 @@
                   {
                     "id":3,
                     "type":"table",
-                    "query":"{ \"Stock\": {$gt:900} }",
+                    "query":"{\"Stock\":{$gt:900} }",
                     "datasource":"mongodb",
                     "database": "product",
                     "table": "order_list"

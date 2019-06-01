@@ -12,6 +12,7 @@ app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
 
 
+
 app.get('/',(req,res)=>{
     try{
         res.sendFile(path.join(__dirname+"/view/"+"index.html"));
@@ -121,7 +122,7 @@ app.post('/save_newConfig',(req,res)=>{
 app.post('/components/query/result',(req,res)=>{
     database_dao.getDataSource(req.body).then(function (data) {
 
-
+        let component_id = req.body.component_id;
 
         let data_body = {
             query: req.body.query,
@@ -138,6 +139,9 @@ app.post('/components/query/result',(req,res)=>{
 
             try {
                 elastic_dao.query(data_body, data => {
+                    /*let query_result_map={};
+                    query_result_map[component_id]=data;
+                    console.log(query_result_map);*/
                     res.send({success: true, data: data});
                     console.log("result from elasticsearch" + data);
                 })
@@ -153,6 +157,9 @@ app.post('/components/query/result',(req,res)=>{
             try{
 
                 mongodb_dao.query(data_body,data=>{
+                    /*let query_result_map={};
+                    query_result_map[component_id]=data;
+                    console.log(query_result_map);*/
                     console.log("result from mongo"+data);
                     res.send({success:true,data:data});
                 });

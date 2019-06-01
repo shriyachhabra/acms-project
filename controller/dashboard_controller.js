@@ -73,6 +73,7 @@ $(function () {
                 console.log("table"+datasource_table);
                 console.log("datasource"+datasource);
                 $.post('/components/query/result',{
+                        component_id: components[i].id,
                         query: query,
                         datasource: datasource,
                         database: database,
@@ -90,7 +91,7 @@ $(function () {
                         let x=elements['x-val'];
                         let y=elements['y-val'];
                         outputCSV+=x+","+y+"\n";
-                        //let index = elements['id'];
+                        let index = elements['id'];
                         let arr=result;
                         console.log("array_result"+arr);
                         for(let j in arr ){
