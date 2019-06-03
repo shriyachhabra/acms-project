@@ -178,7 +178,7 @@
 
 </body>
 <!-- Formatter Script -->
-<!--script>
+<script>
     $(document).ready(function () {
         var prettyPrint = $("#pretty");
         prettyPrint.click(function () {
@@ -365,44 +365,10 @@
 
 
             }
-<<<<<<< HEAD
-        }
-    }
-    var condition1 = (validate(tData, constraint));
-    var condition2 = validate.isArray(tData["components"]);
-    tData["components"].forEach(function (el) {
-        if ((validate(el, constraint1) !== undefined)) {
-            condition3 = validate(el,constraint1);
-            //console.log(condition3);
-            return;
-        } else {
-            //console.log("ok");
-            condition3 = undefined;
-        }
-    })
-    
-    if(condition1===undefined && condition2===true && condition3===undefined) {
-        var pretty = JSON.stringify(tData, undefined, 4);
-        document.getElementById('myTextAreaNew').value = pretty;
-    } else {
-        console.log(condition1, condition2, condition3)
-        $.each(condition1, function(i, val){
-            console.log(val[0])
-            notycall(val[0]);
-        })
-        $.each(condition3, function(i, val){
-            console.log(val[0])
-            notycall(val[0]);
-        })  
-    }
-    });
- });
-=======
 
         });
 
     });
->>>>>>> 3cfcb70bbb7d0a683a344a9e0fca1ff7f3d84a95
 
     function notycall(input_text) {
         noty({
@@ -418,6 +384,6 @@
             }
         });
     }
-</script-->
+</script>
 
 </html>
