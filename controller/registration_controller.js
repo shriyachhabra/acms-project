@@ -22,7 +22,7 @@ $(function () {
         }
         else
         {
-            let allowed = "false";
+            let allowed = 0;
 
             $.post('/registration',
                 {
