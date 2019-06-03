@@ -52,7 +52,7 @@ const datasource = db.define('Data_Source', {
 
 
 
-db.sync({success: true}).then(function () {
+db.sync({alter: true}).then(function () {
     console.log("Database is ready");
 });
 
