@@ -1,93 +1,81 @@
 $(function () {
     let email = sessionStorage.getItem("session_email");
-    let text=$('#myTextArea');
-    let save=$('#save');
-    let edit = $('#edit');
-    let new_heading = $('#dashboard_name');
-    let pageheader_title = $('#pageheader_title');
-    let which_title = $('#which_title');
+    let text_box=$('#myTextArea');
+    let save_button=$('#save');
+    let dashboard_name = $('#dashboard_name');
+    let page_heading = $('#pageheader_title');
+    let which_dashboard_title = $('#which_title');
     let edit_button = $('#edit_button');
     let new_dashboard_button=$('#new_dashboard_button');
     let username = $('#username');
     let get_user = sessionStorage.getItem("username");
-    let id = sessionStorage.getItem("dashboard_id");
-    //console.log("id="+id);
-    $.get('/controller/edit_query_controller',
+    let dashboard_id = sessionStorage.getItem("dashboard_id");
+    $.post('/getConfig',{
+        dashboard_id:dashboard_id
+    },
         function (req,res) {
-            var data = JSON.parse(req.data);
-            console.log(data);
-              text.html(JSON.stringify(data));
+            let config = JSON.parse(req.data.config);
+            console.log(config);
+            text_box.html(JSON.stringify(config));
 
-              username.html(get_user);
+            username.html(get_user);
 
 
-            new_heading.html(data.header.title);
-            var styles = data.header.style;
-            var tags = Object.keys(styles);
-            $.each(tags,function (i) {
-                new_heading.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
+            dashboard_name.html(config.header.title);
+            let styles = config.header.style;
+            let tags = Object.keys(styles);
+            $.each(tags, function (i) {
+                dashboard_name.css(tags[i], styles[tags[i]]);
             });
 
-            which_title.html(data.page_header.title);
+            which_dashboard_title.html(config.page_header_title.title);
 
 
-            pageheader_title.html(data.page_header.title);
-            styles = data.page_header.style;
+            page_heading.html(config.page_header_title.title);
+            styles = config.page_header_title.style;
             tags = Object.keys(styles);
-            $.each(tags,function (i) {
-                pageheader_title.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
+            $.each(tags, function (i) {
+                page_heading.css(tags[i], styles[tags[i]]);
             });
 
 
-            edit_button.html(data.edit_button.title);
-            styles = data.edit_button.style;
+            edit_button.html(config.edit_button.title);
+            styles = config.edit_button.style;
             tags = Object.keys(styles);
-            $.each(tags,function (i) {
-                edit_button.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
+            $.each(tags, function (i) {
+                edit_button.css(tags[i], styles[tags[i]]);
             });
 
 
-            new_dashboard_button.html(data.new_dashboard_button.title);
-            styles = data.new_dashboard_button.style;
+            new_dashboard_button.html(config.new_dashboard_button.title);
+            styles = config.new_dashboard_button.style;
             tags = Object.keys(styles);
-            $.each(tags,function (i) {
-                new_dashboard_button.css(tags[i],styles[tags[i]]);
-                //console.log(tags[i]+":"+styles[tags[i]]);
+            $.each(tags, function (i) {
+                new_dashboard_button.css(tags[i], styles[tags[i]]);
             });
-
-            sessionStorage.setItem("map",JSON.stringify(req));
         }
     );
 
-    save.click(function () {
-        let result=text.val();
-        result=JSON.parse(result);
-        console.log("hi vh");
-        let components=result.components;
-
-
-        sessionStorage.setItem("components",JSON.stringify(components));
-        $.post('/controller/edit_query_controller',
-                    {
-                        comp:components,
-                        data:text.val(),
-                        dno:id,
-                        Email:email
-                        //Dash_name:result.page_header.title
-                    },
-                    function (res) {
-                      //console.log(res);
-                      sessionStorage.setItem("map",JSON.stringify(res));
-                      //console.log("map"+JSON.stringify(res));
-                      //alert("query updated");
-                        window.open("/view/dashboard_view.html","_self");
-                    }
-                   )
-
-       // console.log(result.components[0].type);
-    })
-
-})
+    save_button.click(function () {
+        let result = text_box.val();
+        result = JSON.parse(result);
+        let components = result.components;
+        $.post('/updateConfig',
+            {
+                config: text_box.val(),
+                dashboard_id: dashboard_id,
+                Email: email,
+                Dashboard_name: result.page_header_title.title
+            },
+            function (res) {
+                swal({
+                    title: "Success!",
+                    text: "Query Updated!",
+                    icon: "success",
+                }).then(() => {
+                    window.open("/view/dashboard_view.html", "_self");
+                });
+            }
+        )
+    });
+});

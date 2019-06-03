@@ -6,7 +6,7 @@
     "width": ""
   }
 },
-  "page_header":{
+  "page_header_title":{
     "title":"Access Points Dashboard",
     "style": {
       "color": "",
@@ -35,36 +35,47 @@
                     "id":1,
                     "type":"graph",
                     "style":{
+                              "ylabel": "Stock",
+                              "xlabel": "TimeStamp",
                               "title":"Line Graph",
                               "height":300,
                               "width":480
                     },
-                    "x-val":"lat",
-                    "y-val":"lng",
+                    "x-val":"Timestamp",
+                    "y-val":"Stock",
                     "position":1,
-                    "query":"{\"query\": {\"match\": {\"name\": \"Jobat\"}}}",
-                    "datasource":"1",
-                    "database": "tutorial",
-                    "table": "cities_list"
+                    "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300,\"lte\":400}}}}",
+                    "datasource":"elasticsearch",
+                    "database": "product",
+                    "table": "order_list"
                   },
                   {
                     "id":2,
                     "type":"bar",
-                    "x-val":"lat",
-                    "y-val":"lng",
+                    "x-val":"Timestamp",
+                    "y-val":"Price",
                     "position":2,
                     "style":{
-                              "legend": "always",
+                              "ylabel": "Price",
+                              "xlabel": "Timestamp",
                               "includeZero": true,
                               "animatedZooms": true,
-                              "title":"Graph 2",
+                              "title":"Bar Graph",
                               "height":300,
                               "width":480
                     },
-                    "query":"{ \"name\": \"Jobat\" }",
-                    "datasource":"2",
-                    "database": "sample",
-                    "table": "test"
+                    "query":"{\"Price\":{\"$gt\":800} }",
+                    "datasource":"mongodb",
+                    "database": "product",
+                    "table": "data"
+                  },
+                  {
+                    "id":3,
+                    "type":"table",
+                    "query":"{\"Market Place\":\"Australia\"}",
+                    "datasource":"mongodb",
+                    "database": "product",
+                    "table": "data"
                   }
   ]
 }

@@ -7,32 +7,51 @@ $(function () {
 
     register_button.click(function () {
         if(username.val()===""||email.val()===""||input_pass.val()===""||confirm_pass.val()===""){
-            alert("empty field");
+            swal({
+                title: "Oops!",
+                text: "Empty fields!",
+                icon: "error",
+            });
         }
         else if(input_pass.val()!=confirm_pass.val()){
-            alert("password dont match");
+            swal({
+                title: "Oops!",
+                text: "Password doesnt match!",
+                icon: "error",
+            });
         }
+        
         else
         {
+            let allowed = "false";
 
-            $.post('/controller/registration_controller',
+            $.post('/registration',
                 {
                     User_name: username.val(),
                     Email: email.val(),
-                    Password: input_pass.val()
+                    Password: input_pass.val(),
+                    Allowed:allowed
                 },
                 function (req,res) {
-                    /*if (req.data) {
-                        console.log("success");
-                        sessionStorage.setItem("session_email",email.val());
-                        sessionStorage.setItem("username",username.val());
-                        self.close();
+                    if (req.data === 0) {
+
+                        swal({
+                            title: "Oops!",
+                            text: "User Already Exists!",
+                            icon: "error",
+                        });
+
                     }
-                    else
-                        alert("user exists");*/
-                    console.log('hello');
-                }
-            );
+                    else{
+                        swal({
+                            title: "Success!",
+                            text: "Registration Successful!",
+                            icon: "success",
+                        }).then(() => {
+                            window.open("/view/index.html", "_self");
+                        });
+                    }
+            });
         }
-    })
+    });
 });

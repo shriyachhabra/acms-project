@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Table_View Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../styling_files/bootstrap/css/bootstrap.min.css">
+    <link href="../styling_files/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styling_files/css/style.css">
+    <link rel="stylesheet" href="../styling_files/fontawesome/css/fontawesome-all.css">
+
+    <!-- Sweet Alert Js -->
+    <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
+    <style>
+        th, td, p, input {
+            font:14px Verdana;
+        }
+        table, th, td
+        {
+            border: solid 1px black;
+            border-collapse: collapse;
+            padding: 5px 5px;
+            text-align: center;
+        }
+        th {
+            font-weight:bold;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+    </style>
+    <meta charset="utf-8" />
+    <title>Demo -TextArea</title>
+</head>
+
+<body>
+
+<div class="dashboard-main-wrapper">
+
+    <div class="dashboard-header">
+        <nav class="navbar navbar-expand-lg bg-white fixed-top">
+            <a class="navbar-brand" href="../view/dashboard_view.html" id="dashboard_name">ACMS DASHBOARD</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto navbar-right-top">
+
+                    <li class="nav-item dropdow ">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"></i></a>
+                        <div id="submenu-4" class="collapse submenu" style="">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../view/edit_query_view.html">Edit </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../view/new_query_view.html">New Dashboard</a>
+                    </li>
+
+
+
+                    <li class="nav-item dropdown nav-user">
+                        <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../styling_files/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>
+                        <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                            <div class="nav-user-info">
+                                <h5 class="mb-0 text-white nav-user-name" id="username">John Abraham</h5>
+                                <span class="status"></span><span class="ml-2">Available</span>
+                            </div>
+                            <!--a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
+                            <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a-->
+                            <a class="dropdown-item" href="#" id="logout"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="nav-left-sidebar sidebar-dark">
+        <!--div class="menu-list"-->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-divider">
+                        Menu
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1"><i class="fa fa-fw fa-user-circle"></i>Dashboard <span class="badge badge-success">6</span></a>
+                        <div id="submenu-1" class="collapse submenu" style="">
+                            <ul class="nav flex-column" id="dashboard_list">
+                            </ul>
+
+
+        </nav>
+    </div>
+</div>
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-header">
+                    <h2 class="pageheader-title" id="pageheader_title">Edit Dashboard</h2>
+
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page" id="which_title">Edit Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+
+                <div id="table_view"></div>
+
+
+                <br>
+                <br>
+                <br>
+                <br>
+
+                <button class="button" id="okay">Okay</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<script src="../styling_files/jquery/jquery-3.3.1.min.js"></script>
+<script src="../styling_files/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="../styling_files/js/main-js.js"></script>
+<script src="../controller/table_view_controller.js"></script>
+<script src="../controller/fetch_dashboard_controller.js"></script>
+<script src="../controller/dashboard_name_click_controller.js"></script>
+<script src="../controller/logout_controller.js"></script>
+
+
+
+
+</body>
+</html>

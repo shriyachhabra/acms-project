@@ -1,242 +1,205 @@
 const express = require('express');
 const bp = require('body-parser');
-const database_dao = require('./model/database_model');
+const database_dao = require('./dao/database_dao');
+const elastic_dao = require('./dao/elasticsearch_dao');
+const mongodb_dao = require('./dao/mongodb_dao');
 const path=require('path');
 const fs = require('fs');
 const app=express();
-let query_result_map={};
-let dataSource_Map={};
-let query_content;
-const new_query_content = fs.readFileSync(path.join(__dirname+"/new_data.json"));
-
+const new_config_content = fs.readFileSync(path.join(__dirname+"/new_data.json"));
 app.use('/', express.static(__dirname + "/"));
-
 app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
 
 
+
 app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname+"/view/"+"index.html"));
+    try{
+        res.sendFile(path.join(__dirname+"/view/"+"index.html"));
+    }
+    catch(err){
+        console.log("error for start file "+err);
+        throw err;
+    }
 
 });
 
-app.get('/controller/dashboard_controller',(req,res)=>{
-    res.send(query_result_map);
-    res.sendFile(path.join(__dirname+"/view/"+"dashboard.html"));
 
 
-});
-
-
-app.post('/controller/dashboard_controller',(req,res)=>{
-        database_dao.getQuery(req.body).then(function (data) {
-            console.log('success');
+app.post('/getConfig',(req,res)=>{
+        database_dao.getConfig(req.body).then(function (data) {
+            console.log('successful fetching of config');
             res.send({success: true,data:data});
-            query_content=data.query;
         }).catch(function (err) {
-            console.log('Error'+err);
+            console.log('Error from /getConfig '+err);
             throw err;
-        })
+        });
 });
+
 
 
 app.post('/controller/fetch_dashboard_controller',(req,res)=>{
     database_dao.getDashboard(req.body).then(function (data) {
-        console.log('success dashboard');
+        console.log('successful fetching of dashboard');
         res.send({success:true,data:data});
     }).catch(function (err) {
-        console.log('Error'+err);
+        console.log('Error from /controller/fetch_dashboard_controller'+err);
         throw err;
-    })
-})
+    });
+});
 
 
-app.post('/controller/dashboard_name_click_controller',(req,res)=>{
+app.post('/dashboard_name_click_controller/click',(req,res)=>{
     database_dao.addSession(req.body).then(function () {
+        console.log("dashboard click id "+req.body);
         console.log('success add session');
-        database_dao.getQuery(req.body).then(function (data) {
-            console.log('success');
-            res.send({success: true,data:data})
-            query_content=data.query;
+        database_dao.getConfig(req.body).then(function (data) {
+            console.log('successful get config');
+            res.send({success: true,data:data});
         }).catch(function (err) {
-            console.log('Error'+err);
+            console.log('Error from /dashboard_name_click_controller/click in getConfig'+err);
             throw err;
-        })
+        });
     }).catch(function (err) {
-        console.log('Error'+err);
+        console.log('Error from /dashboard_name_click_controller/click in addSession'+err);
         throw err;
-    })
+    });
 
 
 });
 
 
 
-app.get('/controller/edit_query_controller',(req,res)=>{
-    res.send({data:query_content});
+app.get('/getNewConfig/sampleData',(req,res)=>{
+    try{
+        res.contentType('json');
+        res.send(JSON.parse(new_config_content));
+    }catch(err){
+        console.log("Error from /getNewConfig "+err);
+        throw err;
+    }
+
 });
 
 
 
-app.get('/controller/new_query_controller',(req,res)=>{
-    res.contentType('json');
-    res.send(JSON.parse(new_query_content));
-});
-
-
-
-app.post('/controller/registration_controller', (req, res) => {
+app.post('/registration', (req, res) => {
     database_dao.addUser(req.body).then(function (data) {
-        console.log(data);
     	res.send({success:true,data:data});
     }).catch(function (err) {
-    	console.log('Error'+err);
+    	console.log('Error from /registration '+err);
         throw err;
     })
 });
 
 
 
-app.post('/controller/login_controller', (req, res) => {
+app.post('/login', (req, res) => {
     database_dao.getLogin(req.body).then(function (data) {
         console.log('success login');
         res.send({success:true,data:data});
     }).catch(function (err) {
-        console.log('Error'+err);
+        console.log('Error from /login '+err);
         throw err;
     })
 });
 
 
 
-app.post('/controller/new_content_controller',(req,res)=>{
+app.post('/save_newConfig',(req,res)=>{
 
-    database_dao.addQuery(req.body).then(function (data) {
-        console.log('success query');
-        res.send({success: true,data:data})
+    database_dao.addConfig(req.body).then(function (data) {
+        console.log('success config');
+        if(data!=null){
+            let result={
+                Email:req.body.Email,
+                dashboard_id:data
+            };
+            database_dao.addSession(result).then(function () {
+                res.send({success: true,data:data});
+            }).catch(function (err) {
+                console.log("error in adding session"+err);
+                throw err;
+            })
+        }
     }).catch(function (err) {
-        console.log('Error'+err);
+        console.log('Error from /save_newConfig'+err);
         throw err;
     })
 
 });
 
 
+app.post('/components/query/result',(req,res)=>{
+    database_dao.getDataSource(req.body).then(function (data) {
 
+        let component_id = req.body.component_id;
 
-
-app.post('/controller/edit_query_controller',(req,res)=>{
-    const components=req.body.comp;
-    const email = req.body.Email;
-    let data;
-    database_dao.updateQuery(req.body).then(function (data) {
-        console.log('success update query');
-        data=data;
-    }).catch(function (err) {
-        console.log('Error'+err);
-        throw err;
-    });
-
-    for(let i=0;i<components.length;i++){
-
-        let sourceId=components[i].datasource;
-        let queryReceived=components[i].query;
-        let databaseReceived = components[i].database;
-        let tableReceived = components[i].table;
         let data_body = {
-            Email: email,
-            Data_source: sourceId,
-            Database: databaseReceived,
-            Table: tableReceived,
-            Query: queryReceived
+            query: req.body.query,
+            host: data.host,
+            datasource: data.data_source_name,
+            database: data.database,
+            table: data.table
         };
-        //console.log(data_body)
-        database_dao.getDataSource(data_body).then(function (data) {
-            for(let j in data) {
-                if (data === "null") {
-                    console.log("null");
-                }
-                else if (data[j].data_source_name === "1") {
-                    const elasticsearch = require('elasticsearch');
-                    let client = new elasticsearch.Client({
-                        hosts: data[j].host
-                    });
-                    query_arr = data[j].query.split(',');
-                    for(let k in query_arr){
-                        client.search(
-                            {
-                                index: data[j].database,
-                                body: data[j].query,
-                                type: data[j].table
-                            })
-                            .then(results => {
-                                let p = results.hits.hits;
-                                let arr = []
-                                for (let ele = 0; ele < p.length; ele++) {
-                                    let obj = p[ele]["_source"]
-                                    arr.push(obj)
-                                }
-                                query_result_map[components[i]['id']] = arr
-                                console.log(query_result_map)
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            });
-                    }
 
-                }
-                else if (data[j].data_source_name === "2") {
+        if (data === "null") {
+            console.log("data received is null in /components/query/result");
+        }
+        if (data.data_source_name === "elasticsearch") {
 
-                    const mongoose = require('mongoose');
+            try {
+                elastic_dao.query(data_body, data => {
+                    let query_result_map={};
+                    query_result_map[component_id]=data;
+                    console.log(query_result_map);
+                    console.log("result from elastic"+data);
+                    res.send({success: true, data: data,map:query_result_map});
 
-                    mongoose.connect('mongodb://' + data[j].host + '/' + data[j].database, {useNewUrlParser: true});
-
-                    let MongoClient = require('mongodb').MongoClient;
-                    let url = 'mongodb://' + data[j].host + '/';
-                    let db = mongoose.connection;
-                    MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
-                        if (err) throw err;
-                        let dbo = db.db(data[j].database);
-                        dbo.collection(data[j].table).find(JSON.parse(data[j].query)).toArray(function (err, result) {
-                            if (err) throw err;
-                            let id = components[i].id;
-                            query_result_map[id] = result
-                            console.log(query_result_map)
-                            db.close();
-                        });
-                    });
-
-
+                })
+            }
+                catch(err) {
+                    console.log('Error from elasticsearch' + err);
+                    throw err;
                 }
 
+        }
+        if (data.data_source_name === "mongodb") {
+
+            try{
+
+                mongodb_dao.query(data_body,data=>{
+                    let query_result_map={};
+                    query_result_map[component_id]=data;
+                    console.log(query_result_map);
+                    console.log("result from mongo"+data);
+                    res.send({success:true,data:data,map:query_result_map});
+                });
+
+            }catch(err){
+                console.log('Error from mongodb'+err);
+                throw err;
             }
 
+        }
     }).catch(function (err){
-            console.log('Error'+err);
-            throw err;
-        });
-    }
-
-    setTimeout(function () {
-        console.log(query_result_map)
-        res.send({success: true,data:data,map:query_result_map})
-    },2000)
-});
-
-
-app.post('/controller/datasource',(req,res)=>{
-    const components=req.body.comp;
-    let data;
-    database_dao.addDataSource(req.body).then(function (data) {
-        console.log('successfull inserted');
-    }).catch(function (err) {
-        console.log('Error'+err);
+        console.log('Error from /components/query/result'+err);
         throw err;
     });
-
 });
 
 
-app.listen(7852, function () {
-    console.log("Server started on http://localhost:7852");
+app.post('/updateConfig',(req,res)=>{
+    database_dao.updateConfig(req.body).then(function (data) {
+        console.log('success update config');
+        res.send({success: true,data:data});
+    }).catch(function (err) {
+        console.log('Error in update config'+err);
+        throw err;
+    });
+});
+
+
+app.listen(7850, function () {
+    console.log("Server started on http://localhost:7850");
 });

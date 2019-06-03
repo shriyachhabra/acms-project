@@ -3,15 +3,16 @@ $(function () {
 
     $('#dashboard_list').on("click","a[name=dashboard_name]",function () {
 
-        let id = $(this).attr('id');
+        let dashboard_id = $(this).attr('id');
 
-        $.post('/controller/dashboard_name_click_controller',
+        $.post('/dashboard_name_click_controller/click',
             {
                 Email:email,
-                id:id
+                dashboard_id:dashboard_id
             },function (data, err) {
                 if (data.success) {
-                    sessionStorage.setItem("dashboard_id",id);
+                    console.log("Current dashboard id"+dashboard_id);
+                    sessionStorage.setItem("dashboard_id",dashboard_id);
                     location.reload();
                 }
                 else
@@ -19,4 +20,4 @@ $(function () {
             })
 
     })
-})
+});
