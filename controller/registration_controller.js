@@ -20,7 +20,7 @@ $(function () {
                 icon: "error",
             });
         }
-        
+         
         else
         {
             let allowed = "false";
