@@ -110,7 +110,18 @@ app.post('/save_newConfig',(req,res)=>{
 
     database_dao.addConfig(req.body).then(function (data) {
         console.log('success config');
-        res.send({success: true,data:data})
+        if(data!=null){
+            let result={
+                Email:req.body.Email,
+                dashboard_id:data
+            };
+            database_dao.addSession(result).then(function () {
+                res.send({success: true,data:data});
+            }).catch(function (err) {
+                console.log("error in adding session"+err);
+                throw err;
+            })
+        }
     }).catch(function (err) {
         console.log('Error from /save_newConfig'+err);
         throw err;
@@ -139,11 +150,12 @@ app.post('/components/query/result',(req,res)=>{
 
             try {
                 elastic_dao.query(data_body, data => {
-                    /*let query_result_map={};
+                    let query_result_map={};
                     query_result_map[component_id]=data;
-                    console.log(query_result_map);*/
-                    res.send({success: true, data: data});
-                    console.log("result from elasticsearch" + data);
+                    console.log(query_result_map);
+                    console.log("result from elastic"+data);
+                    res.send({success: true, data: data,map:query_result_map});
+
                 })
             }
                 catch(err) {
@@ -157,11 +169,11 @@ app.post('/components/query/result',(req,res)=>{
             try{
 
                 mongodb_dao.query(data_body,data=>{
-                    /*let query_result_map={};
+                    let query_result_map={};
                     query_result_map[component_id]=data;
-                    console.log(query_result_map);*/
+                    console.log(query_result_map);
                     console.log("result from mongo"+data);
-                    res.send({success:true,data:data});
+                    res.send({success:true,data:data,map:query_result_map});
                 });
 
             }catch(err){

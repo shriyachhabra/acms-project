@@ -30,7 +30,7 @@ $(function () {
                 sessionStorage.setItem('dashboard_id', res.data);
                 swal({
                     title: "Success!",
-                    text: "Login Successful!",
+                    text: "New Dashboard Made Successfully!",
                     icon: "success",
                 }).then(() => {
                     window.open("/view/dashboard_view.html", "_self");
