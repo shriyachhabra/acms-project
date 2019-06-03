@@ -88,7 +88,7 @@
                                 data-target="#submenu-1" aria-controls="submenu-1"><i
                                     class="fa fa-fw fa-user-circle"></i>Dashboard <span
                                     class="badge badge-success">6</span></a>
-                            <div id="submenu-1" class="collapse submenu" style="">
+                            <div id="submenu-1" class="collapse submenu">
 
 
 
@@ -154,7 +154,7 @@
                         </textarea>
                         <li class="make-item">
                             <a href="#" class="button" id="save">Save</a>
-                            <button class="button" id="pretty">Pretty Print</button>
+                            <!-- <button class="button" id="pretty">Pretty Print</button> -->
                             <a href="../view/dashboard_view.html" class="button">Cancel</a>
                         </li>
                 </div>
@@ -180,32 +180,32 @@
 <!-- Formatter Script -->
 <script>
     $(document).ready(function () {
-        var prettyPrint = $("#pretty");
+        var prettyPrint = $("#save");
         prettyPrint.click(function () {
-            var ugly = document.getElementById('myTextAreaNew').value;
+            var ugly = $('#myTextAreaNew').val();
+            console.log(ugly);
             var tData = JSON.parse(ugly);
+            console.log(tData);
             var constraint = {
                 "header.title": {
-                    presence: true
+                    
                 },
                 "header.style": {
-                    presence: true
+                   
                 },
                 "header.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                    
+    
                 },
                 "header.style.height": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "header.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -213,26 +213,23 @@
                 },
 
                 "page_header.title": {
-                    presence: true
+                   
                 },
                 "page_header.style": {
-                    presence: true
+                    
                 },
                 "page_header.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                    
                 },
                 "page_header.style.height": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "page_header.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -240,26 +237,23 @@
                 },
 
                 "edit_button.title": {
-                    presence: true
+                    
                 },
                 "edit_button.style": {
-                    presence: true
+                    
                 },
                 "edit_button.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                   
                 },
                 "edit_button.style.height": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "edit_button.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -267,26 +261,24 @@
                 },
 
                 "new_dashboard_button.title": {
-                    presence: true
+                   
                 },
                 "new_dashboard_button.style": {
-                    presence: true
+                    
                 },
                 "new_dashboard_button.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                   
+                   
                 },
                 "new_dashboard_button.style.height": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "new_dashboard_button.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -295,41 +287,41 @@
             };
             var constraint1 = {
                 "id": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "type": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^[a-zA-Z]*$"
                     }
                 },
                 "x-val": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "y-val": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "position": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^[1-9][0-9]*$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "datasource": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^[1-2]$",
                         message: "Enter a valid string of integers"
@@ -350,8 +342,6 @@
             })
 
             if (condition1 === undefined && condition2 === true && condition3 === undefined) {
-                var pretty = JSON.stringify(tData, undefined, 4);
-                document.getElementById('myTextAreaNew').value = pretty;
             } else {
                 console.log(condition1, condition2, condition3)
                 $.each(condition1, function (i, val) {
@@ -367,8 +357,10 @@
             }
 
         });
+            
 
     });
+  
 
     function notycall(input_text) {
         noty({
@@ -376,6 +368,8 @@
             layout: 'topRight',
             theme: 'defaultTheme', // or relax
             type: 'warning',
+            timeout: 1500,
+            progressBar: true,
             animation: {
                 open: { height: 'toggle' },
                 close: { height: 'toggle' },

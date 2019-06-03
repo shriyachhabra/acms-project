@@ -5,6 +5,12 @@ $(function () {
         function (req) {
             console.log(req);
             text_area.html(JSON.stringify(req));
+            var ugly = $('#myTextAreaNew').val();
+            console.log(ugly);
+            var tData = JSON.parse(ugly);
+            console.log(tData);
+            var pretty = JSON.stringify(tData, undefined, 4);
+            document.getElementById('myTextAreaNew').value = pretty;
         }
     );
 

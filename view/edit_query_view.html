@@ -10,7 +10,10 @@
     <link href="../styling_files/circular-std/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../styling_files/css/style.css">
     <link rel="stylesheet" href="../styling_files/fontawesome/css/fontawesome-all.css">
-
+    <script src="../styling_files/validate.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.4.1/packaged/jquery.noty.packaged.js"></script>
     <!-- Sweet Alert Js -->
     <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 
@@ -132,6 +135,7 @@
                         style="background-color: black;color: yellow;height:400px;width:900px;font-size:12pt"></textarea>
                     <li class="new-change">
                         <button class="button" id="save">Save</button>
+                        <button class="button" id="pretty">Pretty Print</button>
                         <a href="../view/dashboard_view.html" class="button">Cancel</a>
                     </li>
                     <style>
@@ -154,34 +158,39 @@
     <script src="../controller/dashboard_name_click_controller.js"></script>
     <script src="../controller/logout_controller.js"></script>
 </body>
-<!--script>
+<script>
     $(document).ready(function () {
+        var savePrint = $("#save");
         var prettyPrint = $("#pretty");
-        prettyPrint.click(function () {
-            var ugly = document.getElementById('myTextAreaNew').value;
+        prettyPrint.click(function() {
+            var ugly = document.getElementById('myTextArea').value;
+            var tData = JSON.parse(ugly);
+            var pretty = JSON.stringify(tData, undefined, 4);
+                document.getElementById('myTextArea').value = pretty;
+        })
+        savePrint.click(function () {
+            var ugly = document.getElementById('myTextArea').value;
             var tData = JSON.parse(ugly);
             var constraint = {
                 "header.title": {
-                    presence: true
+                   
                 },
                 "header.style": {
-                    presence: true
+                    
                 },
                 "header.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                    
+
                 },
                 "header.style.height": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "header.style.width": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -189,26 +198,24 @@
                 },
 
                 "page_header.title": {
-                    presence: true
+                   
                 },
                 "page_header.style": {
-                    presence: true
+                    
                 },
                 "page_header.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                    
+
                 },
                 "page_header.style.height": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "page_header.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -216,26 +223,24 @@
                 },
 
                 "edit_button.title": {
-                    presence: true
+                  
                 },
                 "edit_button.style": {
-                    presence: true
+                   
                 },
                 "edit_button.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                    
+            
                 },
                 "edit_button.style.height": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "edit_button.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -243,26 +248,24 @@
                 },
 
                 "new_dashboard_button.title": {
-                    presence: true
+                    
                 },
                 "new_dashboard_button.style": {
-                    presence: true
+                    
                 },
                 "new_dashboard_button.style.color": {
-                    presence: true,
-                    format: {
-                        pattern: "^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$"
-                    }
+                   
+                   
                 },
                 "new_dashboard_button.style.height": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
                     }
                 },
                 "new_dashboard_button.style.width": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string having only integer"
@@ -271,41 +274,41 @@
             };
             var constraint1 = {
                 "id": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "type": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^[a-zA-Z]*$"
                     }
                 },
                 "x-val": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "y-val": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "position": {
-                    presence: true,
+                    
                     format: {
                         pattern: "^[1-9][0-9]*$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "datasource": {
-                    presence: true,
+                   
                     format: {
                         pattern: "^[1-2]$",
                         message: "Enter a valid string of integers"
@@ -327,23 +330,21 @@
 
             if (condition1 === undefined && condition2 === true && condition3 === undefined) {
                 var pretty = JSON.stringify(tData, undefined, 4);
-                document.getElementById('myTextAreaNew').value = pretty;
+                document.getElementById('myTextArea').value = pretty;
+                console.log("Hi");
+
             } else {
                 console.log(condition1, condition2, condition3)
                 $.each(condition1, function (i, val) {
-                    console.log(val[0])
+                    console.log("test",val[0])
                     notycall(val[0]);
                 })
                 $.each(condition3, function (i, val) {
-                    console.log(val[0])
+                    console.log("test1",val[0])
                     notycall(val[0]);
                 })
-
-
             }
-
         });
-
     });
 
     function notycall(input_text) {
@@ -352,6 +353,8 @@
             layout: 'topRight',
             theme: 'defaultTheme', // or relax
             type: 'warning',
+            timeout: 1500,
+            progressBar: true,
             animation: {
                 open: { height: 'toggle' },
                 close: { height: 'toggle' },
@@ -360,6 +363,5 @@
             }
         });
     }
-</script-->
-
+</script>
 </html>
