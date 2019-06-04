@@ -20,9 +20,10 @@ $(function () {
                 icon: "error",
             });
         }
+         
         else
         {
-            let allowed = "false";
+            let allowed = 0;
 
             $.post('/registration',
                 {

@@ -62,53 +62,72 @@ $(function () {
             console.log("components" + components);
             console.log("length of components" + components.length);
 
-            for (let i = 0; i < components.length; i++) {
+            for (let i=0;i<components.length;i++) {
 
                 let query = components[i].query;
-                let datasource = components[i].datasource;
+                let data_source = components[i].datasource;
                 let database = components[i].database;
-                let datasource_table = components[i].table;
+                let data_source_table = components[i].table;
+                let index = components[i].id;
+                let elements = components[i];
                 console.log("database" + database);
                 console.log("query" + query);
-                console.log("table" + datasource_table);
-                console.log("datasource" + datasource);
+                console.log("table" + data_source_table);
+                console.log("data_source" + data_source);
+                $('<div id="component' + i + '" style="display:inline-flex; margin: 5px"></div>').appendTo('#graphid');
+
                 $.post('/components/query/result', {
-                    component_id: components[i].id,
+                    component_id: index,
                     query: query,
-                    datasource: datasource,
+                    datasource: data_source,
                     database: database,
-                    table: datasource_table,
+                    table: data_source_table,
                     Email: email
                 }, function (res) {
-                    console.log("result of query" + res.data);
-                    let result = res.data;
+                    console.log("result of query" + res.map);
+                    let result = res.map;
                     console.log("result" + result);
                     console.log("components" + components);
-                    let outputCSV = "";
-                    let elements = components[i];
-                    console.log("elements" + elements['id']);
-                    let x = elements['x-val'];
-                    let y = elements['y-val'];
-                    outputCSV += x + "," + y + "\n";
-                    let index = elements['id'];
-                    let arr = result;
-                    console.log("array_result" + arr);
-                    for (let j in arr) {
-                        outputCSV += arr[j][x] + "," + arr[j][y] + "\n";
-                    }
-                    console.log("csv" + outputCSV);
-                    $('<div id=' + i + ' style="display:inline-flex; margin:10px"></div>').appendTo('#graphid');
+
                     let type = elements['type'];
-                    if (type === 'graph') {
-                        if (document.getElementById(i)) {
-                            console.log('div with id =' + i + 'exists');
-                            let g = new Dygraph(document.getElementById(i), outputCSV, elements['style']);
-                        } else {
-                            console.log('div with id =' + i + 'not exists');
+                    if (type === "graph") {
+                        let outputCSV = "";
+                        let elements = components[i];
+                        //console.log("elements" + elements['id']);
+                        let x = elements['x-val'];
+                        let y = elements['y-val'];
+                        outputCSV += x + "," + y + "\n";
+
+                        let arr = result[index];
+                        console.log("array_result" + arr);
+                        for (let j in arr) {
+                            outputCSV += arr[j][x] + "," + arr[j][y] + "\n";
                         }
-                    } else if (type === 'bar') {
-                        if (document.getElementById(i)) {
-                            console.log('div with id =' + i + 'exists');
+                        console.log("csv" + outputCSV);
+                        if (document.getElementById("component"+i+"")) {
+                            console.log('div with id ="component' + i + '" exists');
+                            let g = new Dygraph(document.getElementById("component"+i+""), outputCSV, elements['style']);
+                        } else {
+                            console.log('div with id ="component'+i+'"not exists');
+                        }
+                    }
+                    if (type === "bar") {
+                        let outputCSV = "";
+                        let elements = components[i];
+                        //console.log("elements" + elements['id']);
+                        let x = elements['x-val'];
+                        let y = elements['y-val'];
+                        outputCSV += x + "," + y + "\n";
+
+                        let arr = result[index];
+                        console.log("array_result" + arr);
+                        for (let j in arr) {
+                            outputCSV += arr[j][x] + "," + arr[j][y] + "\n";
+                        }
+                        console.log("csv" + outputCSV);
+                        if (document.getElementById("component"+i+"")) {
+                            console.log('div with id ="component'+i+'"exists');
+
 
                             function darkenColor(colorStr) {
                                 // Defined in dygraph-utils.js
@@ -144,44 +163,55 @@ $(function () {
                                         bar_width, y_bottom - p.canvasy);
                                 }
                             };
-                            let g = new Dygraph(document.getElementById(i), outputCSV, elements['style']);
-                        } else {
-                            console.log('div with id =' + i + 'not exists');
+                            let g = new Dygraph(document.getElementById("component"+i+""), outputCSV, elements['style']);
+
                         }
-                    } else if (type === "table") {
-                        let col = [];
-                        for (let i = 0; i < result.length; i++) {
-                            for (let key in result[i]) {
-                                if (col.indexOf(key) === -1) {
-                                    col.push(key);
-                                }
-                            }
+                        else {
+                            console.log('div with id ="component'+i+'"not exists');
                         }
-                        let table = document.createElement("table");
-                        /*let header = table.createCaption();
-                        header.caption = "table";*/
-                        let tr = table.insertRow(-1);
-                        for (let i = 0; i < col.length; i++) {
-                            let th = document.createElement("th");
-                            th.innerHTML = col[i];
-                            tr.appendChild(th);
-                        }
-                        for (let i = 0; i < result.length; i++) {
-                            tr = table.insertRow(-1);
-                            for (let j = 0; j < col.length; j++) {
-                                let tableCell = tr.insertCell(-1);
-                                tableCell.innerHTML = result[i][col[j]];
-                                if (j === 0) {
-                                    tableCell.setAttribute("style", "cursor:pointer");
-                                    tableCell.onclick = function () {
-                                        window.open("/view/table_view.html?id=" + result[i][col[j]] + "?" + database + "?" + datasource + "?" + datasource_table, "_self");
-                                    }
-                                }
-                            }
-                        }
-                        let divContainer = document.getElementById(i);
-                        divContainer.innerHTML = "";
-                        divContainer.appendChild(table);
+                    }
+                    if (type === "table") {
+                         if(document.getElementById("component"+i+"")) {
+                             console.log('div with id ="component'+i+'" exists');
+                             let arr = result[index];
+                             console.log(arr);
+                             let col = [];
+                             for (let i = 0; i < arr.length; i++) {
+                                 for (let key in arr[i]) {
+                                     if (col.indexOf(key) === -1) {
+                                         col.push(key);
+                                     }
+                                 }
+                             }
+                             let table = document.createElement("table");
+                             /*let header = table.createCaption();
+                             header.caption = "table";*/
+                             let tr = table.insertRow(-1);
+                             for (let i = 0; i < col.length; i++) {
+                                 let th = document.createElement("th");
+                                 th.innerHTML = col[i];
+                                 tr.appendChild(th);
+                             }
+                             for (let i = 0; i < arr.length; i++) {
+                                 tr = table.insertRow(-1);
+                                 for (let j = 0; j < col.length; j++) {
+                                     let tableCell = tr.insertCell(-1);
+                                     tableCell.innerHTML = arr[i][col[j]];
+                                     if (j === 0) {
+                                         tableCell.setAttribute("style", "cursor:pointer");
+                                         tableCell.onclick = function () {
+                                             window.open("/view/table_view.html?id=" + arr[i][col[j]] + "?" + database + "?" + data_source + "?" + data_source_table, "_self");
+                                         }
+                                     }
+                                 }
+                             }
+                             let divContainer = document.getElementById("component"+i+"");
+                             divContainer.innerHTML = "";
+                             divContainer.appendChild(table);
+                         }
+                         else {
+                             console.log('div with id ="component'+i+'"not exists');
+                         }
                     }
 
                 });

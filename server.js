@@ -110,7 +110,22 @@ app.post('/save_newConfig', (req, res) => {
 
     database_dao.addConfig(req.body).then(function (data) {
         console.log('success config');
+<<<<<<< HEAD
         res.send({ success: true, data: data })
+=======
+        if(data!=null){
+            let result={
+                Email:req.body.Email,
+                dashboard_id:data
+            };
+            database_dao.addSession(result).then(function () {
+                res.send({success: true,data:data});
+            }).catch(function (err) {
+                console.log("error in adding session"+err);
+                throw err;
+            })
+        }
+>>>>>>> 2409dbde5337b38d1996e27d3f2c7c54c1e54fd8
     }).catch(function (err) {
         console.log('Error from /save_newConfig' + err);
         throw err;
@@ -139,11 +154,18 @@ app.post('/components/query/result', (req, res) => {
 
             try {
                 elastic_dao.query(data_body, data => {
-                    /*let query_result_map={};
+                    let query_result_map={};
                     query_result_map[component_id]=data;
+<<<<<<< HEAD
                     console.log(query_result_map);*/
                     res.send({ success: true, data: data });
                     console.log("result from elasticsearch" + data);
+=======
+                    console.log(query_result_map);
+                    console.log("result from elastic"+data);
+                    res.send({success: true, data: data,map:query_result_map});
+
+>>>>>>> 2409dbde5337b38d1996e27d3f2c7c54c1e54fd8
                 })
             }
             catch (err) {
@@ -156,12 +178,21 @@ app.post('/components/query/result', (req, res) => {
 
             try {
 
+<<<<<<< HEAD
                 mongodb_dao.query(data_body, data => {
                     /*let query_result_map={};
                     query_result_map[component_id]=data;
                     console.log(query_result_map);*/
                     console.log("result from mongo" + data);
                     res.send({ success: true, data: data });
+=======
+                mongodb_dao.query(data_body,data=>{
+                    let query_result_map={};
+                    query_result_map[component_id]=data;
+                    console.log(query_result_map);
+                    console.log("result from mongo"+data);
+                    res.send({success:true,data:data,map:query_result_map});
+>>>>>>> 2409dbde5337b38d1996e27d3f2c7c54c1e54fd8
                 });
 
             } catch (err) {

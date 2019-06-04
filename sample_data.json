@@ -53,10 +53,10 @@
                     "id":2,
                     "type":"bar",
                     "x-val":"Timestamp",
-                    "y-val":"Stock",
+                    "y-val":"Price",
                     "position":2,
                     "style":{
-                              "ylabel": "Stock",
+                              "ylabel": "Price",
                               "xlabel": "Timestamp",
                               "includeZero": true,
                               "animatedZooms": true,
@@ -64,18 +64,18 @@
                               "height":300,
                               "width":480
                     },
-                    "query":"{\"Stock\":{\"$gt\":900} }",
+                    "query":"{\"Price\":{\"$gt\":800} }",
                     "datasource":"mongodb",
                     "database": "product",
-                    "table": "order_list"
+                    "table": "data"
                   },
                   {
                     "id":3,
                     "type":"table",
-                    "query":"{\"Listing Name\":\"error\"}",
+                    "query":"{\"Market Place\":\"Australia\"}",
                     "datasource":"mongodb",
                     "database": "product",
-                    "table": "order_list"
+                    "table": "data"
                   }
   ]
 }
