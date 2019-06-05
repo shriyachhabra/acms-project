@@ -12,13 +12,13 @@ $(function () {
     let get_user = sessionStorage.getItem("username");
     let dashboard_id = sessionStorage.getItem("dashboard_id");
     let url = new URL(window.location.href);
-    let searchParams = new URLSearchParams(url.search);
-    let url_param = searchParams.get("id").split('?');
+    //let searchParams = new URLSearchParams(url.search);
+    let url_param = window.location.href.split('?');
     let id;
     let database;
-    let datasource
+    let datasource;
     let table;
-    let query={};
+    let query;
     let okay_button = $('#okay');
     $.post('/getConfig',{
             dashboard_id:dashboard_id
@@ -68,25 +68,35 @@ $(function () {
     okay_button.click(function () {
         window.open("../view/dashboard_view.html", "_self");
     });
+    let name,value;
     for(let i in url_param){
-            id = url_param[0];
-            database = url_param[1];
-            datasource = url_param[2];
-            table = url_param[3];
+            id = url_param[1];
+            let data_split = id.split("=");
+            name = data_split[0];
+            value = data_split[1];
+            database = url_param[2];
+            datasource = url_param[3];
+            table = url_param[4];
 
     }
     //console.log(id+database+table+datasource);
     if(datasource==="mongodb"){
-        query = "{_id:ObjectId(\""+id+"\")}";
-        //console.log(JSON.stringify(query));
+        if(name==="_id"){
+            query = value;
+        }else{
+            query = "{\""+name+"\":\""+value+"\"}";
+        }
+        console.log(query);
+       // console.log(JSON.stringify(query))
     }else if (datasource === "elasticsearch"){
-        query = "{\"query\":{\"match\": {\"Product Id\": \""+id+"\"}}}";
+        query = "{\"query\":{\"match\": {\""+name+"\": \""+value+"\"}}}";
     }
     $.post('/components/query/result',{
-        query:JSON.stringify(query),
+        query:query,
+        id:name,
         datasource: datasource,
         database: database,
-        table: table
+        table: table,
     },function (res) {
         console.log("result of query"+res.data);
         let result=res.data;

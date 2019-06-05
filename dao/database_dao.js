@@ -5,8 +5,8 @@ const Sequelize = require('sequelize');
 const db = new Sequelize({
     host: 'localhost',
     username: 'root',
-    database: 'amazon1',
-    password: 'S@nket123',
+    database: 'amazon',
+    password: '',
     dialect: 'mysql'
 });
 
@@ -52,7 +52,7 @@ const datasource = db.define('Data_Source', {
 
 
 
-db.sync({alter: true}).then(function () {
+db.sync({success: true}).then(function () {
     console.log("Database is ready");
 });
 

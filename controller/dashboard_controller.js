@@ -74,7 +74,7 @@ $(function () {
                 console.log("query" + query);
                 console.log("table" + data_source_table);
                 console.log("data_source" + data_source);
-                $('<div id="component' + i + '" style="display:inline-flex; margin: 5px"></div>').appendTo('#graphid');
+                $('<div id="component' + i + '" style="display:inline-flex;"></div>').appendTo('#graphid');
 
                 $.post('/components/query/result', {
                     component_id: index,
@@ -90,7 +90,7 @@ $(function () {
                     console.log("components" + components);
 
                     let type = elements['type'];
-                    if (type === "graph") {
+                    if (type === "line") {
                         let outputCSV = "";
                         let elements = components[i];
                         //console.log("elements" + elements['id']);
@@ -174,7 +174,9 @@ $(function () {
                          if(document.getElementById("component"+i+"")) {
                              console.log('div with id ="component'+i+'" exists');
                              let arr = result[index];
-                             console.log(arr);
+                             let title = components[i].title;
+                             let columns = components[i].columns;
+                             let data = [];
                              let col = [];
                              for (let i = 0; i < arr.length; i++) {
                                  for (let key in arr[i]) {
@@ -183,35 +185,123 @@ $(function () {
                                      }
                                  }
                              }
+
+                             for(let j = 0; j < arr.length; j++) {
+                                 let item = {}
+                                for (let k=0; k<columns.length;k++) {
+
+
+                                     if (columns[k][col[k]]['require']) {
+                                         item[columns[k][col[k]]['heading']]=arr[j][col[k]]
+
+
+                                     }
+                                 }
+                                data.push(item);
+                             }
+                             console.log(data);
+                             let data_col = [];
+                             for (let i = 0; i < data.length; i++) {
+                                 for (let key in data[i]) {
+                                     if (data_col.indexOf(key) === -1) {
+                                         data_col.push(key);
+                                     }
+                                 }
+                             }
                              let table = document.createElement("table");
-                             /*let header = table.createCaption();
-                             header.caption = "table";*/
                              let tr = table.insertRow(-1);
-                             for (let i = 0; i < col.length; i++) {
+                             for (let i = 0; i < data_col.length; i++) {
                                  let th = document.createElement("th");
-                                 th.innerHTML = col[i];
+                                 th.innerHTML = data_col[i];
                                  tr.appendChild(th);
                              }
-                             for (let i = 0; i < arr.length; i++) {
+                             for (let i = 0; i < data.length; i++) {
                                  tr = table.insertRow(-1);
-                                 for (let j = 0; j < col.length; j++) {
+                                 for (let j = 0; j < data_col.length; j++) {
                                      let tableCell = tr.insertCell(-1);
-                                     tableCell.innerHTML = arr[i][col[j]];
+                                     tableCell.innerHTML = data[i][data_col[j]];
                                      if (j === 0) {
                                          tableCell.setAttribute("style", "cursor:pointer");
                                          tableCell.onclick = function () {
-                                             window.open("/view/table_view.html?id=" + arr[i][col[j]] + "?" + database + "?" + data_source + "?" + data_source_table, "_self");
+                                             window.open("/view/table_view.html?"+[col[j]]+"=" +arr[j][col[j]] + "?" + database + "?" + data_source + "?" + data_source_table, "_self");
                                          }
                                      }
                                  }
                              }
                              let divContainer = document.getElementById("component"+i+"");
+                             divContainer.className="table_container";
                              divContainer.innerHTML = "";
-                             divContainer.appendChild(table);
+                             let header = document.createElement("h5");
+                             header.innerHTML = "TABLE";
+                             divContainer.appendChild(header);
+                             header.appendChild(table);
                          }
                          else {
                              console.log('div with id ="component'+i+'"not exists');
                          }
+                    }
+                    if (type === "pie"){
+                        let result_arr = [];
+                        let elements = components[i];
+                        let x = elements['data_value'];
+                        let y = elements['label_value'];
+                        //console.log(x+" "+y);
+                        let label = components[i].labels;
+                        let arr = result[index];
+                        console.log("array_result" + arr);
+                        let t=0;
+                        for(let k=0; k<label.length; k++)
+                        {
+                            result_arr[t]=0;
+                            let label_split = label[k].split("-");
+                            let start = label_split[0];
+                            let end = label_split[1];
+                            for (let j=0;j< arr.length;j++) {
+                                let timestamp = new Date(arr[j][y]);
+                                if(timestamp.getFullYear()>=start&&timestamp.getFullYear()<=end){
+                                    result_arr[t]=result_arr[t]+arr[j][x];
+                                }
+                            }
+                            t=t+1;
+                        }
+                        console.log("csv" + result_arr);
+                        if(document.getElementById("component"+i+"")) {
+                            console.log('div with id ="component' + i + '" exists');
+
+                            let canvas = document.createElement("canvas");
+                            canvas.id="pie";
+                            let ctx = document.getElementById("component"+i+"");
+                            canvas.height=elements["height"];
+                            canvas.width=elements["width"];
+                            let div = document.createElement("div");
+                            ctx.appendChild(canvas);
+                            let c = document.getElementById("pie").getContext('2d')
+                            let myPieChart = new Chart(c, {
+                                type: 'pie',
+                                data: {
+                                    labels: label,
+                                    datasets: [{
+                                        data: result_arr,
+                                        backgroundColor: components[i].backgroundColor,
+                                    }],
+                                },
+                                options:{
+                                    //maintainAspectRatio:false,
+                                    title:{
+                                        display: true,
+                                        text: elements["title"]
+                                    },
+                                    legend:{
+                                        display:true
+                                    }
+                                }
+                            });
+
+
+
+                        }else{
+                            console.log('div with id ="component' + i + '" not exists');
+                        }
                     }
 
                 });

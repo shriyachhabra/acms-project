@@ -33,11 +33,11 @@
   "components":[
                   {
                     "id":1,
-                    "type":"graph",
+                    "type":"bar",
                     "style":{
                               "ylabel": "Stock",
                               "xlabel": "TimeStamp",
-                              "title":"Line Graph",
+                              "title":"bar Graph",
                               "height":300,
                               "width":480
                     },
@@ -51,7 +51,7 @@
                   },
                   {
                     "id":2,
-                    "type":"bar",
+                    "type":"line",
                     "x-val":"Timestamp",
                     "y-val":"Price",
                     "position":2,
@@ -60,7 +60,7 @@
                               "xlabel": "Timestamp",
                               "includeZero": true,
                               "animatedZooms": true,
-                              "title":"Bar Graph",
+                              "title":"Line Graph",
                               "height":300,
                               "width":480
                     },
@@ -72,10 +72,62 @@
                   {
                     "id":3,
                     "type":"table",
+                    "title": "TABLE",
                     "query":"{\"Market Place\":\"Australia\"}",
+                    "columns": [
+                      {
+                        "_id": {
+                        "require": true,
+                        "heading": "ID"
+                      }
+                      },
+                      {"Product Id": {
+                        "require": true,
+                        "heading": "Product"
+                      }},
+                      {"Timestamp": {
+                        "require": false,
+                        "heading": "Time"
+                      }},
+                      {"Price": {
+                        "require": true,
+                        "heading": "Prices"
+                      }},
+                      {"Customer Id": {
+                        "require": false,
+                        "heading": "Customer"
+                      }},
+                      {"Market Place": {
+                        "require": false,
+                        "heading": "Market Place"
+                      }},
+                      {"Session Id": {
+                        "require": false,
+                        "heading": "Session"
+                      }}
+                    ],
                     "datasource":"mongodb",
                     "database": "product",
-                    "table": "data"
+                    "table": "data",
+                    "position": 3
+                  },
+                  {
+                    "id":4,
+                    "type":"pie",
+                    "title": "Stock in different year",
+                    "height": 300,
+                    "width": 300,
+                    "data_value": "Stock",
+                    "label_value": "Timestamp",
+                    "labels": ["1950-1990", "2000-2008", "2010-2015", "2017-2018"],
+                    "backgroundColor": ["#007bff", "#dc3545", "#ffc107", "#28a745"],
+                    "position":4,
+                    "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300}}}}",
+                    "datasource":"elasticsearch",
+                    "database": "product",
+                    "table": "order_list"
                   }
+
+
   ]
 }

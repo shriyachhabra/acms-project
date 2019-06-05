@@ -136,6 +136,7 @@ app.post('/components/query/result',(req,res)=>{
         let component_id = req.body.component_id;
 
         let data_body = {
+            name: req.body.id,
             query: req.body.query,
             host: data.host,
             datasource: data.data_source_name,
@@ -200,6 +201,6 @@ app.post('/updateConfig',(req,res)=>{
 });
 
 
-app.listen(7850, function () {
+app.listen(7860, function () {
     console.log("Server started on http://localhost:7850");
 });
