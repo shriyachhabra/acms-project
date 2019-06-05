@@ -69,10 +69,28 @@
                     "database": "product",
                     "table": "data"
                   },
+    {
+      "id":3,
+      "type":"pie",
+      "title": "Stock in different year",
+      "height": 300,
+      "width": 300,
+      "data_value": "Stock",
+      "label_value": "Timestamp",
+      "labels": ["1950-1990", "2000-2008", "2010-2015", "2017-2018"],
+      "backgroundColor": ["#007bff", "#dc3545", "#ffc107", "#28a745"],
+      "position":3,
+      "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300}}}}",
+      "datasource":"elasticsearch",
+      "database": "product",
+      "table": "order_list"
+    },
                   {
-                    "id":3,
+                    "id":4,
                     "type":"table",
                     "title": "TABLE",
+                    "width": "100%",
+                    "height": "300px",
                     "query":"{\"Market Place\":\"Australia\"}",
                     "columns": [
                       {
@@ -109,24 +127,9 @@
                     "datasource":"mongodb",
                     "database": "product",
                     "table": "data",
-                    "position": 3
-                  },
-                  {
-                    "id":4,
-                    "type":"pie",
-                    "title": "Stock in different year",
-                    "height": 300,
-                    "width": 300,
-                    "data_value": "Stock",
-                    "label_value": "Timestamp",
-                    "labels": ["1950-1990", "2000-2008", "2010-2015", "2017-2018"],
-                    "backgroundColor": ["#007bff", "#dc3545", "#ffc107", "#28a745"],
-                    "position":4,
-                    "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300}}}}",
-                    "datasource":"elasticsearch",
-                    "database": "product",
-                    "table": "order_list"
+                    "position": 4
                   }
+
 
 
   ]

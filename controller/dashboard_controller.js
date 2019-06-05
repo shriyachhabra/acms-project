@@ -273,9 +273,9 @@ $(function () {
                             let ctx = document.getElementById("component"+i+"");
                             canvas.height=elements["height"];
                             canvas.width=elements["width"];
-                            let div = document.createElement("div");
+                            //.className="canvas_div";
                             ctx.appendChild(canvas);
-                            let c = document.getElementById("pie").getContext('2d')
+                            let c = document.getElementById("pie").getContext('2d');
                             let myPieChart = new Chart(c, {
                                 type: 'pie',
                                 data: {
