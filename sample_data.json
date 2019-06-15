@@ -33,7 +33,7 @@
   },
   "components":[
                   {
-                    "id":1,
+                    "id":"1",
                     "type":"bar",
                     "style":{
                               "ylabel": "Stock",
@@ -44,18 +44,18 @@
                     },
                     "x-val":"Timestamp",
                     "y-val":"Stock",
-                    "position":1,
+                    "position":"1",
                     "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300,\"lte\":400}}}}",
                     "datasource":"elasticsearch",
                     "database": "product",
                     "table": "order_list"
                   },
                   {
-                    "id":2,
+                    "id":"2",
                     "type":"line",
                     "x-val":"Timestamp",
                     "y-val":"Price",
-                    "position":2,
+                    "position":"2",
                     "style":{
                               "ylabel": "Price",
                               "xlabel": "Timestamp",
@@ -71,7 +71,7 @@
                     "table": "data"
                   },
                   {
-                    "id":3,
+                    "id":"3",
                     "type":"pie",
                     "title": "Stock in different year",
                     "height": 400,
@@ -80,14 +80,14 @@
                     "label_value": "Timestamp",
                     "labels": ["1950-1990", "2000-2008", "2010-2015", "2017-2018"],
                     "backgroundColor": ["#007bff", "#dc3545", "#ffc107", "#28a745"],
-                    "position":3,
+                    "position":"3",
                     "query":"{\"query\": {\"range\": {\"Stock\": {\"gte\":300}}}}",
                     "datasource":"elasticsearch",
                     "database": "product",
                     "table": "order_list"
                   },
                   {
-                    "id":4,
+                    "id":"4",
                     "type":"table",
                     "title": "TABLE",
                     "query":"{\"Market Place\":\"Australia\"}",
@@ -126,7 +126,7 @@
                     "datasource":"mongodb",
                     "database": "product",
                     "table": "data",
-                    "position": 4
+                    "position": "4"
                   }
 
 

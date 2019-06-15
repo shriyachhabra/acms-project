@@ -58,17 +58,17 @@ $(function () {
 
 
     $(document).ready(function () {
-        var prettyPrint = $("#pretty");
+        let prettyPrint = $("#pretty");
         prettyPrint.click(function() {
-            var ugly = document.getElementById('myTextArea').value;
-            var tData = JSON.parse(ugly);
-            var pretty = JSON.stringify(tData, undefined, 4);
+            let ugly = document.getElementById('myTextArea').value;
+            let tData = JSON.parse(ugly);
+            let pretty = JSON.stringify(tData, undefined, 4);
             document.getElementById('myTextArea').value = pretty;
         })
         save_button.click(function () {
-            var ugly = document.getElementById('myTextArea').value;
-            var tData = JSON.parse(ugly);
-            var constraint /*= {
+            let ugly = document.getElementById('myTextArea').value;
+            let tData = JSON.parse(ugly);
+            let constraint /*= {
                 "header.title": {
 
                 },
@@ -169,51 +169,52 @@ $(function () {
                     }
                 }
             };*/
-            var constraint1 = {
+            let constraint1 = {
                 "id": {
 
                     format: {
-                        pattern: "^\\d+$",
+                        pattern: "^[1-9]",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "type": {
 
                     format: {
-                        pattern: "^[a-zA-Z]*$"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 },
                 "x-val": {
 
                     format: {
-                        pattern: "^\\d+$",
-                        message: "Enter a valid string of integers"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 },
                 "y-val": {
 
                     format: {
-                        pattern: "^\\d+$",
-                        message: "Enter a valid string of integers"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 },
                 "position": {
 
                     format: {
-                        pattern: "^[1-9][0-9]*$",
+                        pattern: "^[1-9]",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "datasource": {
 
                     format: {
-                        pattern: "^[1-2]$",
-                        message: "Enter a valid string of integers"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 }
             }
-            var condition1 = (validate(tData, constraint));
-            var condition2 = validate.isArray(tData["components"]);
+            let condition1 = (validate(tData, constraint));
+            let condition2 = validate.isArray(tData["components"]);
             tData["components"].forEach(function (el) {
                 if ((validate(el, constraint1) !== undefined)) {
                     condition3 = validate(el, constraint1);
@@ -226,7 +227,7 @@ $(function () {
             })
 
             if (condition1 === undefined && condition2 === true && condition3 === undefined) {
-                var pretty = JSON.stringify(tData, undefined, 4);
+                let pretty = JSON.stringify(tData, undefined, 4);
                 document.getElementById('myTextArea').value = pretty;
                 console.log("Hi");
                     let result = text_box.val();

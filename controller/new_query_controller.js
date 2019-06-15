@@ -130,35 +130,36 @@ $(function () {
                 "type": {
 
                     format: {
-                        pattern: "^[a-zA-Z]*$"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 },
                 "x-val": {
 
                     format: {
-                        pattern: "^\\d+$",
-                        message: "Enter a valid string of integers"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 },
                 "y-val": {
 
                     format: {
-                        pattern: "^\\d+$",
-                        message: "Enter a valid string of integers"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 },
                 "position": {
 
                     format: {
-                        pattern: "^[1-9][0-9]*$",
+                        pattern: "^\\d+$",
                         message: "Enter a valid string of integers"
                     }
                 },
                 "datasource": {
 
                     format: {
-                        pattern: "^[1-2]$",
-                        message: "Enter a valid string of integers"
+                        pattern: "^[a-zA-Z]*$",
+                        message: "Enter a valid string"
                     }
                 }
             }

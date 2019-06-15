@@ -6,7 +6,6 @@ function query(data,callback) {
     let url = 'mongodb://' + data.host + '/';
     let db = mongoose.connection;
     if(data.name==="_id"){
-        console.log(data);
         let ObjectId = require('mongoose').Types.ObjectId;
         let query = {_id:new ObjectId(data.query)};
         MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
@@ -18,7 +17,7 @@ function query(data,callback) {
                 callback(results);
             });
         });
-    }else {
+    }else{
         MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
             if (err) throw err;
             let dbo = db.db(data.database);
