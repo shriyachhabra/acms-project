@@ -202,5 +202,5 @@ app.post('/updateConfig', (req, res) => {
 
 
 app.listen(7860, function () {
-    console.log("Server started on http://localhost:7850");
+    console.log("Server started on http://localhost:7860");
 });

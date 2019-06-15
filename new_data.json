@@ -35,11 +35,20 @@
     {
       "id":"",
       "type":"",
+      "style":{
+        "ylabel": "",
+        "xlabel": "",
+        "title":"",
+        "height":"",
+        "width":""
+      },
       "x-val":"",
       "y-val":"",
       "position":"",
       "query":"",
-      "datasource":""
+      "datasource":"",
+      "database": "",
+      "table": ""
     },
     {
       "id":"",
@@ -47,8 +56,75 @@
       "x-val":"",
       "y-val":"",
       "position":"",
+      "style":{
+        "ylabel": "",
+        "xlabel": "",
+        "title":"",
+        "height":"",
+        "width":""
+      },
       "query":"",
-      "datasource":""
+      "datasource":"",
+      "database": "",
+      "table": ""
+    },
+    {
+      "id":"",
+      "type":"pie",
+      "title": "",
+      "height": "",
+      "width": "",
+      "data_value": "",
+      "label_value": "",
+      "labels": [],
+      "backgroundColor": [],
+      "position":"",
+      "query":"",
+      "datasource":"",
+      "database": "",
+      "table": ""
+    },
+    {
+      "id":"",
+      "type":"table",
+      "title": "",
+      "query":"",
+      "columns": [
+        {
+          "_id": {
+            "require": true,
+            "heading": ""
+          }
+        },
+        {"Product Id": {
+          "require": true,
+          "heading": ""
+        }},
+        {"Timestamp": {
+          "require": false,
+          "heading": ""
+        }},
+        {"Price": {
+          "require": true,
+          "heading": ""
+        }},
+        {"Customer Id": {
+          "require": false,
+          "heading": ""
+        }},
+        {"Market Place": {
+          "require": false,
+          "heading": ""
+        }},
+        {"Session Id": {
+          "require": false,
+          "heading": ""
+        }}
+      ],
+      "datasource":"mongodb",
+      "database": "",
+      "table": "",
+      "position": ""
     }
   ]
 }

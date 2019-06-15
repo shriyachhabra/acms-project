@@ -187,7 +187,7 @@ $(function () {
                              }
 
                              for(let j = 0; j < arr.length; j++) {
-                                 let item = {}
+                                 let item = {};
                                 for (let k=0; k<columns.length;k++) {
 
 

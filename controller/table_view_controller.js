@@ -79,7 +79,6 @@ $(function () {
             table = url_param[4];
 
     }
-    //console.log(id+database+table+datasource);
     if(datasource==="mongodb"){
         if(name==="_id"){
             query = value;
